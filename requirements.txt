@@ -1,2 +1,5 @@
 numpy~=1.26.4
 pillow~=9.4.0
+roifile~=2024.1.10
+scikit-image~=0.22.0
+tifffile~=2023.4.12
