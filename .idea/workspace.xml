@@ -4,19 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d810fa6a-a0f3-403b-be5f-b955561b9c66" name="Changes" comment="Added functions to create ROIs: generate_rois_from_size and save_rois">
-      <change afterPath="$PROJECT_DIR$/src/generate_signals.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/other/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/other/pyimagej_macros_testing/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/other/pyimagej_macros_testing/macros_testing.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/other/pyimagej_macros_testing/pyimagej_macros_testing_example.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/visualization/plot_signals_from_csv.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/generate_rois.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/generate_rois.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/other/pyimagej_testing.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/other/pyimagej_testing.py" afterDir="false" />
-    </list>
+    <list default="true" id="d810fa6a-a0f3-403b-be5f-b955561b9c66" name="Changes" comment="Added functions to plot and create a numpy array from the csv" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -54,6 +42,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
     "Python tests.Doctests in roifile.executor": "Debug",
     "Python.calc_ROIs.executor": "Run",
     "Python.generate_rois.executor": "Run",
@@ -158,7 +147,7 @@
       <workItem from="1710235209326" duration="7498000" />
       <workItem from="1710246517867" duration="11731000" />
       <workItem from="1710318231407" duration="2023000" />
-      <workItem from="1710320998788" duration="2278000" />
+      <workItem from="1710320998788" duration="2708000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <option name="closed" value="true" />
@@ -192,7 +181,15 @@
       <option name="project" value="LOCAL" />
       <updated>1710237289093</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Added functions to plot and create a numpy array from the csv">
+      <option name="closed" value="true" />
+      <created>1710323700262</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1710323700262</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -213,7 +210,8 @@
     <MESSAGE value="initial commit" />
     <MESSAGE value="Added function to input .tif and convert to numpy array" />
     <MESSAGE value="Added functions to create ROIs: generate_rois_from_size and save_rois" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added functions to create ROIs: generate_rois_from_size and save_rois" />
+    <MESSAGE value="Added functions to plot and create a numpy array from the csv" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added functions to plot and create a numpy array from the csv" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>

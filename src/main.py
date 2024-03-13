@@ -45,7 +45,7 @@ csv_path = os.path.join(directory, 'Results.csv')
 arr = convert_csv_to_array(csv_path, rois_dict["n_horizontal"], rois_dict["n_vertical"])
 
 fig = ordered_subplots(csv_path, rois_dict["n_horizontal"], rois_dict["n_vertical"])
-fig.savefig('my_plot.png')
+fig.savefig(os.path.join(directory, 'signals_plot.png'))
 
 # Step 4: Estimate which signals are duplicates
 
