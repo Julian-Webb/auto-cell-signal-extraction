@@ -7,7 +7,7 @@ from roifile import ImagejRoi, ROI_TYPE, ROI_OPTIONS
 from PIL import Image
 
 
-def generate_rois_from_size(image_path: str, roi_width: int, roi_height: int) -> np.array(..., dtype=ImagejRoi):
+def generate_rois_from_size(image_path: str, roi_width: int, roi_height: int) -> dict:
     """Generates the ROIs for an image with ROI width and height as input"""
 
     # calculate number of ROIs
@@ -46,7 +46,7 @@ def generate_rois_from_size(image_path: str, roi_width: int, roi_height: int) ->
 
             rois[x, y] = roi
 
-    return rois
+    return {"n_horizontal": n_horizontal, "n_vertical": n_vertical, "rois": rois}
 
 
 def save_rois(rois: np.array(ImagejRoi), save_dir: str) -> None:

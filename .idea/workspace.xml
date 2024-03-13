@@ -4,12 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d810fa6a-a0f3-403b-be5f-b955561b9c66" name="Changes" comment="Added function to input .tif and convert to numpy array">
-      <change afterPath="$PROJECT_DIR$/src/other/roi_example.py" afterDir="false" />
+    <list default="true" id="d810fa6a-a0f3-403b-be5f-b955561b9c66" name="Changes" comment="Added functions to create ROIs: generate_rois_from_size and save_rois">
+      <change afterPath="$PROJECT_DIR$/src/generate_signals.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/other/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/other/pyimagej_macros_testing/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/other/pyimagej_macros_testing/macros_testing.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/other/pyimagej_macros_testing/pyimagej_macros_testing_example.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/visualization/plot_signals_from_csv.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/generate_rois.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/generate_rois.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/other/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/generate_rois.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/other/pyimagej_testing.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/other/pyimagej_testing.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,6 +41,7 @@
   </component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
+    <option name="showPreview" value="true" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 3
@@ -50,9 +57,14 @@
     "Python tests.Doctests in roifile.executor": "Debug",
     "Python.calc_ROIs.executor": "Run",
     "Python.generate_rois.executor": "Run",
+    "Python.generate_signals.executor": "Run",
     "Python.glioblastoma.executor": "Run",
     "Python.input_tif.executor": "Debug",
+    "Python.macros_testing.executor": "Run",
     "Python.main.executor": "Run",
+    "Python.plot_signals_from_csv.executor": "Run",
+    "Python.pyimagej_macros_testing.executor": "Run",
+    "Python.pyimagej_testing.executor": "Run",
     "Python.roi_example.executor": "Run",
     "Python.roifile_demo.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
@@ -70,11 +82,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/other/pyimagej_macros_testing" />
       <recent name="$PROJECT_DIR$/src/other" />
       <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$/data/01_raw/high_res_calcium_img" />
       <recent name="$PROJECT_DIR$/src/0_other" />
-      <recent name="$PROJECT_DIR$/src/2_ROIs" />
     </key>
   </component>
   <component name="RunManager">
@@ -106,9 +118,6 @@
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="false" />
@@ -146,7 +155,10 @@
       <workItem from="1709800798832" duration="3059000" />
       <workItem from="1709803869475" duration="22123000" />
       <workItem from="1710146075889" duration="10699000" />
-      <workItem from="1710235209326" duration="1710000" />
+      <workItem from="1710235209326" duration="7498000" />
+      <workItem from="1710246517867" duration="11731000" />
+      <workItem from="1710318231407" duration="2023000" />
+      <workItem from="1710320998788" duration="2278000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <option name="closed" value="true" />
@@ -164,7 +176,23 @@
       <option name="project" value="LOCAL" />
       <updated>1709902331129</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Added functions to create ROIs: generate_rois_from_size and save_rois">
+      <option name="closed" value="true" />
+      <created>1710237276960</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1710237276960</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Added functions to create ROIs: generate_rois_from_size and save_rois">
+      <option name="closed" value="true" />
+      <created>1710237289093</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1710237289093</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -184,11 +212,25 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="initial commit" />
     <MESSAGE value="Added function to input .tif and convert to numpy array" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added function to input .tif and convert to numpy array" />
+    <MESSAGE value="Added functions to create ROIs: generate_rois_from_size and save_rois" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added functions to create ROIs: generate_rois_from_size and save_rois" />
+  </component>
+  <component name="XDebuggerManager">
+    <watches-manager>
+      <configuration name="PythonConfigurationType">
+        <watch expression="real_image_path" />
+        <watch expression="real_image_path" />
+      </configuration>
+    </watches-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/glioblastoma$plot_signals_from_csv.coverage" NAME="plot_signals_from_csv Coverage Results" MODIFIED="1710261259862" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/visualization" />
     <SUITE FILE_PATH="coverage/glioblastoma$input_tif.coverage" NAME="input_tif Coverage Results" MODIFIED="1709817086186" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/1_data_input" />
+    <SUITE FILE_PATH="coverage/glioblastoma$macros_testing.coverage" NAME="macros_testing Coverage Results" MODIFIED="1710256858479" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/other/pyimagej_macros_testing" />
+    <SUITE FILE_PATH="coverage/glioblastoma$main.coverage" NAME="main Coverage Results" MODIFIED="1710322657880" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+    <SUITE FILE_PATH="coverage/glioblastoma$generate_signals.coverage" NAME="generate_signals Coverage Results" MODIFIED="1710320134399" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
     <SUITE FILE_PATH="coverage/glioblastoma$Doctests_in_roifile.coverage" NAME="Doctests in roifile Coverage Results" MODIFIED="1710146515498" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="/opt/homebrew/anaconda3/envs/glioblastoma/lib/python3.11/site-packages/roifile" />
     <SUITE FILE_PATH="coverage/glioblastoma$generate_rois.coverage" NAME="generate_rois Coverage Results" MODIFIED="1710146541201" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+    <SUITE FILE_PATH="coverage/glioblastoma$glioblastoma.coverage" NAME="glioblastoma Coverage Results" MODIFIED="1710321116759" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
