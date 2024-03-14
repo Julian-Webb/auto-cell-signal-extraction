@@ -1,33 +1,40 @@
 import os
 from generate_rois import generate_rois_from_size, save_rois
 from generate_signals import remove_first_csv_column, convert_csv_to_array
-from src.visualization.plot_signals_from_csv import ordered_subplots
-import matplotlib as plt
+from src.estimate_cell_equality import estimate_cell_equality
+from src.visualization.plot_signals_from_csv import grid_plot, single_plot
 
-# paths
+# ##### Step 0: Path Initialization ####################################################################################
+# Please specify your desired paths
+
 base_dir = '/Users/julian/development/PycharmProjects/glioblastoma'
 
-# calcium_img_path = 'data/01_raw/276_AZD3965_Mathieu.TIF'
-# test_img_path = 'data/01_raw/test_stack/TestStack.tif'
-# simple_test_stack = 'data/01_raw/simple_test_image/simple_test_stack.tif'
+# calcium image
+# calcium_img_dir = os.path.join(base_dir, 'data', '01_raw', '276_AZD3965_Mathieu')
+# calcium_img_path = os.path.join(calcium_img_dir, '276_AZD3965_Mathieu.TIF')
 
 # test stack
 test_stack_dir = os.path.join(base_dir, 'data', '01_raw', 'high_res_test_stack')
 test_stack_path = os.path.join(test_stack_dir, 'high_res_test_stack.tif')
 
 # single image
-single_image_dir = '/Users/julian/development/PycharmProjects/glioblastoma/data/01_raw/single_image/'
-single_image_path = os.path.join(single_image_dir, 'single_image.tiff')
+# single_image_dir = '/Users/julian/development/PycharmProjects/glioblastoma/data/01_raw/single_image/'
+# single_image_path = os.path.join(single_image_dir, 'single_image.tiff')
 
 directory = test_stack_dir
 image_path = test_stack_path
 
-# Step 1 & 2: Load the image and compute the regions of interest (ROIs)
-rois_dict = generate_rois_from_size(image_path, 2048//16, 1536//16)
+# make figures directory
+figures_dir = os.path.join(directory, 'figures')
+if not os.path.exists(figures_dir):
+    os.mkdir(figures_dir)
+
+# ##### Step 1 & 2: Load the image and compute the regions of interest (ROIs) ##########################################
+rois_dict = generate_rois_from_size(image_path, 2048 // 8, 1536 // 8)
 save_rois(rois_dict["rois"], directory)
 print(f"\nA {rois_dict['n_horizontal']}x{rois_dict['n_vertical']} grid of ROIs has been created.\n")
 
-# Step 3: Generate the signals based on the ROIs
+# ##### Step 3: Generate the signals based on the ROIs #################################################################
 # The user needs to do this manually with Fiji
 print('Please manually perform the following steps now:')
 print('1. Drag the image and the ROIs into Fiji.')
@@ -42,11 +49,16 @@ while ans != 'yes':
 
 # remove the first column from the .csv because it represents the frame which isn't necessary
 csv_path = os.path.join(directory, 'Results.csv')
-arr = convert_csv_to_array(csv_path, rois_dict["n_horizontal"], rois_dict["n_vertical"])
+remove_first_csv_column(csv_path)
+signals_arr = convert_csv_to_array(csv_path, rois_dict["n_horizontal"], rois_dict["n_vertical"])
 
-fig = ordered_subplots(csv_path, rois_dict["n_horizontal"], rois_dict["n_vertical"])
-fig.savefig(os.path.join(directory, 'signals_plot.png'))
+fig = grid_plot(csv_path, rois_dict["n_horizontal"], rois_dict["n_vertical"])
+fig.savefig(os.path.join(figures_dir, 'grid_plot.png'))
 
-# Step 4: Estimate which signals are duplicates
+fig = single_plot(csv_path)
+fig.savefig(os.path.join(figures_dir, 'single_plot.png'))
 
-# Step 5: Filter out duplicate signals and save the result
+# ##### Step 4: Estimate which signals are duplicates ##################################################################
+equality_df = estimate_cell_equality(signals_arr, rois_dict["n_horizontal"], rois_dict["n_vertical"])
+
+# ##### Step 5: Filter out duplicate signals and save the result #######################################################

@@ -5,19 +5,24 @@ import matplotlib.pyplot as plt
 def single_plot(csv_path):
     df = pd.read_csv(csv_path)
 
+
+
     # plotting
-    plt.figure(figsize=(30, 20))
+    fig = plt.figure(figsize=(15, 15))
 
     for col in df.columns:
-        plt.plot(df[col], label=col)
+        # plot it if not all values are 0
+        if not (df[col] == 0).all():
+            plt.plot(df[col], label=col)
 
     plt.xlabel('Frame')
     plt.ylabel('Mean of ROI')
     plt.legend()
-    plt.show()
+
+    return fig
 
 
-def ordered_subplots(csv_path, n_horizontal, n_vertical) -> plt.figure:
+def grid_plot(csv_path, n_horizontal, n_vertical) -> plt.figure:
     # NOTE: this function is pretty fragile. Don't expect too much
 
     df = pd.read_csv(csv_path)
