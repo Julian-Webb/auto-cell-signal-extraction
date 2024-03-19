@@ -1,6 +1,7 @@
 import numpy as np
 import pandas as pd
-import os
+
+from src.utils.roi_names import roi_indexes_to_imagej_label
 
 
 def remove_first_csv_column(csv_path) -> None:
@@ -27,11 +28,7 @@ def convert_csv_to_array(csv_path, n_horizontal, n_vertical) -> np.array:
 
     for x in range(n_horizontal):
         for y in range(n_vertical):
-            col_name = f'Mean(({x}; {y}))'
+            col_name = roi_indexes_to_imagej_label(x, y)
             arr[x, y, :] = df[col_name]
 
     return arr
-
-# high_res_test_stack_dir = '/Users/julian/development/PycharmProjects/glioblastoma/data/01_raw/high_res_test_stack/'
-# hrts_csv_path = os.path.join(high_res_test_stack_dir, 'Results.csv')
-# arr = convert_csv_to_array(hrts_csv_path, n_horizontal=16, n_vertical=16)

@@ -5,8 +5,6 @@ import matplotlib.pyplot as plt
 def single_plot(csv_path):
     df = pd.read_csv(csv_path)
 
-
-
     # plotting
     fig = plt.figure(figsize=(15, 15))
 

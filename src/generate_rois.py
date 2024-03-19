@@ -6,22 +6,23 @@ import numpy as np
 from roifile import ImagejRoi, ROI_TYPE, ROI_OPTIONS
 from PIL import Image
 
+from src.utils.roi_names import roi_indexes_to_compact_label, roi_indexes_to_filename
 
-def generate_rois_from_size(image_path: str, roi_width: int, roi_height: int) -> dict:
+
+def generate_rois_from_size(image_width: int, image_height: int, roi_width: int, roi_height: int) -> dict:
     """Generates the ROIs for an image with ROI width and height as input"""
 
     # calculate number of ROIs
-    with Image.open(image_path) as image:
-        n_horizontal = image.width / roi_width
-        n_vertical = image.height / roi_height
+    n_horizontal = image_width / roi_width
+    n_vertical = image_height / roi_height
 
-        # show warning if image isn't divided without remainder by the specified width and height
-        if not n_horizontal.is_integer():
-            warnings.warn(
-                f"The image with width {image.width} can't be divided without remainder with the specified ROI width of {roi_width}. The remainder is {image.width % roi_width} pixels")
-        if not n_vertical.is_integer():
-            warnings.warn(
-                f"The image with height {image.height} can't be divided without remainder with the specified ROI height of {roi_height}.  The remainder is {image.height % roi_height} pixels")
+    # show warning if image isn't divided without remainder by the specified width and height
+    if not n_horizontal.is_integer():
+        warnings.warn(
+            f"The image with width {image_width} can't be divided without remainder with the specified ROI width of {roi_width}. The remainder is {image_width % roi_width} pixels")
+    if not n_vertical.is_integer():
+        warnings.warn(
+            f"The image with height {image_height} can't be divided without remainder with the specified ROI height of {roi_height}.  The remainder is {image_height % roi_height} pixels")
 
     # floor the number of ROIs
     n_horizontal = int(n_horizontal)
@@ -40,7 +41,7 @@ def generate_rois_from_size(image_path: str, roi_width: int, roi_height: int) ->
 
             roi = ImagejRoi.frompoints(np.array([[x_ul, y_ul], [x_lr, y_lr]]))
             roi.roitype = ROI_TYPE.RECT
-            roi.name = f'({x}; {y})'
+            roi.name = roi_indexes_to_compact_label(x, y)
             roi.options |= ROI_OPTIONS.OVERLAY_LABELS
             roi.options |= ROI_OPTIONS.SHOW_LABELS
 
@@ -64,9 +65,7 @@ def save_rois(rois: np.array(ImagejRoi), save_dir: str) -> None:
 
     for x in range(0, n_horizontal):
         for y in range(0, n_vertical):
-            x_formatted = f'{x:0{max_digits}d}'
-            y_formatted = f'{y:0{max_digits}d}'
-            file_name = f'ROI_x{x_formatted}_y{y_formatted}.roi'
+            file_name = roi_indexes_to_filename(x, y, max_digits)
             file_path = os.path.join(rois_dir, file_name)
             rois[x, y].tofile(file_path)
 

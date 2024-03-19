@@ -4,9 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d810fa6a-a0f3-403b-be5f-b955561b9c66" name="Changes" comment="corrected save path of the generated plot">
-      <change afterPath="$PROJECT_DIR$/src/estimate_cell_equality.py" afterDir="false" />
+    <list default="true" id="d810fa6a-a0f3-403b-be5f-b955561b9c66" name="Changes" comment="Created estimate_cell_equality.py">
+      <change afterPath="$PROJECT_DIR$/notebooks/testing_clustering.ipynb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/notebooks/testing_visualize_clusters.ipynb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/cluster_rois.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/merge_clustered_signals.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utils/roi_names.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/visualization/plot_representative_signals.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/visualization/visualize_cluster_signals.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/visualization/visualize_roi_cluster_associations.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/estimate_cell_equality.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/distance_adjusted_similarity.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/generate_rois.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/generate_rois.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/generate_signals.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/generate_signals.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/visualization/plot_signals_from_csv.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/visualization/plot_signals_from_csv.py" afterDir="false" />
@@ -56,12 +65,14 @@
     "Python.glioblastoma.executor": "Run",
     "Python.input_tif.executor": "Debug",
     "Python.macros_testing.executor": "Run",
-    "Python.main.executor": "Run",
+    "Python.main.executor": "Debug",
     "Python.plot_signals_from_csv.executor": "Run",
     "Python.pyimagej_macros_testing.executor": "Run",
     "Python.pyimagej_testing.executor": "Run",
     "Python.roi_example.executor": "Run",
+    "Python.roi_names.executor": "Debug",
     "Python.roifile_demo.executor": "Run",
+    "Python.visualize_clusters.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
@@ -77,8 +88,8 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/other/pyimagej_macros_testing" />
       <recent name="$PROJECT_DIR$/src/other" />
+      <recent name="$PROJECT_DIR$/src/other/pyimagej_macros_testing" />
       <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$/data/01_raw/high_res_calcium_img" />
       <recent name="$PROJECT_DIR$/src/0_other" />
@@ -154,7 +165,11 @@
       <workItem from="1710246517867" duration="11731000" />
       <workItem from="1710318231407" duration="2023000" />
       <workItem from="1710320998788" duration="14510000" />
-      <workItem from="1710415508111" duration="7875000" />
+      <workItem from="1710415508111" duration="10656000" />
+      <workItem from="1710496353505" duration="15799000" />
+      <workItem from="1710755942103" duration="9099000" />
+      <workItem from="1710796372873" duration="604000" />
+      <workItem from="1710839751881" duration="10080000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <option name="closed" value="true" />
@@ -204,7 +219,15 @@
       <option name="project" value="LOCAL" />
       <updated>1710323845726</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Created estimate_cell_equality.py">
+      <option name="closed" value="true" />
+      <created>1710429013391</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1710429013391</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -227,16 +250,47 @@
     <MESSAGE value="Added functions to create ROIs: generate_rois_from_size and save_rois" />
     <MESSAGE value="Added functions to plot and create a numpy array from the csv" />
     <MESSAGE value="corrected save path of the generated plot" />
-    <option name="LAST_COMMIT_MESSAGE" value="corrected save path of the generated plot" />
+    <MESSAGE value="Created estimate_cell_equality.py" />
+    <option name="LAST_COMMIT_MESSAGE" value="Created estimate_cell_equality.py" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="jupyter-line">
+          <url>notebook:///Users/julian/development/PycharmProjects/glioblastoma/notebooks/testing_visualize_clusters.ipynb</url>
+          <line>73</line>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="jupyter-line">
+          <url>notebook:///Users/julian/development/PycharmProjects/glioblastoma/notebooks/testing_visualize_clusters.ipynb</url>
+          <line>68</line>
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="jupyter-line">
+          <url>notebook:///Users/julian/development/PycharmProjects/glioblastoma/notebooks/testing_visualize_clusters.ipynb</url>
+          <line>88</line>
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+      </breakpoints>
+      <default-breakpoints>
+        <breakpoint type="python-exception">
+          <properties notifyOnTerminate="true" exception="BaseException">
+            <option name="notifyOnTerminate" value="true" />
+          </properties>
+        </breakpoint>
+      </default-breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/glioblastoma$plot_signals_from_csv.coverage" NAME="plot_signals_from_csv Coverage Results" MODIFIED="1710261259862" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/visualization" />
     <SUITE FILE_PATH="coverage/glioblastoma$input_tif.coverage" NAME="input_tif Coverage Results" MODIFIED="1709817086186" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/1_data_input" />
     <SUITE FILE_PATH="coverage/glioblastoma$macros_testing.coverage" NAME="macros_testing Coverage Results" MODIFIED="1710256858479" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/other/pyimagej_macros_testing" />
-    <SUITE FILE_PATH="coverage/glioblastoma$main.coverage" NAME="main Coverage Results" MODIFIED="1710322657880" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+    <SUITE FILE_PATH="coverage/glioblastoma$main.coverage" NAME="main Coverage Results" MODIFIED="1710846646008" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+    <SUITE FILE_PATH="coverage/glioblastoma$roi_names.coverage" NAME="roi_names Coverage Results" MODIFIED="1710499847491" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/utils" />
+    <SUITE FILE_PATH="coverage/glioblastoma$visualize_clusters.coverage" NAME="visualize_clusters Coverage Results" MODIFIED="1710848120509" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/visualization" />
     <SUITE FILE_PATH="coverage/glioblastoma$generate_signals.coverage" NAME="generate_signals Coverage Results" MODIFIED="1710320134399" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
     <SUITE FILE_PATH="coverage/glioblastoma$Doctests_in_roifile.coverage" NAME="Doctests in roifile Coverage Results" MODIFIED="1710146515498" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="/opt/homebrew/anaconda3/envs/glioblastoma/lib/python3.11/site-packages/roifile" />
     <SUITE FILE_PATH="coverage/glioblastoma$generate_rois.coverage" NAME="generate_rois Coverage Results" MODIFIED="1710146541201" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
-    <SUITE FILE_PATH="coverage/glioblastoma$glioblastoma.coverage" NAME="glioblastoma Coverage Results" MODIFIED="1710423634439" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/glioblastoma$glioblastoma.coverage" NAME="glioblastoma Coverage Results" MODIFIED="1710776795546" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
