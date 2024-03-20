@@ -4,25 +4,25 @@ import warnings
 
 import numpy as np
 from roifile import ImagejRoi, ROI_TYPE, ROI_OPTIONS
-from PIL import Image
 
+from src.utils.Dimensions import Dimensions
 from src.utils.roi_names import roi_indexes_to_compact_label, roi_indexes_to_filename
 
 
-def generate_rois_from_size(image_width: int, image_height: int, roi_width: int, roi_height: int) -> dict:
+def generate_rois_from_size(img_dims: Dimensions, roi_dims: Dimensions) -> dict:
     """Generates the ROIs for an image with ROI width and height as input"""
 
     # calculate number of ROIs
-    n_horizontal = image_width / roi_width
-    n_vertical = image_height / roi_height
+    n_horizontal = img_dims.width / roi_dims.width
+    n_vertical = img_dims.height / roi_dims.height
 
     # show warning if image isn't divided without remainder by the specified width and height
     if not n_horizontal.is_integer():
         warnings.warn(
-            f"The image with width {image_width} can't be divided without remainder with the specified ROI width of {roi_width}. The remainder is {image_width % roi_width} pixels")
+            f"The image with width {img_dims.width} can't be divided without remainder with the specified ROI width of {roi_dims.width}. The remainder is {img_dims.width % roi_dims.width} pixels")
     if not n_vertical.is_integer():
         warnings.warn(
-            f"The image with height {image_height} can't be divided without remainder with the specified ROI height of {roi_height}.  The remainder is {image_height % roi_height} pixels")
+            f"The image with height {img_dims.height} can't be divided without remainder with the specified ROI height of {roi_dims.height}.  The remainder is {img_dims.height % roi_dims.height} pixels")
 
     # floor the number of ROIs
     n_horizontal = int(n_horizontal)
@@ -34,10 +34,10 @@ def generate_rois_from_size(image_width: int, image_height: int, roi_width: int,
     for x in range(0, n_horizontal):
         for y in range(0, n_vertical):
             # we specify the upper left and lower right corners of the rectangle
-            x_ul = x * roi_width  # upper left x
-            y_ul = y * roi_height  # upper left y
-            x_lr = x_ul + roi_width - 1  # lower right x
-            y_lr = y_ul + roi_height - 1  # lower right y
+            x_ul = x * roi_dims.width  # upper left x
+            y_ul = y * roi_dims.height  # upper left y
+            x_lr = x_ul + roi_dims.width - 1  # lower right x
+            y_lr = y_ul + roi_dims.height - 1  # lower right y
 
             roi = ImagejRoi.frompoints(np.array([[x_ul, y_ul], [x_lr, y_lr]]))
             roi.roitype = ROI_TYPE.RECT

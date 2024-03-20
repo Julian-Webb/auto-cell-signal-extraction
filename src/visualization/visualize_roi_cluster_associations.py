@@ -1,12 +1,13 @@
 import os
+from src.utils.Dimensions import Dimensions
 
 from matplotlib import pyplot as plt
 import matplotlib.patches as patches
 import colorsys
 
 
-def visualize_roi_cluster_associations(roi_clusters_dict, n_clusters: int, roi_dims: tuple[int, int],
-                       img_dims: tuple[int, int]) -> plt.figure:
+def visualize_roi_cluster_associations(roi_clusters_dict, n_clusters: int, roi_dims: Dimensions,
+                                       img_dims: Dimensions) -> plt.figure:
     """Generates a figure that shows which cluster each ROI belongs to.
 
     Parameters:
@@ -18,24 +19,24 @@ def visualize_roi_cluster_associations(roi_clusters_dict, n_clusters: int, roi_d
     # plot each ROI as a rectangle with the color of the cluster
     fig, ax = plt.subplots()
 
-    width, height = roi_dims
     for roi, cluster in roi_clusters_dict.items():
         roi_x, roi_y = roi
-        x = roi_x * width
-        y = roi_y * height
+        x = roi_x * roi_dims.width
+        y = roi_y * roi_dims.height
 
-        rect = patches.Rectangle((x, y), width, height, linewidth=1, edgecolor='black', facecolor=colors[cluster])
+        rect = patches.Rectangle((x, y), roi_dims.width, roi_dims.height, linewidth=1, edgecolor='black',
+                                 facecolor=colors[cluster])
         ax.add_patch(rect)
 
-        # ax.text(x + 0.5 * width, y + 0.5 * height, str(cluster), ha='center', va='center')
+        # ax.text(x + 0.5 * roi_dims.width, y + 0.5 * roi_dims.height, str(cluster), ha='center', va='center')
 
         continue
 
     # manipulate figure properties
     ax.set_aspect('equal')
 
-    ax.set_xlim(0, img_dims[0])
-    ax.set_ylim(0, img_dims[1])
+    ax.set_xlim(0, img_dims.width)
+    ax.set_ylim(0, img_dims.height)
 
     plt.gca().invert_yaxis()
 
@@ -62,4 +63,3 @@ def generate_distinct_colors(n):
         colors.append((r, g, b))
 
     return colors
-
