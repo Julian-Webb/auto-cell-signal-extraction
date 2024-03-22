@@ -12,6 +12,8 @@ def distance_adjusted_similarity(signal_arr: np.array, n_horizontal: int, n_vert
     and the third represents the frame. The value is the signal.
     Returns a dataframe with the distance-adjusted similarity of each pair of ROIs"""
 
+    # TODO improve the way the similarity works with the new ROI class (especially readibility)
+    # TODO improve the quality of the metric
     roi_indices = [(x, y) for x in range(n_horizontal) for y in range(n_vertical)]
     n_rois = n_horizontal * n_vertical
 
