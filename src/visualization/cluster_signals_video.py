@@ -2,6 +2,7 @@ from src.utils.Dimensions import Dimensions
 
 import numpy as np
 import tifffile as tf
+from tifffile import COMPRESSION
 
 
 def cluster_signals_video(video_path: str, roi_clusters_dict: dict, representative_signals: np.array, n_frames: int,
@@ -11,7 +12,8 @@ def cluster_signals_video(video_path: str, roi_clusters_dict: dict, representati
                                     pixel_dtype)
 
     # save array as multi-image tiff
-    tf.imwrite(video_path, video_arr)
+    # tf.imwrite(video_path, video_arr, compression='zlib', imagej=True)
+    tf.imwrite(video_path, video_arr, imagej=True)
 
     return video_arr
 

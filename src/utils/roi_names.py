@@ -30,18 +30,18 @@ def roi_imagej_label_to_indexes():
     raise NotImplementedError()
 
 
-def roi_indexes_to_linear_index(x: int, y: int, n_horizontal: int):
+def roi_indexes_to_linear_index(x: int, y: int, n_vertical: int):
     """Takes in an index pair (x, y) and converts it to a linear index z"""
-    return x * n_horizontal + y
+    return x * n_vertical + y
 
 
-def roi_linear_index_to_indexes(idx: int, n_horizontal: int):
+def roi_linear_index_to_indexes(idx: int, n_vertical: int):
     """Takes in a linear index z and converts it to a pair of indexes (x, y)"""
-    y = idx % n_horizontal
-    x = idx // n_horizontal
+    y = idx % n_vertical
+    x = idx // n_vertical
     return x, y
 
 
-def roi_linear_index_to_compact_label(idx: int, n_horizontal: int):
-    x, y = roi_linear_index_to_indexes(idx, n_horizontal)
+def roi_linear_index_to_compact_label(idx: int, n_vertical: int):
+    x, y = roi_linear_index_to_indexes(idx, n_vertical)
     return roi_indexes_to_compact_label(x, y)

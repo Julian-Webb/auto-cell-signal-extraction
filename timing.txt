@@ -1,0 +1,22 @@
+###### Timing the Code ######
+
+### high_res_test_stack ###
+image dimensions: 2048 x 1536
+frames          : 13
+
+With
+roi_width = roi_height = 8 pixels
+it takes about 300s = 5min to execute (when using Fiji for ROI signals and not calculating distance matrix)
+
+
+### calcium image ###
+image dimensions: 2048 x 1536
+frames          : 2776
+
+With
+roi_width = roi_height = 16 pixels
+it already takes ~30min for FIJI to compute ROI signals
+
+With
+roi_width = roi_height = 32 pixels
+It takes about 300s = 5min to execute (when using Fiji for ROI signals and not calculating distance matrix)

@@ -4,18 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d810fa6a-a0f3-403b-be5f-b955561b9c66" name="Changes" comment="Added visualize_roi_cluster_associations.py">
-      <change afterPath="$PROJECT_DIR$/notebooks/image_testing.ipynb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/notebooks/video_testing.ipynb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/Dimensions.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/get_n_frames.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/visualization/cluster_signals_video.py" afterDir="false" />
+    <list default="true" id="d810fa6a-a0f3-403b-be5f-b955561b9c66" name="Changes" comment="Added cluster_signals_video.py and the class Dimensions">
+      <change afterPath="$PROJECT_DIR$/notebooks/testing.ipynb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/analysis_options.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/timing.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/generate_rois.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/generate_rois.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cluster_rois.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/cluster_rois.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/visualization/visualize_cluster_signals.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/visualization/visualize_roi_cluster_associations.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/visualization/visualize_roi_cluster_associations.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/roi_names.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/roi_names.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/visualization/cluster_signals_video.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/visualization/cluster_signals_video.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,8 +22,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Jupyter Notebook" />
         <option value="Python Script" />
+        <option value="Jupyter Notebook" />
       </list>
     </option>
   </component>
@@ -168,7 +165,10 @@
       <workItem from="1710755942103" duration="9099000" />
       <workItem from="1710796372873" duration="604000" />
       <workItem from="1710839751881" duration="13400000" />
-      <workItem from="1710925530585" duration="18975000" />
+      <workItem from="1710925530585" duration="21959000" />
+      <workItem from="1711013601591" duration="14475000" />
+      <workItem from="1711056203878" duration="35000" />
+      <workItem from="1711096203662" duration="6891000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <option name="closed" value="true" />
@@ -234,7 +234,15 @@
       <option name="project" value="LOCAL" />
       <updated>1710852893546</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Added cluster_signals_video.py and the class Dimensions">
+      <option name="closed" value="true" />
+      <created>1710952856832</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1710952856832</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -259,7 +267,8 @@
     <MESSAGE value="corrected save path of the generated plot" />
     <MESSAGE value="Created estimate_cell_equality.py" />
     <MESSAGE value="Added visualize_roi_cluster_associations.py" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added visualize_roi_cluster_associations.py" />
+    <MESSAGE value="Added cluster_signals_video.py and the class Dimensions" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added cluster_signals_video.py and the class Dimensions" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -270,9 +279,19 @@
           <option name="timeStamp" value="12" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/visualization/cluster_signals_video.py</url>
-          <line>44</line>
-          <option name="timeStamp" value="24" />
+          <url>file://$PROJECT_DIR$/src/merge_clustered_signals.py</url>
+          <line>21</line>
+          <option name="timeStamp" value="43" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/cluster_rois.py</url>
+          <line>19</line>
+          <option name="timeStamp" value="44" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/cluster_rois.py</url>
+          <line>29</line>
+          <option name="timeStamp" value="45" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
@@ -294,6 +313,6 @@
     <SUITE FILE_PATH="coverage/glioblastoma$generate_signals.coverage" NAME="generate_signals Coverage Results" MODIFIED="1710320134399" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
     <SUITE FILE_PATH="coverage/glioblastoma$Doctests_in_roifile.coverage" NAME="Doctests in roifile Coverage Results" MODIFIED="1710146515498" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="/opt/homebrew/anaconda3/envs/glioblastoma/lib/python3.11/site-packages/roifile" />
     <SUITE FILE_PATH="coverage/glioblastoma$generate_rois.coverage" NAME="generate_rois Coverage Results" MODIFIED="1710146541201" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
-    <SUITE FILE_PATH="coverage/glioblastoma$glioblastoma.coverage" NAME="glioblastoma Coverage Results" MODIFIED="1710951562295" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/glioblastoma$glioblastoma.coverage" NAME="glioblastoma Coverage Results" MODIFIED="1711098665223" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
