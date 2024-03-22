@@ -4,15 +4,27 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d810fa6a-a0f3-403b-be5f-b955561b9c66" name="Changes" comment="Added cluster_signals_video.py and the class Dimensions">
-      <change afterPath="$PROJECT_DIR$/notebooks/testing.ipynb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/analysis_options.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/timing.txt" afterDir="false" />
+    <list default="true" id="d810fa6a-a0f3-403b-be5f-b955561b9c66" name="Changes" comment="Added analysis_options.py to store the options which need to be specified">
+      <change afterPath="$PROJECT_DIR$/src/B_generate_rois/save_rois.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/C_generate_ROI_signals/visualization/single_plot.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/E_cluster_ROIs/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cluster_rois.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/cluster_rois.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/analysis_options.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/analysis_options.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cluster_rois.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/E_cluster_ROIs/cluster_rois.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/distance_adjusted_similarity.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/D_calculate_similarity/distance_adjusted_similarity.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/generate_rois.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/B_generate_rois/generate_rois_from_size.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/generate_signals.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/C_generate_ROI_signals/remove_first_column.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/roi_names.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/roi_names.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/visualization/cluster_signals_video.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/visualization/cluster_signals_video.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/merge_clustered_signals.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/F_representative_signals/compute_representative_signals.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/other/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/C_generate_ROI_signals/convert_csv_to_array.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/other/input_tif.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/other/pyimagej_macros_testing/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/C_generate_ROI_signals/visualization/grid_plot.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/other/pyimagej_macros_testing/macros_testing.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/other/pyimagej_macros_testing/pyimagej_macros_testing_example.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/visualization/cluster_signals_video.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/F_representative_signals/visualization/representative_signals_video.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/visualization/plot_representative_signals.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/F_representative_signals/visualization/plot_representative_signals.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/visualization/plot_signals_from_csv.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/visualization/visualize_roi_cluster_associations.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/E_cluster_ROIs/visualize_roi_cluster_associations.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,8 +34,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Python Script" />
         <option value="Jupyter Notebook" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
@@ -44,7 +56,9 @@
   &quot;associatedIndex&quot;: 3
 }</component>
   <component name="ProjectId" id="2dDnjEF6y2o9glVFsWUjYFV8bnM" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -83,11 +97,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/other" />
-      <recent name="$PROJECT_DIR$/src/other/pyimagej_macros_testing" />
-      <recent name="$PROJECT_DIR$/src" />
-      <recent name="$PROJECT_DIR$/data/01_raw/high_res_calcium_img" />
-      <recent name="$PROJECT_DIR$/src/0_other" />
+      <recent name="$PROJECT_DIR$/src/C_generate_ROI_signals/visualization" />
+      <recent name="$PROJECT_DIR$/src/F_representative_signals/visualization" />
+      <recent name="$PROJECT_DIR$/src/F_representative_signals" />
+      <recent name="$PROJECT_DIR$/src/E_cluster_ROIs" />
+      <recent name="$PROJECT_DIR$/src/D_calculate_similarity" />
     </key>
   </component>
   <component name="RunManager">
@@ -168,7 +182,7 @@
       <workItem from="1710925530585" duration="21959000" />
       <workItem from="1711013601591" duration="14475000" />
       <workItem from="1711056203878" duration="35000" />
-      <workItem from="1711096203662" duration="6891000" />
+      <workItem from="1711096203662" duration="9186000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <option name="closed" value="true" />
@@ -242,7 +256,23 @@
       <option name="project" value="LOCAL" />
       <updated>1710952856832</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Added analysis_options.py to store the options which need to be specified">
+      <option name="closed" value="true" />
+      <created>1711103310412</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1711103310412</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Added analysis_options.py to store the options which need to be specified">
+      <option name="closed" value="true" />
+      <created>1711103367700</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1711103367700</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -268,7 +298,8 @@
     <MESSAGE value="Created estimate_cell_equality.py" />
     <MESSAGE value="Added visualize_roi_cluster_associations.py" />
     <MESSAGE value="Added cluster_signals_video.py and the class Dimensions" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added cluster_signals_video.py and the class Dimensions" />
+    <MESSAGE value="Added analysis_options.py to store the options which need to be specified" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added analysis_options.py to store the options which need to be specified" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -277,21 +308,6 @@
           <url>notebook:///Users/julian/development/PycharmProjects/glioblastoma/notebooks/testing_visualize_clusters.ipynb</url>
           <line>88</line>
           <option name="timeStamp" value="12" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/merge_clustered_signals.py</url>
-          <line>21</line>
-          <option name="timeStamp" value="43" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/cluster_rois.py</url>
-          <line>19</line>
-          <option name="timeStamp" value="44" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/cluster_rois.py</url>
-          <line>29</line>
-          <option name="timeStamp" value="45" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>

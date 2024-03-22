@@ -1,7 +1,7 @@
 import numpy as np
 
 
-def compute_representative_signal(clusters: list, signals_arr: np.array):
+def compute_representative_signals(clusters: list, signals_arr: np.array):
     """This function merges the signals belonging to one cluster of ROIs into one signal.
     It takes in a list where the indexes are clusters and the sub-lists are the ROIs that are contained in that cluster.
     It selects the signal with the highest amplitude for each cluster.

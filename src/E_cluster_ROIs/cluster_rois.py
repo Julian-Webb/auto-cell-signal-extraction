@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 from sklearn.cluster import AgglomerativeClustering
 
-from src.utils.roi_names import roi_linear_index_to_compact_label, roi_linear_index_to_indexes
+from src.utils.roi_names import roi_linear_index_to_indexes
 
 
 def cluster_rois(roi_similarity: pd.DataFrame, signals_arr: np.array, similarity_threshold: float, n_horizontal: int,
@@ -17,6 +17,7 @@ def cluster_rois(roi_similarity: pd.DataFrame, signals_arr: np.array, similarity
     n_clusters = 5
 
     # cluster the ROIs with Agglomerative Clustering
+
     # clustering = AgglomerativeClustering(n_clusters=n_clusters, metric='precomputed', linkage='average')
     # roi_cluster_associations = clustering.fit_predict(roi_dist)
 

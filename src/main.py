@@ -1,21 +1,23 @@
 import os
-import shutil
 import time
 
-import numpy as np
 import tifffile as tf
 import analysis_options as ao
-from generate_rois import generate_rois_from_size, save_rois
-from generate_signals import remove_first_csv_column, convert_csv_to_array
-from src.distance_adjusted_similarity import distance_adjusted_similarity
-from src.cluster_rois import cluster_rois
-from src.merge_clustered_signals import compute_representative_signal
+from src.B_generate_rois.generate_rois_from_size import generate_rois_from_size
+from src.B_generate_rois.save_rois import save_rois
+from src.C_generate_ROI_signals.remove_first_column import remove_first_csv_column
+from src.C_generate_ROI_signals.convert_csv_to_array import convert_csv_to_array
+from src.D_calculate_similarity.distance_adjusted_similarity import distance_adjusted_similarity
+from src.E_cluster_ROIs.cluster_rois import cluster_rois
+from src.F_representative_signals.compute_representative_signals import compute_representative_signals
 from src.utils.Dimensions import Dimensions
 from src.utils.get_n_frames import get_n_frames
-from src.visualization.cluster_signals_video import cluster_signals_video
-from src.visualization.plot_representative_signals import plot_representative_signals
-from src.visualization.plot_signals_from_csv import grid_plot, single_plot
-from src.visualization.visualize_roi_cluster_associations import visualize_roi_cluster_associations
+from src.F_representative_signals.visualization.representative_signals_video import representative_signals_video
+from src.F_representative_signals.visualization.plot_representative_signals import plot_representative_signals
+from src.C_generate_ROI_signals.visualization.single_plot import single_plot
+from src.C_generate_ROI_signals.visualization.grid_plot import grid_plot
+
+from src.E_cluster_ROIs.visualize_roi_cluster_associations import visualize_roi_cluster_associations
 
 timing = {}
 initial_time = time.time()
@@ -102,7 +104,7 @@ print('Computing distance-adjusted similarity matrix...', end='')
 
 # We calculate the distance-adjust signal similarity for each pair of ROIs
 dist_adj_sim = distance_adjusted_similarity(signals_arr, n_horizontal, n_vertical)
-dist_adj_sim.to_csv(os.path.join(ao.directory, 'Distance-adjusted similarity.csv')) 
+dist_adj_sim.to_csv(os.path.join(ao.directory, 'Distance-adjusted similarity.csv'))
 
 print('Done')
 timing['Step 4'] = time.time() - start_time
@@ -132,7 +134,7 @@ print(f"Step 5 (clustering) : {timing['Step 5']:.1f} seconds\n")
 #
 start_time = time.time()
 
-representative_signals = compute_representative_signal(clusters, signals_arr)
+representative_signals = compute_representative_signals(clusters, signals_arr)
 
 timing['Step 6'] = time.time() - start_time
 print(f"Step 6 (computing representative signals) : {timing['Step 6']:.1f} seconds\n")
@@ -147,8 +149,8 @@ start_time = time.time()
 
 if ao.generate_cluster_signals_video:
     video_path = os.path.join(ao.figures_dir, 'cluster_signals_video.tif')
-    cluster_signals_video(video_path, roi_clusters_dict, representative_signals, n_frames, img_dims, roi_dims,
-                          pixel_dtype)
+    representative_signals_video(video_path, roi_clusters_dict, representative_signals, n_frames, img_dims, roi_dims,
+                                 pixel_dtype)
 
 timing['video'] = time.time() - start_time
 print(f"Step 7 (generating video) : {timing['video']:.1f} seconds\n")

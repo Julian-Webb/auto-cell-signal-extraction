@@ -38,7 +38,7 @@ generate_cluster_signals_video = True
 
 # ################################## DEVELOPER OPTIONS #################################################################
 #  Don't touch these unless you know what you're doing!
-ask_user_to_confirm_ROI_signals_were_generated = True  # This should always be True except for testing
+ask_user_to_confirm_ROI_signals_were_generated = False  # This should always be True except for testing
 
 # make figures directory
 figures_dir = os.path.join(directory, 'figures')
