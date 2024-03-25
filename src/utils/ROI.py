@@ -57,6 +57,7 @@ class ROI:
 
         return Point(x_ul, y_ul), Point(x_lr, y_lr)
 
+    # noinspection PyPep8Naming
     def as_ImagejRoi(self):
         p0, p1 = self.coordinates()
         roi = ImagejRoi.frompoints(np.array([[p0.x, p0.y], [p1.x, p1.y]]))

@@ -2,7 +2,7 @@ import numpy as np
 from matplotlib import pyplot as plt
 
 
-def plot_representative_signals(repr_signals: np.array):
+def plot_repr_signals(repr_signals: np.array):
     """Takes in an array """
 
     n_clusters = repr_signals.shape[0]

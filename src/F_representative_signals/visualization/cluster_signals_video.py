@@ -3,16 +3,15 @@ from src.utils.coordinate_system import Dimensions
 
 import numpy as np
 import tifffile as tf
-from tifffile import COMPRESSION
 
 
-def representative_signals_video(video_path: str, roi_clusters_dict: dict, representative_signals: np.array,
-                                 n_frames: int, img_dims: Dimensions, pixel_dtype: np.dtype):
+def cluster_signals_video(video_path: str, roi_clusters_dict: dict, representative_signals: np.array,
+                          n_frames: int, img_dims: Dimensions, pixel_dtype: np.dtype):
     """Creates a multi-image tiff which shows the signal for each cluster and the cluster's location."""
     video_arr = compute_video_array(roi_clusters_dict, representative_signals, n_frames, img_dims, pixel_dtype)
 
     # save array as multi-image tiff
-    # tf.imwrite(video_path, video_arr, compression='zlib', imagej=True)
+    tf.imwrite(video_path, video_arr, compression='zlib', imagej=True)
     tf.imwrite(video_path, video_arr, imagej=True)
 
     return video_arr

@@ -1,5 +1,3 @@
-import os
-
 from src.utils.ROI import ROI
 from src.utils.coordinate_system import Dimensions
 
@@ -11,8 +9,9 @@ import colorsys
 def visualize_roi_cluster_associations(roi_clusters_dict, n_clusters: int, img_dims: Dimensions) -> plt.figure:
     """Generates a figure that shows which cluster each ROI belongs to.
 
-    Parameters:
-     roi_clusters_dict : A dict with a key for each ROI and the value being the cluster it belongs to.
+    @param roi_clusters_dict : A dict with a key for each ROI and the value being the cluster it belongs to.
+    @param n_clusters : Specify the number of clusters that should be computed. This should be the number of cells
+    @param img_dims : A Dimensions object with the width and height of the image.
      """
     colors = generate_distinct_colors(n_clusters)
 
@@ -49,6 +48,7 @@ def visualize_roi_cluster_associations(roi_clusters_dict, n_clusters: int, img_d
         custom_legend.append(patches.Patch(edgecolor='black', facecolor=colors[cluster]))
     ax.legend(custom_legend, list(range(0, n_clusters)), bbox_to_anchor=(1, 1))
 
+    fig.tight_layout()
     return fig
 
 

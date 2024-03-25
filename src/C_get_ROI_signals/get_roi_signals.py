@@ -5,7 +5,7 @@ import tifffile as tf
 from src.utils.ROI import ROI
 
 
-def read_roi_signals(image_path: str, n_frames: int, rois: np.array, pixel_dtype) -> np.array:
+def get_roi_signals(image_path: str, n_frames: int, rois: np.array) -> np.array:
     """Takes a multi-image tiff and extracts the signals of each ROI.
     Returns dataframe with the signals for each ROI, as well as an array which holds the same data.
     The array indexes correspond to [roi.x_idx, roi.y_idx, frame]"""
