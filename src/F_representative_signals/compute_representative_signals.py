@@ -1,32 +1,30 @@
 import numpy as np
+import pandas as pd
 
 
-def compute_representative_signals(clusters: list, signals_arr: np.array):
+def compute_representative_signals(clusters: dict, signals_df: pd.DataFrame, n_clusters: int, n_frames: int) -> np.array:
     """This function merges the signals belonging to one cluster of ROIs into one signal.
     It takes in a list where the indexes are clusters and the sub-lists are the ROIs that are contained in that cluster.
     It selects the signal with the highest amplitude for each cluster.
     It outputs a single signal for each cluster/cell."""
 
-    n_clusters = len(clusters)
-    n_frames = signals_arr.shape[2]
-
     # the signals for each cluster
-    cluster_signals = np.zeros((n_clusters, n_frames))
+    repr_signals = np.zeros((n_clusters, n_frames))
 
-    for cluster_idx, rois in enumerate(clusters):
+    for cluster_idx, rois in clusters.items():
         # ### select signal with the highest amplitude for each cluster. ####
+        # get the labels for all rois in this cluster
+        labels = [roi for roi in rois]
 
         # select the signals in this cluster
-        xs = np.array(rois)[:, 0]  # the x-indexes of the ROIs
-        ys = np.array(rois)[:, 1]  # the y-indexes of the ROIs
-        signals = signals_arr[xs, ys, :]
+        signals = signals_df[labels].values
 
         # select/create a representative signal
         repr_signal = max_amplitude_signal(signals)
 
-        cluster_signals[cluster_idx, :] = repr_signal
+        repr_signals[cluster_idx, :] = repr_signal
 
-    return cluster_signals
+    return repr_signals
 
 
 def max_amplitude_signal(signals: np.array):
@@ -34,5 +32,5 @@ def max_amplitude_signal(signals: np.array):
     arg_max = np.unravel_index(signals.argmax(), signals.shape)
 
     # select the signal which contains the overall maximum value
-    max_signal = signals[arg_max[0], :]
+    max_signal = signals[:, arg_max[1]]
     return max_signal

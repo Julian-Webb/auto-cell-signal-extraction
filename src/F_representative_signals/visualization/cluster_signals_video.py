@@ -36,10 +36,12 @@ def compute_video_array(roi_clusters_dict: dict, representative_signals: np.arra
         signal_values = representative_signals[cluster, :]
 
         # determine ROI boundaries (the upper boundary is exclusive)
-        x_left = roi[0] * ROI.WIDTH
-        y_top = roi[1] * ROI.HEIGHT
-        x_right = x_left + ROI.WIDTH
-        y_bottom = y_top + ROI.HEIGHT
+        ul, br = roi.coordinates()  # get upper left and bottom right points
+
+        x_left = ul.x
+        y_top = ul.y
+        x_right = br.x + 1  # add 1 because boundaries are exclusive
+        y_bottom = br.y + 1
 
         # set the values of this ROI to the corresponding signal values for all frames.
         reshaped_signal_values = signal_values[:, None, None]

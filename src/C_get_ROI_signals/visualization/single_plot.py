@@ -14,7 +14,7 @@ def single_plot(signals_df: pd.DataFrame):
 
     plt.xlabel('Frame')
     plt.ylabel('Mean of ROI')
-    plt.legend()
+    plt.legend(loc='upper right')
     plt.tight_layout()
     return fig
 

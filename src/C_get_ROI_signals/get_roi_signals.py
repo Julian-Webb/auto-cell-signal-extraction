@@ -14,9 +14,10 @@ def get_roi_signals(image_path: str, n_frames: int, rois: np.array) -> np.array:
     img = tf.imread(image_path)
 
     # we make a signals array and a signals dataframe which store the same data but in a different format
-    # signals_arr = np.zeros((ROI.N_HORIZONTAL, ROI.N_VERTICAL, n_frames), dtype=pixel_dtype)
     signals_arr = np.zeros(shape=(ROI.N_HORIZONTAL, ROI.N_VERTICAL, n_frames))
-    signals_df = pd.DataFrame()
+
+    indexes = [i for i in range(n_frames)]
+    signals_df = pd.DataFrame(columns=rois.flatten(), index=indexes)
 
     # loop through each roi
     for roi in rois.flatten():
@@ -32,7 +33,7 @@ def get_roi_signals(image_path: str, n_frames: int, rois: np.array) -> np.array:
         # we want to get the mean of all pixel values for each frame
         roi_signal = np.mean(roi_cutout, axis=(1, 2))
 
-        signals_df[roi.compact_label()] = roi_signal
+        signals_df[roi] = roi_signal
         signals_arr[roi.x_idx, roi.y_idx, :] = roi_signal
 
     return signals_arr, signals_df

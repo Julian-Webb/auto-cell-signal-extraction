@@ -20,3 +20,23 @@ it already takes ~30min for FIJI to compute ROI signals
 With
 roi_width = roi_height = 32 pixels
 It takes about 300s = 5min to execute (when using Fiji for ROI signals and not calculating distance matrix)
+
+
+#### Without using Fiji & without distance-adjusted similarity matrix:######
+high_res_test_stack
+    For 8 x 8 pixels, it takes 73s to execute
+
+    For 4 x 4 pixels, it takes 7min to get the ROI signals.
+        the clustering process gets killed (9:SIGKILL) -> probably due to excessive memory usage
+
+calcium image
+    For 16 x 16 pixels:
+        get_roi_signals: 20s
+        computing clusters: 65s
+        total: ~100s
+
+    For 8 x 8 pixels:
+        get_roi_signals: 40s
+            saving roi signals to csv takes very long -> this can be turned off
+        computing clusters -> doesn't finish after >10 min
+

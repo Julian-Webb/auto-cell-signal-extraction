@@ -23,6 +23,7 @@ class ROI:
         # return f'<ROI(x:{self.x_idx}; y:{self.y_idx}) at {str(hex(id(self)))}>'
         return f'ROI({self.x_idx};{self.y_idx})'
 
+
     @classmethod
     def from_linear_index(cls, linear_index: int):
         x_idx = linear_index % cls.N_VERTICAL
@@ -34,7 +35,7 @@ class ROI:
         return self.x_idx * ROI.N_VERTICAL + self.y_idx
 
     def compact_label(self) -> str:
-        return f"({self.x_idx}; {self.y_idx})"
+        return f"({self.x_idx};{self.y_idx})"
 
     def filename(self) -> str:
         # we want the number of digits for each number to be the same as the maximum number of digits for readability
@@ -66,3 +67,4 @@ class ROI:
         roi.options |= ROI_OPTIONS.OVERLAY_LABELS
         roi.options |= ROI_OPTIONS.SHOW_LABELS
         return roi
+

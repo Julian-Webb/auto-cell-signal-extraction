@@ -9,9 +9,9 @@ import colorsys
 def visualize_roi_cluster_associations(roi_clusters_dict, n_clusters: int, img_dims: Dimensions) -> plt.figure:
     """Generates a figure that shows which cluster each ROI belongs to.
 
-    @param roi_clusters_dict : A dict with a key for each ROI and the value being the cluster it belongs to.
-    @param n_clusters : Specify the number of clusters that should be computed. This should be the number of cells
-    @param img_dims : A Dimensions object with the width and height of the image.
+    :param roi_clusters_dict : A dict with a key for each ROI and the value being the cluster it belongs to.
+    :param n_clusters : Specify the number of clusters that should be computed. This should be the number of cells
+    :param img_dims : A Dimensions object with the width and height of the image.
      """
     colors = generate_distinct_colors(n_clusters)
 
@@ -19,17 +19,15 @@ def visualize_roi_cluster_associations(roi_clusters_dict, n_clusters: int, img_d
     fig, ax = plt.subplots()
 
     for roi, cluster in roi_clusters_dict.items():
-        roi_x, roi_y = roi
-        x = roi_x * ROI.WIDTH
-        y = roi_y * ROI.HEIGHT
+        upper_left, _ = roi.coordinates()
 
-        rect = patches.Rectangle((x, y), ROI.WIDTH, ROI.HEIGHT, linewidth=1, edgecolor='black',
-                                 facecolor=colors[cluster])
+        rect = patches.Rectangle((upper_left.x, upper_left.y), ROI.WIDTH, ROI.HEIGHT, linewidth=0.1, edgecolor='black',
+                                 facecolor=colors[
+                                     cluster])  # TODO we subtract 1 here. This is because the clustering indexes start at 1. I might want to change this when I add the cluster for the empty ROIs
+
         ax.add_patch(rect)
 
         # ax.text(x + 0.5 * ROI.WIDTH, y + 0.5 * ROI.HEIGHT, str(cluster), ha='center', va='center')
-
-        continue
 
     # manipulate figure properties
     ax.set_aspect('equal')

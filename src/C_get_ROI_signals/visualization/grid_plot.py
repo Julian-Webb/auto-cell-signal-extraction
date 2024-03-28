@@ -21,5 +21,16 @@ def grid_plot(signals_arr: np.array) -> plt.figure:
             # Hide grid lines
             cur_axis.grid(False)
 
-    fig.tight_layout()
+            # make vertical labels only for the very left
+            if x == 0:
+                cur_axis.set_ylabel(y, rotation=0, fontsize=8)
+
+            # make horizontal labels only on the bottom
+            cur_axis.xaxis.set_label_position('top')
+            if y == 0:
+                cur_axis.set_xlabel(x, fontsize=8)
+
+    # fig.tight_layout()
+    # make space between subplots very small
+    plt.subplots_adjust(hspace=0.01, wspace=0.01)
     return fig

@@ -1,39 +1,59 @@
+from collections import defaultdict
+
 import pandas as pd
 import numpy as np
-from sklearn.cluster import AgglomerativeClustering
+from scipy.spatial.distance import squareform
+from scipy.cluster.hierarchy import linkage, fcluster
 
-from src.utils.roi_names import roi_linear_index_to_indexes
 
-
-def cluster_rois(roi_similarity: pd.DataFrame, signals_arr: np.array, similarity_threshold: float, n_horizontal: int,
-                 n_vertical, n_frames):
+def cluster_rois(roi_distances: pd.DataFrame, rois: np.array):
     """This function takes in a dataframe where each value is the similarity of a pair of ROIs.
     It then clusters the ROIs that are similar enough, based on the specified threshold.
     The output is a list of each cluster and which ROIs it contains."""
 
-    # convert similarity into distance
-    roi_dist = -roi_similarity + 1
+    max_d = 50  # TODO remove this
+    max_clust = 2  # TODO remove this
 
-    n_clusters = 5
+    # Agglomerative clustering using scipy
+    # condense symmetrical distance matrix into vector
+    dist_vector = squareform(roi_distances)
 
     # cluster the ROIs with Agglomerative Clustering
+    # the resulting matrix clustering_steps is interpreted as follows:
+    # one row for each iteration
+    # Each row contains 4 values:
+    # the first two are the clusters that were merged
+    # the third is the distance between these clusters
+    # the fourth is the number samples in this new cluster
+    clustering_steps = linkage(dist_vector, method='average')
 
+    roi_cluster_associations = fcluster(clustering_steps, max_clust, criterion='maxclust')
+
+    roi_cluster_associations -= 1  # we subtract 1 because otherwise the cluster indexes start at 1 (rather than 0)
+
+    # with sklearn
     # clustering = AgglomerativeClustering(n_clusters=n_clusters, metric='precomputed', linkage='average')
     # roi_cluster_associations = clustering.fit_predict(roi_dist)
 
     # ########## testing #########################
-    flattened = signals_arr.reshape((n_horizontal * n_vertical, n_frames), order='C')
-    clustering = AgglomerativeClustering(n_clusters=n_clusters, metric='euclidean', linkage='average')
-    roi_cluster_associations = clustering.fit_predict(flattened)
+    # flattened = signals_arr.reshape((n_horizontal * n_vertical, n_frames), order='C')
+    # clustering = AgglomerativeClustering(n_clusters=n_clusters, metric='euclidean', linkage='average')
+    # roi_cluster_associations = clustering.fit_predict(flattened)
+    #
+    # ###########################################################################
 
-    ###########################################################################
-
-    rois_clusters_dict = {roi_linear_index_to_indexes(lin_idx, n_vertical): cluster for lin_idx, cluster in
-                          enumerate(roi_cluster_associations)}
+    # create a dictionary with ROIs as keys and clusters as values
+    roi_cluster_dict = {}
+    for roi in rois.flatten():
+        lin_idx = roi.linear_index()
+        # TODO make sure the linear index is using the right major (row/col)
+        roi_cluster_dict[roi] = roi_cluster_associations[lin_idx]
 
     # create a list of the ROIs in each cluster
-    clusters = [[] for _ in range(n_clusters)]
-    for roi_idx, cluster_idx in enumerate(roi_cluster_associations):
-        clusters[cluster_idx].append(roi_linear_index_to_indexes(roi_idx, n_vertical))
+    clusters = defaultdict(list)
+    for roi, cluster in roi_cluster_dict.items():
+        clusters[cluster].append(roi)
 
-    return clusters, n_clusters, rois_clusters_dict
+    n_clusters = len(clusters)  # TODO does this really give me the amount of clusters?
+
+    return clusters, n_clusters, roi_cluster_dict, clustering_steps
