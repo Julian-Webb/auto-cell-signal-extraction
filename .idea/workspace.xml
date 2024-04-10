@@ -4,24 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d810fa6a-a0f3-403b-be5f-b955561b9c66" name="Changes" comment="Cleaned up code, added letters to folder structure, so the order is clear.">
-      <change afterPath="$PROJECT_DIR$/src/D_calculate_roi_distances/roi_distances.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/E_cluster_ROIs/visualize_dendrogram.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/F_representative_signals/save_repr_signals.py" afterDir="false" />
+    <list default="true" id="d810fa6a-a0f3-403b-be5f-b955561b9c66" name="Changes" comment="Finished adjusted the code according to the ROI class. Changed the code to use scipy for clustering and added a dendrogram plot">
+      <change afterPath="$PROJECT_DIR$/src/D_remove_empty_rois/remove_empty_rois.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/D_remove_empty_rois/visualization/plot_roi_stds.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/notebooks/testing.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/notebooks/testing.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notebooks/testing_clustering.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/notebooks/testing_clustering.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/C_get_ROI_signals/get_roi_signals.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/C_get_ROI_signals/get_roi_signals.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/C_get_ROI_signals/visualization/grid_plot.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/C_get_ROI_signals/visualization/grid_plot.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/C_get_ROI_signals/visualization/single_plot.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/C_get_ROI_signals/visualization/single_plot.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/D_calculate_similarity/distance_adjusted_similarity.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/E_cluster_ROIs/cluster_rois.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/E_cluster_ROIs/cluster_rois.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/E_cluster_ROIs/visualize_roi_cluster_associations.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/E_cluster_ROIs/visualize_roi_cluster_associations.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/F_representative_signals/compute_representative_signals.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/F_representative_signals/compute_representative_signals.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/F_representative_signals/visualization/cluster_signals_video.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/F_representative_signals/visualization/cluster_signals_video.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/D_calculate_roi_distances/roi_distances.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/E_calculate_roi_distances/roi_distances.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/E_cluster_ROIs/cluster_rois.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/F_cluster_ROIs/cluster_rois.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/E_cluster_ROIs/visualize_dendrogram.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/F_cluster_ROIs/visualize_dendrogram.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/E_cluster_ROIs/visualize_roi_cluster_associations.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/F_cluster_ROIs/visualize_roi_cluster_associations.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/F_representative_signals/compute_representative_signals.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/G_representative_signals/compute_representative_signals.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/F_representative_signals/save_repr_signals.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/G_representative_signals/save_repr_signals.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/F_representative_signals/visualization/cluster_signals_video.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/G_representative_signals/visualization/cluster_signals_video.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/F_representative_signals/visualization/plot_repr_signals.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/G_representative_signals/visualization/plot_repr_signals.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/analysis_options.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/analysis_options.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/ROI.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/ROI.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/timing.txt" beforeDir="false" afterPath="$PROJECT_DIR$/timing.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -40,6 +37,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Julian-Webb&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Julian-Webb/multi-electrode-array.git&quot;,
+    &quot;accountId&quot;: &quot;be1527f6-7dba-4f59-9fc5-fe419d3a9561&quot;
+  }
+}</component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/src/main.py" root0="FORCE_HIGHLIGHTING" />
     <setting file="file:///opt/homebrew/anaconda3/envs/glioblastoma/lib/python3.11/site-packages/roifile/roifile.py" root0="FORCE_HIGHLIGHTING" />
@@ -95,6 +104,13 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="PyConsoleOptionsProvider">
+    <option name="myPythonConsoleState">
+      <console-settings>
+        <option name="useSoftWraps" value="true" />
+      </console-settings>
+    </option>
+  </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/C_generate_ROI_signals/with_imagej" />
@@ -152,7 +168,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-python-sdk-09665e90c3a7-b11f5e8da5ad-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-233.15026.15" />
+        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-PY-241.14494.241" />
+        <option value="bundled-python-sdk-0509580d9d50-28c9f5db9ffe-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-241.14494.241" />
       </set>
     </attachedChunks>
   </component>
@@ -190,7 +207,11 @@
       <workItem from="1711371490979" duration="4685000" />
       <workItem from="1711456435670" duration="4043000" />
       <workItem from="1711532815993" duration="18510000" />
-      <workItem from="1711639360726" duration="4568000" />
+      <workItem from="1711639360726" duration="6488000" />
+      <workItem from="1712654729831" duration="421000" />
+      <workItem from="1712655207066" duration="7460000" />
+      <workItem from="1712668157088" duration="6587000" />
+      <workItem from="1712735090461" duration="8400000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <option name="closed" value="true" />
@@ -320,7 +341,15 @@
       <option name="project" value="LOCAL" />
       <updated>1711365807032</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Finished adjusted the code according to the ROI class. Changed the code to use scipy for clustering and added a dendrogram plot">
+      <option name="closed" value="true" />
+      <created>1711644196581</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1711644196581</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -350,7 +379,8 @@
     <MESSAGE value="Reorganized file and folder Structure with A, B, C, etc." />
     <MESSAGE value="Added ROI class to work with ROIs more safely" />
     <MESSAGE value="Cleaned up code, added letters to folder structure, so the order is clear." />
-    <option name="LAST_COMMIT_MESSAGE" value="Cleaned up code, added letters to folder structure, so the order is clear." />
+    <MESSAGE value="Finished adjusted the code according to the ROI class. Changed the code to use scipy for clustering and added a dendrogram plot" />
+    <option name="LAST_COMMIT_MESSAGE" value="Finished adjusted the code according to the ROI class. Changed the code to use scipy for clustering and added a dendrogram plot" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -371,15 +401,15 @@
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/glioblastoma$plot_signals_from_csv.coverage" NAME="plot_signals_from_csv Coverage Results" MODIFIED="1710261259862" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/visualization" />
-    <SUITE FILE_PATH="coverage/glioblastoma$input_tif.coverage" NAME="input_tif Coverage Results" MODIFIED="1709817086186" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/1_data_input" />
-    <SUITE FILE_PATH="coverage/glioblastoma$macros_testing.coverage" NAME="macros_testing Coverage Results" MODIFIED="1710256858479" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/other/pyimagej_macros_testing" />
-    <SUITE FILE_PATH="coverage/glioblastoma$main.coverage" NAME="main Coverage Results" MODIFIED="1710846646008" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
-    <SUITE FILE_PATH="coverage/glioblastoma$roi_names.coverage" NAME="roi_names Coverage Results" MODIFIED="1710499847491" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/utils" />
     <SUITE FILE_PATH="coverage/glioblastoma$visualize_clusters.coverage" NAME="visualize_clusters Coverage Results" MODIFIED="1710848120509" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/visualization" />
+    <SUITE FILE_PATH="coverage/glioblastoma$glioblastoma.coverage" NAME="glioblastoma Coverage Results" MODIFIED="1712740320034" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/glioblastoma$plot_signals_from_csv.coverage" NAME="plot_signals_from_csv Coverage Results" MODIFIED="1710261259862" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/visualization" />
+    <SUITE FILE_PATH="coverage/glioblastoma$main.coverage" NAME="main Coverage Results" MODIFIED="1710846646008" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
     <SUITE FILE_PATH="coverage/glioblastoma$generate_signals.coverage" NAME="generate_signals Coverage Results" MODIFIED="1710320134399" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
-    <SUITE FILE_PATH="coverage/glioblastoma$Doctests_in_roifile.coverage" NAME="Doctests in roifile Coverage Results" MODIFIED="1710146515498" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="/opt/homebrew/anaconda3/envs/glioblastoma/lib/python3.11/site-packages/roifile" />
+    <SUITE FILE_PATH="coverage/glioblastoma$macros_testing.coverage" NAME="macros_testing Coverage Results" MODIFIED="1710256858479" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/other/pyimagej_macros_testing" />
+    <SUITE FILE_PATH="coverage/glioblastoma$roi_names.coverage" NAME="roi_names Coverage Results" MODIFIED="1710499847491" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/utils" />
     <SUITE FILE_PATH="coverage/glioblastoma$generate_rois.coverage" NAME="generate_rois Coverage Results" MODIFIED="1710146541201" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
-    <SUITE FILE_PATH="coverage/glioblastoma$glioblastoma.coverage" NAME="glioblastoma Coverage Results" MODIFIED="1711643031571" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/glioblastoma$input_tif.coverage" NAME="input_tif Coverage Results" MODIFIED="1709817086186" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/1_data_input" />
+    <SUITE FILE_PATH="coverage/glioblastoma$Doctests_in_roifile.coverage" NAME="Doctests in roifile Coverage Results" MODIFIED="1710146515498" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="/opt/homebrew/anaconda3/envs/glioblastoma/lib/python3.11/site-packages/roifile" />
   </component>
 </project>

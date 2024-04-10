@@ -17,18 +17,17 @@ def roi_distances(signals_df: pd.DataFrame, rois: np.array):
 
     # TODO improve the quality of the metric
 
-    rois_flat = rois.flatten()
-    n_rois = ROI.N_HORIZONTAL * ROI.N_VERTICAL
+    n_rois = len(rois)
 
     # initialize a dataframe to store the ROI distance matrix.
-    pairwise_distances = pd.DataFrame(np.zeros((n_rois, n_rois)), columns=rois_flat, index=rois_flat)
+    pairwise_distances = pd.DataFrame(np.zeros((n_rois, n_rois)), columns=rois, index=rois)
 
-    # find the maximum spatial distance. We normalize by this
-    max_spatial_dist = roi_spatial_distance(rois_flat[0], rois_flat[-1])
+    # find the maximum spatial distance. We normalize by this.
+    max_spatial_dist = roi_spatial_distance(rois[0], rois[-1])  # TODO this doesn't work any more with the filtered ROIs
 
     # loop through each pair of ROIs and compute the distance
-    for roi1 in rois_flat:
-        for roi2 in rois_flat:
+    for roi1 in rois:
+        for roi2 in rois:
             # NOTE: distance is initialized as 0
             if roi1 != roi2:
                 spatial_dist = roi_spatial_distance(roi1, roi2)

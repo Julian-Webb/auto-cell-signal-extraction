@@ -1,4 +1,3 @@
-from src.utils.ROI import ROI
 from src.utils.coordinate_system import Dimensions
 
 import numpy as np

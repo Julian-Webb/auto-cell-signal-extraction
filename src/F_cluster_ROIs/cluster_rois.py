@@ -12,7 +12,7 @@ def cluster_rois(roi_distances: pd.DataFrame, rois: np.array):
     The output is a list of each cluster and which ROIs it contains."""
 
     max_d = 50  # TODO remove this
-    max_clust = 2  # TODO remove this
+    max_clust = 4  # TODO remove this
 
     # Agglomerative clustering using scipy
     # condense symmetrical distance matrix into vector
@@ -44,10 +44,9 @@ def cluster_rois(roi_distances: pd.DataFrame, rois: np.array):
 
     # create a dictionary with ROIs as keys and clusters as values
     roi_cluster_dict = {}
-    for roi in rois.flatten():
-        lin_idx = roi.linear_index()
+    for i, roi in enumerate(rois):
         # TODO make sure the linear index is using the right major (row/col)
-        roi_cluster_dict[roi] = roi_cluster_associations[lin_idx]
+        roi_cluster_dict[roi] = roi_cluster_associations[i]
 
     # create a list of the ROIs in each cluster
     clusters = defaultdict(list)

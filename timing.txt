@@ -40,3 +40,8 @@ calcium image
             saving roi signals to csv takes very long -> this can be turned off
         computing clusters -> doesn't finish after >10 min
 
+###### Using custom ROI distance matrix ########
+test_stack
+    128 pixels -> distance matrix takes 1s
+     64 pixels -> 22s
+     32 pixels ->
