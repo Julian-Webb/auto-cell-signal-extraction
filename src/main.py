@@ -51,10 +51,11 @@ st = time.time()
 signals_arr, full_signals_df = get_roi_signals(ao.image_path, n_frames, rois)
 print(f'{time.time() - st:.1f}s')
 
-print('ROI signals to csv...', end='')
-st = time.time()
-full_signals_df.to_csv(ao.roi_signals_csv_path)
-print(f'{time.time() - st:.1f}s')
+if ao.create_all_ROI_signals_file:
+    print('All ROI signals to csv...', end='')
+    st = time.time()
+    full_signals_df.to_csv(ao.roi_signals_csv_path)
+    print(f'{time.time() - st:.1f}s')
 
 if ao.generate_ROI_signals_grid_plot:
     print('Generating ROI signals grid plot...', end='')
@@ -114,7 +115,7 @@ print(f'{time.time() - st:.1f}s')
 print('### F: Creating clusters...', end='')
 st = time.time()
 
-clusters, n_clusters, roi_clusters_dict, clustering_steps = cluster_rois(roi_distances, filtered_rois)
+clusters, n_clusters, roi_clusters_dict, clustering_steps = cluster_rois(roi_distances, filtered_rois, ao.max_clusters)
 
 print(f'{time.time() - st:.1f}s')
 

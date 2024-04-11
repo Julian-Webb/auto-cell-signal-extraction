@@ -9,19 +9,13 @@ def remove_empty_rois(signals_df: pd.DataFrame, std_threshold: float):
     # calculate the standard deviation of each ROI signal
     stds = signals_df.std()
 
-    # find values below threshold
-    filtered_rois = []
-    removed_rois = []
+    # find ROIs above threshold
+    above_thresh = stds >= std_threshold
 
-    # remove the ROIs below the threshold from the dataframe
-    for roi in signals_df.columns:
-        if stds[roi] < std_threshold:
-            signals_df.drop(roi, axis='columns', inplace=True)
-            removed_rois.append(roi)
-        else:
-            filtered_rois.append(roi)
+    # Select ROIs above the threshold from the dataframe
+    filtered_signals = signals_df.loc[:, above_thresh]
+    filtered_rois = np.array(filtered_signals.columns)
 
-    # return the filtered dataframe
-    filtered_rois = np.array(filtered_rois)
-    removed_rois = np.array(removed_rois)
-    return signals_df, filtered_rois, removed_rois
+    removed_rois = np.array(signals_df.loc[:, ~above_thresh].columns)
+
+    return filtered_signals, filtered_rois, removed_rois

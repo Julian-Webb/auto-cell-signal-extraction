@@ -11,7 +11,7 @@ def cluster_signals_video(video_path: str, roi_clusters_dict: dict, representati
 
     # save array as multi-image tiff
     tf.imwrite(video_path, video_arr, compression='zlib', imagej=True)
-    tf.imwrite(video_path, video_arr, imagej=True)
+    # tf.imwrite(video_path, video_arr, imagej=True)
 
     return video_arr
 

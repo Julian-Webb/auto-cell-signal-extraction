@@ -16,7 +16,15 @@ def plot_roi_stds(signals_arr: np.array, rois: np.array, img_dims: Dimensions, s
 
     # normalize stds between 0 and 1
     # we use a TwoSlopeNorm to center the threshold
-    norm = colors.TwoSlopeNorm(vmin=stds.min(), vcenter=std_threshold, vmax=stds.max())
+    min_std = stds.min()
+    max_std = stds.max()
+    if std_threshold < min_std:
+        raise ValueError(
+            f'The std_threshold ({std_threshold}) for removing ROIs is smaller than the minimum standard deviation of the ROI signals ({min_std}).')
+    if std_threshold > max_std:
+        raise ValueError(
+            f'The std_threshold ({std_threshold}) for removing ROIs is larger than the maximum standard deviation of the ROI signals ({min_std}).')
+    norm = colors.TwoSlopeNorm(vmin=min_std, vcenter=std_threshold, vmax=max_std)
     scalar_mappable = ScalarMappable(norm, cmap)
 
     normalized_stds = scalar_mappable.to_rgba(stds)

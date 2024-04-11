@@ -19,6 +19,8 @@ def get_roi_signals(image_path: str, n_frames: int, rois: np.array) -> np.array:
     indexes = [i for i in range(n_frames)]
     signals_df = pd.DataFrame(columns=rois.flatten(), index=indexes)
 
+    # TODO try this with max signal
+
     # loop through each roi
     for roi in rois.flatten():
         # get the index ranges for setting the signals

@@ -57,10 +57,12 @@ def visualize_roi_cluster_associations(roi_clusters_dict, n_clusters: int, img_d
 
     for cluster in range(n_clusters):
         legend_images.append(patches.Patch(edgecolor='black', facecolor=colors[cluster]))
-        legend_labels.append(f'cluster {cluster}')
+        legend_labels.append(f'cl. {cluster}')
     ax.legend(legend_images, legend_labels, bbox_to_anchor=(1, 1))
 
-    fig.tight_layout()
+    if n_clusters <= 16:
+        fig.tight_layout()
+
     return fig
 
 
