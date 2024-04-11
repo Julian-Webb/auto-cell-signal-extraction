@@ -18,6 +18,7 @@ from src.F_cluster_ROIs.visualize_roi_cluster_associations import visualize_roi_
 from src.G_representative_signals.compute_representative_signals import compute_representative_signals
 from src.G_representative_signals.visualization.cluster_signals_video import cluster_signals_video
 from src.G_representative_signals.visualization.plot_repr_signals import plot_repr_signals
+from src.utils.SignalSummaryStatistics import SignalSummaryStatistics
 
 initial_time = time.time()
 
@@ -48,7 +49,7 @@ That makes {ROI.N_HORIZONTAL * ROI.N_VERTICAL} ROIs.\n")
 #
 print('### C: Getting ROI signals...', end='')
 st = time.time()
-signals_arr, full_signals_df = get_roi_signals(ao.image_path, n_frames, rois)
+signals_arr, full_signals_df = get_roi_signals(ao.image_path, n_frames, rois, SignalSummaryStatistics.MAX)
 print(f'{time.time() - st:.1f}s')
 
 if ao.create_all_ROI_signals_file:
