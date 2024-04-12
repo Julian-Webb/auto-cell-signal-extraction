@@ -26,17 +26,17 @@ D_276_AZD3965_Mathieu = {'dir': os.path.join(base_dir, 'data', '276_AZD3965_Math
 # #########################################
 # 1: Path Names
 # Please specify the image name the directory where the image is stored
-dataset_info = D_233_MG_B1
+dataset_info = test_stack
 directory = dataset_info['dir']
 image_name = dataset_info['name']
 image_path = os.path.join(directory, image_name)
 
 # 0: Specify numerical analysis values
 # Specify the sizes of your ROIs in pixels. The value should be a whole number (no decimal point)
-# ROI.WIDTH = 2048 // 4
-# ROI.HEIGHT = 1536 // 3
+ROI.WIDTH = 2048 // 4
+ROI.HEIGHT = 1536 // 3
 
-ROI.WIDTH = ROI.HEIGHT = 64
+# ROI.WIDTH = ROI.HEIGHT = 32
 
 # Specify ROI signal summary statistic #
 # This is how the signal of the ROI will be generated based on the value of each pixel it contains.
@@ -53,15 +53,20 @@ max_clusters = dataset_info['n_cells']
 # Specify which plots and files to generate. This influences the time to execute.
 intense_options = True
 
-create_all_ROI_signals_file = intense_options  # *
+C_create_all_ROI_signals_file = intense_options  # *
+C_generate_ROI_signals_grid_plot = intense_options  # *
+C_generate_ROI_signals_single_plot = intense_options  # *
 
-generate_ROI_stds_plot = True
-generate_ROI_signals_grid_plot = intense_options  # *
-generate_ROI_signals_single_plot = intense_options  # *
-generate_ROI_cluster_associations_plot = True
-generate_dendrogram = True
-generate_signals_per_cluster_plot = True
-generate_cluster_signals_video = intense_options  # *
+D_create_smooth_signals_file = intense_options  # *
+D_generate_smooth_signals_grid_plot = intense_options  # *
+D_generate_smooth_signals_single_plot = intense_options  # *
+
+E_generate_ROI_stds_plot = True
+
+G_generate_ROI_cluster_associations_plot = True
+G_generate_dendrogram = True
+H_generate_signals_per_cluster_plot = True
+H_generate_cluster_signals_video = intense_options  # *
 # * : high impact on performance. Set to False unless needed
 
 # ################################## FILE & PATH NAMES #################################################################
@@ -75,15 +80,24 @@ results_dir = os.path.join(directory, 'results')
 if not os.path.exists(results_dir):
     os.mkdir(results_dir)
 
-rois_zip_folder_name = os.path.join(results_dir, 'B_ROIs')  # the .zip will be appended automatically
-roi_signals_csv_path = os.path.join(results_dir, 'C_ROI_signals.csv')
-roi_signals_grid_plot_path = os.path.join(figures_dir, 'C_ROI_signals_grid_plot.png')
-roi_signals_single_plot_path = os.path.join(figures_dir, 'C_ROI_signals_single_plot.png')
-roi_stds_plot_path = os.path.join(figures_dir, 'D_ROI_stds')
-filtered_roi_signals_csv_path = os.path.join(results_dir, 'D_filtered_ROI_signals.csv')
-roi_distances_csv_path = os.path.join(results_dir, 'E_ROI_distance_matrix.csv')
-roi_cluster_associations_path = os.path.join(figures_dir, 'F_ROI-cluster_associations.png')
-dendrogram_path = os.path.join(figures_dir, 'F_dendrogram.png')
-signal_per_cluster_plot_path = os.path.join(figures_dir, 'G_signal_per_cluster.png')
-signal_per_cluster_csv_path = os.path.join(results_dir, 'G_signal_per_cluster.csv')
-cluster_signals_video_path = os.path.join(figures_dir, 'G_cluster_signals_video.tif')
+B_rois_zip_folder_name = os.path.join(results_dir, 'B_ROIs')  # the .zip will be appended automatically
+
+C_roi_signals_csv_path = os.path.join(results_dir, 'C_ROI_signals.csv')
+C_roi_signals_grid_plot_path = os.path.join(figures_dir, 'C_ROI_signals_grid_plot.png')
+C_roi_signals_single_plot_path = os.path.join(figures_dir, 'C_ROI_signals_single_plot.png')
+
+D_smooth_signals_csv_path = os.path.join(results_dir, 'D_smooth_ROI_signals.csv')
+D_smooth_signals_single_plot_path = os.path.join(figures_dir, 'D_smooth_signals_single_plot.png')
+D_smooth_signals_grid_plot_path = os.path.join(figures_dir, 'D_smooth_signals_grid_plot.png')
+
+E_roi_stds_plot_path = os.path.join(figures_dir, 'E_ROI_stds')
+E_filtered_roi_signals_csv_path = os.path.join(results_dir, 'E_filtered_ROI_signals.csv')
+
+F_roi_distances_csv_path = os.path.join(results_dir, 'F_ROI_distance_matrix.csv')
+
+G_roi_cluster_associations_path = os.path.join(figures_dir, 'G_ROI-cluster_associations.png')
+G_dendrogram_path = os.path.join(figures_dir, 'G_dendrogram.png')
+
+H_signal_per_cluster_plot_path = os.path.join(figures_dir, 'H_signal_per_cluster.png')
+H_signal_per_cluster_csv_path = os.path.join(results_dir, 'H_signal_per_cluster.csv')
+H_cluster_signals_video_path = os.path.join(figures_dir, 'H_cluster_signals_video.tif')
