@@ -23,12 +23,10 @@ from src.utils.SignalSummaryStatistics import SignalSummaryStatistics
 
 initial_time = time.time()
 
-# test change
-
 # ##### Step A: Load the image data ####################################################################################
 #
 print('### A: Loading image data...')
-n_frames, img_dims, pixel_dtype = load_image_data(ao.image_path)
+n_frames_raw, img_dims, pixel_dtype = load_image_data(ao.image_path)
 
 #
 #
@@ -52,7 +50,7 @@ That makes {ROI.N_HORIZONTAL * ROI.N_VERTICAL} ROIs.\n")
 #
 print('### C: Getting ROI signals...', end='')
 st = time.time()
-signals_arr, all_signals_df = get_roi_signals(ao.image_path, n_frames, rois, SignalSummaryStatistics.MAX)
+signals_arr, all_signals_df = get_roi_signals(ao.image_path, n_frames_raw, rois, SignalSummaryStatistics.MAX)
 print(f'{time.time() - st:.1f}s')
 
 if ao.C_create_all_ROI_signals_file:
@@ -79,7 +77,7 @@ if ao.C_generate_ROI_signals_single_plot:
 #
 print('### D: Smoothing ROI signals...', end='')
 st = time.time()
-smoothed_signals_df = smooth_signals(all_signals_df)
+smoothed_signals_df, n_frames_smooth = smooth_signals(all_signals_df, ao.rolling_window_size)
 print(f'{time.time() - st:.1f}s')
 del all_signals_df
 
@@ -90,7 +88,7 @@ if ao.D_create_smooth_signals_file:
     print(f'{time.time() - st:.1f}s')
 
 if ao.D_generate_smooth_signals_grid_plot:
-    print('Generating ROI signals grid plot...', end='')
+    print('Generating smooth signals grid plot...', end='')
     st = time.time()
     grid_plot(smoothed_signals_df).savefig(ao.D_smooth_signals_grid_plot_path)
     print(f'{time.time() - st:.1f}s')
@@ -123,6 +121,7 @@ print('Filtered ROI signals to csv...', end='')
 st = time.time()
 filtered_signals_df.to_csv(ao.E_filtered_roi_signals_csv_path)
 print(f'{time.time() - st:.1f}s')
+
 #
 #
 # ##### Step F: Compute the distance measure between the ROIs ##########################################################
@@ -168,7 +167,7 @@ if ao.G_generate_dendrogram:
 #
 print("### H: Computing representative signals...", end='')
 st = time.time()
-repr_signals = compute_representative_signals(clusters, filtered_signals_df, n_clusters, n_frames)
+repr_signals = compute_representative_signals(clusters, filtered_signals_df, n_clusters, n_frames_smooth)
 save_repr_signals(repr_signals, n_clusters)
 print(f'{time.time() - st:.1f}s')
 
@@ -181,7 +180,7 @@ if ao.H_generate_signals_per_cluster_plot:
 if ao.H_generate_cluster_signals_video:
     print('Generating cluster signals video...', end='')
     st = time.time()
-    cluster_signals_video(ao.H_cluster_signals_video_path, roi_clusters_dict, repr_signals, n_frames,
+    cluster_signals_video(ao.H_cluster_signals_video_path, roi_clusters_dict, repr_signals, n_frames_smooth,
                           img_dims, pixel_dtype)
     print(f'{time.time() - st:.1f}s')
 

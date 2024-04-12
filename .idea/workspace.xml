@@ -4,10 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d810fa6a-a0f3-403b-be5f-b955561b9c66" name="Changes" comment="Made remove_empty_rois use native pandas functions for performance">
-      <change afterPath="$PROJECT_DIR$/src/utils/SignalSummaryStatistics.py" afterDir="false" />
+    <list default="true" id="d810fa6a-a0f3-403b-be5f-b955561b9c66" name="Changes" comment="Fixing merge error">
+      <change afterPath="$PROJECT_DIR$/notebooks/smooth_signal.ipynb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/D_smooth_signal/smooth_signals.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/C_get_ROI_signals/get_roi_signals.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/C_get_ROI_signals/get_roi_signals.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/B_generate_rois/save_imagej_rois.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/B_generate_rois/save_imagej_rois.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/C_get_ROI_signals/visualization/single_plot.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/C_get_ROI_signals/visualization/single_plot.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/D_remove_empty_rois/remove_empty_rois.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/E_remove_empty_rois/remove_empty_rois.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/D_remove_empty_rois/visualization/plot_roi_stds.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/E_remove_empty_rois/visualization/plot_roi_stds.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/E_calculate_roi_distances/roi_distances.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/F_calculate_roi_distances/roi_distances.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/F_cluster_ROIs/cluster_rois.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/G_cluster_ROIs/cluster_rois.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/F_cluster_ROIs/visualize_dendrogram.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/G_cluster_ROIs/visualize_dendrogram.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/F_cluster_ROIs/visualize_roi_cluster_associations.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/G_cluster_ROIs/visualize_roi_cluster_associations.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/G_representative_signals/compute_representative_signals.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/H_representative_signals/compute_representative_signals.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/G_representative_signals/save_repr_signals.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/H_representative_signals/save_repr_signals.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/G_representative_signals/visualization/cluster_signals_video.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/H_representative_signals/visualization/cluster_signals_video.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/G_representative_signals/visualization/plot_repr_signals.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/H_representative_signals/visualization/plot_repr_signals.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/analysis_options.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/analysis_options.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.py" afterDir="false" />
     </list>
@@ -19,8 +31,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Jupyter Notebook" />
         <option value="Python Script" />
+        <option value="Jupyter Notebook" />
       </list>
     </option>
   </component>
@@ -47,7 +59,7 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
+    <option name="selectedTabId" value="ProjectErrors" />
     <option name="showPreview" value="true" />
   </component>
   <component name="ProjectColorInfo">{
@@ -69,7 +81,7 @@
     "Python.cluster_signals_video.executor": "Run",
     "Python.generate_rois.executor": "Run",
     "Python.generate_signals.executor": "Run",
-    "Python.glioblastoma.executor": "Debug",
+    "Python.glioblastoma.executor": "Run",
     "Python.input_tif.executor": "Run",
     "Python.macros_testing.executor": "Run",
     "Python.main.executor": "Debug",
@@ -202,7 +214,8 @@
       <workItem from="1712655207066" duration="7460000" />
       <workItem from="1712668157088" duration="6587000" />
       <workItem from="1712735090461" duration="8609000" />
-      <workItem from="1712828329498" duration="12802000" />
+      <workItem from="1712828329498" duration="13994000" />
+      <workItem from="1712916212207" duration="8824000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <option name="closed" value="true" />
@@ -356,7 +369,39 @@
       <option name="project" value="LOCAL" />
       <updated>1712839477887</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Added the option of using the maximum (instead of average) signal for get_roi_signals">
+      <option name="closed" value="true" />
+      <created>1712845580338</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1712845580338</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Made grid plot use signals_df instead of signals_arr">
+      <option name="closed" value="true" />
+      <created>1712922556729</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1712922556729</updated>
+    </task>
+    <task id="LOCAL-00022" summary="Made grid plot use signals_df instead of signals_arr">
+      <option name="closed" value="true" />
+      <created>1712922737088</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1712922737088</updated>
+    </task>
+    <task id="LOCAL-00023" summary="Fixing merge error">
+      <option name="closed" value="true" />
+      <created>1712922892656</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1712922892656</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -389,7 +434,10 @@
     <MESSAGE value="Finished adjusted the code according to the ROI class. Changed the code to use scipy for clustering and added a dendrogram plot" />
     <MESSAGE value="Added remove_empty_rois.py and plot_roi_stds.py" />
     <MESSAGE value="Made remove_empty_rois use native pandas functions for performance" />
-    <option name="LAST_COMMIT_MESSAGE" value="Made remove_empty_rois use native pandas functions for performance" />
+    <MESSAGE value="Added the option of using the maximum (instead of average) signal for get_roi_signals" />
+    <MESSAGE value="Made grid plot use signals_df instead of signals_arr" />
+    <MESSAGE value="Fixing merge error" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixing merge error" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -398,11 +446,6 @@
           <url>notebook:///Users/julian/development/PycharmProjects/glioblastoma/notebooks/testing_visualize_clusters.ipynb</url>
           <line>88</line>
           <option name="timeStamp" value="12" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/C_get_ROI_signals/get_roi_signals.py</url>
-          <line>27</line>
-          <option name="timeStamp" value="20" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
@@ -416,7 +459,7 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/glioblastoma$visualize_clusters.coverage" NAME="visualize_clusters Coverage Results" MODIFIED="1710848120509" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/visualization" />
-    <SUITE FILE_PATH="coverage/glioblastoma$glioblastoma.coverage" NAME="glioblastoma Coverage Results" MODIFIED="1712844892518" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/glioblastoma$glioblastoma.coverage" NAME="glioblastoma Coverage Results" MODIFIED="1712927815599" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/glioblastoma$plot_signals_from_csv.coverage" NAME="plot_signals_from_csv Coverage Results" MODIFIED="1710261259862" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/visualization" />
     <SUITE FILE_PATH="coverage/glioblastoma$main.coverage" NAME="main Coverage Results" MODIFIED="1710846646008" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
     <SUITE FILE_PATH="coverage/glioblastoma$generate_signals.coverage" NAME="generate_signals Coverage Results" MODIFIED="1710320134399" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />

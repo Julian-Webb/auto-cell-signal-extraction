@@ -7,19 +7,29 @@ base_dir = '/Users/julian/development/PycharmProjects/glioblastoma'
 
 test_stack = {'dir': os.path.join(base_dir, 'data', 'high_res_test_stack'),
               'name': os.path.join('raw', 'high_res_test_stack.tif'),
+              'rolling_window_size': 4,
               'std_threshold': 20,
               'n_cells': 4,
               }
 
 D_233_MG_B1 = {'dir': os.path.join(base_dir, 'data', '233_MG_B1'),
                'name': os.path.join('raw', '233_MG_B1_STACK.tif'),
+               'rolling_window_size': 80,
+               'std_threshold': 6,
+               'n_cells': 9,
+               }
+
+D_233_MG_B2 = {'dir': os.path.join(base_dir, 'data', '233_MG_B2'),
+               'name': os.path.join('raw', '233_MG_B2_STACK.tif'),
+               'rolling_window_size': 80,
                'std_threshold': 6,
                'n_cells': 9,
                }
 
 D_276_AZD3965_Mathieu = {'dir': os.path.join(base_dir, 'data', '276_AZD3965_Mathieu'),
                          'name': os.path.join('raw', '276_AZD3965_Mathieu.TIF'),
-                         'std_threshold': 15,
+                         'std_threshold': 16,
+                         'rolling_window_size': 100,
                          'n_cells': 50,
                          }
 
@@ -36,7 +46,10 @@ image_path = os.path.join(directory, image_name)
 ROI.WIDTH = 2048 // 4
 ROI.HEIGHT = 1536 // 3
 
-# ROI.WIDTH = ROI.HEIGHT = 32
+# ROI.WIDTH = ROI.HEIGHT = 16
+
+# The size of the rolling window in frames. Used to calculate the rolling mean for smoothing the signal
+rolling_window_size = dataset_info['rolling_window_size']
 
 # Specify ROI signal summary statistic #
 # This is how the signal of the ROI will be generated based on the value of each pixel it contains.
@@ -51,7 +64,7 @@ max_clusters = dataset_info['n_cells']
 
 # 2: Plot and File Options
 # Specify which plots and files to generate. This influences the time to execute.
-intense_options = True
+intense_options = False
 
 C_create_all_ROI_signals_file = intense_options  # *
 C_generate_ROI_signals_grid_plot = intense_options  # *
