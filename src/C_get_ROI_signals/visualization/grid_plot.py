@@ -1,34 +1,32 @@
-import numpy as np
+import pandas as pd
 from matplotlib import pyplot as plt
 
 from src.utils.ROI import ROI
 
 
-def grid_plot(signals_arr: np.array) -> plt.figure:
-    # NOTE: this function is pretty fragile. Don't expect too much
+def grid_plot(signals_df: pd.DataFrame) -> plt.figure:
+    fig, axs = plt.subplots(nrows=ROI.N_VERTICAL, ncols=ROI.N_HORIZONTAL, sharex=True, sharey=True)
 
-    fig, ax = plt.subplots(nrows=ROI.N_VERTICAL, ncols=ROI.N_HORIZONTAL, sharex=True, sharey=True)
+    for roi in signals_df.columns:
+        ax = axs[roi.y_idx, roi.x_idx]
 
-    for x in range(ROI.N_HORIZONTAL):
-        for y in range(ROI.N_VERTICAL):
-            cur_axis = ax[y, x]
-            cur_axis.plot(signals_arr[x, y, :])
+        ax.plot(signals_df[roi])
 
-            # Remove ticks and labels from x and y axes
-            cur_axis.set_xticks([])
-            cur_axis.set_yticks([])
+        # Remove ticks and labels from x and y axes
+        ax.set_xticks([])
+        ax.set_yticks([])
 
-            # Hide grid lines
-            cur_axis.grid(False)
+        # Hide grid lines
+        ax.grid(False)
 
-            # make vertical labels only for the very left
-            if x == 0:
-                cur_axis.set_ylabel(y, rotation=0, fontsize=8)
+        # make vertical labels only for the very left
+        if roi.x_idx == 0:
+            ax.set_ylabel(roi.y_idx, rotation=0, fontsize=8)
 
-            # make horizontal labels only on the bottom
-            cur_axis.xaxis.set_label_position('top')
-            if y == 0:
-                cur_axis.set_xlabel(x, fontsize=8)
+        # make horizontal labels only on the bottom
+        ax.xaxis.set_label_position('top')
+        if roi.y_idx == 0:
+            ax.set_xlabel(roi.x_idx, fontsize=8)
 
     # fig.tight_layout()
     # make space between subplots very small
