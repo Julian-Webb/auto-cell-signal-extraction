@@ -34,11 +34,11 @@ n_frames_raw, img_dims, pixel_dtype = load_image_data(ao.image_path)
 #
 print('### B: Generating ROIs...', end='')
 st = time.time()  # start time
-rois = generate_rois_from_size(img_dims)
+all_rois = generate_rois_from_size(img_dims)
 print(f'{(time.time() - st):.1f}s')
 
 print('Saving ROIs...', end='')
-save_imagej_rois(rois)  # this operation takes very long/crashes for very large number of ROIs (>3 Mio. ROIs)
+save_imagej_rois(all_rois)  # this operation takes very long/crashes for very large number of ROIs (>3 Mio. ROIs)
 print(f'{(time.time() - st):.1f}s')
 
 print(f"\nA grid of {ROI.N_HORIZONTAL} x {ROI.N_VERTICAL} (horizontal x vertical) ROIs has been created. \
@@ -50,7 +50,7 @@ That makes {ROI.N_HORIZONTAL * ROI.N_VERTICAL} ROIs.\n")
 #
 print('### C: Getting ROI signals...', end='')
 st = time.time()
-signals_arr, all_signals_df = get_roi_signals(ao.image_path, n_frames_raw, rois, SignalSummaryStatistics.MAX)
+signals_arr, all_signals_df = get_roi_signals(ao.image_path, n_frames_raw, all_rois, SignalSummaryStatistics.MAX)
 print(f'{time.time() - st:.1f}s')
 
 if ao.C_create_all_ROI_signals_file:
@@ -106,7 +106,7 @@ if ao.D_generate_smooth_signals_single_plot:
 if ao.E_generate_ROI_stds_plot:
     print('### E: Plotting ROI standard deviations...', end='')
     st = time.time()
-    plot_roi_stds(signals_arr, rois, img_dims, ao.std_threshold).savefig(ao.E_roi_stds_plot_path)
+    plot_roi_stds(signals_arr, all_rois, img_dims, ao.std_threshold).savefig(ao.E_roi_stds_plot_path)
     print(f'{time.time() - st:.1f}s')
 
 print('### E: Removing empty ROIs...', end='')

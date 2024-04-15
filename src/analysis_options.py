@@ -30,26 +30,26 @@ D_276_AZD3965_Mathieu = {'dir': os.path.join(base_dir, 'data', '276_AZD3965_Math
                          'name': os.path.join('raw', '276_AZD3965_Mathieu.TIF'),
                          'std_threshold': 16,
                          'rolling_window_size': 100,
-                         'n_cells': 50,
+                         'n_cells': 429,
                          }
 
 # #########################################
 # 1: Path Names
 # Please specify the image name the directory where the image is stored
-dataset_info = test_stack
+dataset_info = D_276_AZD3965_Mathieu
 directory = dataset_info['dir']
 image_name = dataset_info['name']
 image_path = os.path.join(directory, image_name)
 
 # 0: Specify numerical analysis values
 # Specify the sizes of your ROIs in pixels. The value should be a whole number (no decimal point)
-ROI.WIDTH = 2048 // 4
-ROI.HEIGHT = 1536 // 3
+# ROI.WIDTH = 2048 // 4
+# ROI.HEIGHT = 1536 // 2
 
-# ROI.WIDTH = ROI.HEIGHT = 16
+ROI.WIDTH = ROI.HEIGHT = 32
 
 # The size of the rolling window in frames. Used to calculate the rolling mean for smoothing the signal
-rolling_window_size = dataset_info['rolling_window_size']
+rolling_window_size: int = dataset_info['rolling_window_size']
 
 # Specify ROI signal summary statistic #
 # This is how the signal of the ROI will be generated based on the value of each pixel it contains.
@@ -57,14 +57,14 @@ roi_signal_summary_statistic: str = 'max'  # should be 'mean' or 'max'
 
 # The threshold of standard deviation for removing empty ROIs.
 # Any ROIs with a std below this threshold will be filtered out.
-std_threshold = dataset_info['std_threshold']
+std_threshold: float = dataset_info['std_threshold']
 
 # Specify the maximum amount of clusters to be generated. This should be the number of the cells in the recording.
-max_clusters = dataset_info['n_cells']
+max_clusters: int = dataset_info['n_cells']
 
 # 2: Plot and File Options
 # Specify which plots and files to generate. This influences the time to execute.
-intense_options = False
+intense_options: bool = False
 
 C_create_all_ROI_signals_file = intense_options  # *
 C_generate_ROI_signals_grid_plot = intense_options  # *
@@ -95,9 +95,9 @@ if not os.path.exists(results_dir):
 
 B_rois_zip_folder_name = os.path.join(results_dir, 'B_ROIs')  # the .zip will be appended automatically
 
-C_roi_signals_csv_path = os.path.join(results_dir, 'C_ROI_signals.csv')
-C_roi_signals_grid_plot_path = os.path.join(figures_dir, 'C_ROI_signals_grid_plot.png')
-C_roi_signals_single_plot_path = os.path.join(figures_dir, 'C_ROI_signals_single_plot.png')
+C_roi_signals_csv_path = os.path.join(results_dir, 'C_raw_ROI_signals.csv')
+C_roi_signals_grid_plot_path = os.path.join(figures_dir, 'C_raw_signals_grid_plot.png')
+C_roi_signals_single_plot_path = os.path.join(figures_dir, 'C_raw_signals_single_plot.png')
 
 D_smooth_signals_csv_path = os.path.join(results_dir, 'D_smooth_ROI_signals.csv')
 D_smooth_signals_single_plot_path = os.path.join(figures_dir, 'D_smooth_signals_single_plot.png')

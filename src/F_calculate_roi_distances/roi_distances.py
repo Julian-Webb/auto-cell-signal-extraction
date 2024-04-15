@@ -17,34 +17,42 @@ def roi_distances(signals_df: pd.DataFrame, rois: np.array):
 
     # TODO improve the quality of the metric
 
-    n_rois = len(rois)
-
     # initialize a dataframe to store the ROI distance matrix.
-    pairwise_distances = pd.DataFrame(np.zeros((n_rois, n_rois)), columns=rois, index=rois)
+    n_rois = len(rois)
+    spatial_distances = pd.DataFrame(np.zeros((n_rois, n_rois)), columns=rois, index=rois)
+    signal_similarities = pd.DataFrame(np.zeros((n_rois, n_rois)), columns=rois, index=rois)
 
-    # find the maximum spatial distance. We normalize by this.
-    max_spatial_dist = roi_spatial_distance(rois[0], rois[-1])  # TODO this doesn't work any more with the filtered ROIs
+    # Determine which ROIs should be compared.
+    # They should only be compared if they are within a certain distance of each other
+    # rois_: np.array = rois.copy()
 
-    # loop through each pair of ROIs and compute the distance
+    # loop through each pair of ROIs and compute distance
     for roi1 in rois:
         for roi2 in rois:
-            # NOTE: distance is initialized as 0
-            if roi1 != roi2:
-                spatial_dist = roi_spatial_distance(roi1, roi2)
+            # from 0 to inf, the higher, the higher the dist
+            spatial_distances.at[roi1, roi2] = roi_spatial_distance(roi1, roi2)
 
-                signal_sim = signal_similarity(signals_df[roi1], signals_df[roi2])
+            # from -1 to 1, the higher, the lower the dist
+            signal_similarities.at[roi1, roi2] = signal_similarity(signals_df[roi1], signals_df[roi2])
 
-                # spatial distance is from 0 to infinity.  -> high value increases roi distance
-                # Signal similarity is from 0 to 1. -> higher value decreases roi distance
-                if signal_sim == 0:
-                    distance = max_spatial_dist  # TODO find cleaner solution
-                else:
-                    distance = spatial_dist / signal_sim
+    # we now cut off any similarities <0 and just make them 0 because these signals aren't considered to belong to the
+    # same cell anyway.
+    signal_similarities[signal_similarities < 0] = 0
+    signal_distances = 1 - signal_similarities
 
-                pairwise_distances.at[roi1, roi2] = distance
+    roi_distances_ = spatial_distances * signal_distances
 
-    # normalize with the maximum spatial distance
-    return pairwise_distances / max_spatial_dist
+    # ## Normalize the distances between 0 and 1 ###
+    # To do this, we normalize by the maximum absolute value. That gives us values between -1 and 1.
+    # Then we add 1 and divide by 2 to get values between 0 and 1.
+    max_dist = roi_distances_.abs().max(axis=None)
+    norm_distances = roi_distances_ / max_dist
+
+    # make the diagonal 0 (sometimes there are tiny non-zero values...)
+    for roi in rois:
+        norm_distances.at[roi, roi] = 0
+
+    return norm_distances
 
 
 def roi_spatial_distance(roi1: ROI, roi2: ROI):
@@ -55,12 +63,16 @@ def roi_spatial_distance(roi1: ROI, roi2: ROI):
 
 
 def signal_similarity(signal1: np.array, signal2: np.array) -> float:
-    """This is our measure for signal similarity."""
+    """This is our measure for signal distance."""
 
     # similarity = cos_similarity[0][0]
     # similarity = 1 - distance.cosine(signal1, signal2)  # cosine similarity (ignores magnitude)
 
     similarity = cosine_similarity(signal1, signal2)
+
+    # cos similarity can be between -1 and 1. All values from in [-1, 0] should become 0 because these will be treated
+    # as different clusters anyway.
+
     return similarity
 
 
@@ -71,7 +83,6 @@ def cosine_similarity(a: np.array, b: np.array):
 
     # if the magnitude of vectors a or b is 0, the resulting division leads to an error.
     # If that's the case, the ROI is measuring an empty space, and we can consider the similarity minimal (0).
-    # NOTE: we won't have any negative similarity because signal values are always non-negative.
     if magnitude_a == 0 or magnitude_b == 0:
         return 0
     cos_sim = dot_product / (magnitude_a * magnitude_b)
