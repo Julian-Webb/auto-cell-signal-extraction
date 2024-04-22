@@ -4,12 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d810fa6a-a0f3-403b-be5f-b955561b9c66" name="Changes" comment="Added smooth_signals.py">
+    <list default="true" id="d810fa6a-a0f3-403b-be5f-b955561b9c66" name="Changes" comment="Created files used to make the presentation">
       <change afterPath="$PROJECT_DIR$/notebooks/testing_distances.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/F_calculate_roi_distances/roi_distances.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/F_calculate_roi_distances/roi_distances.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notebooks/smooth_signal.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/notebooks/detrend_signal.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/D_smooth_signal/smooth_signals.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/D_detrend_signals/detrend_signals.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/H_representative_signals/visualization/plot_repr_signals.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/H_representative_signals/visualization/plot_repr_signals.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/analysis_options.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/analysis_options.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/presentation_grid_plot.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/presentation_main.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,8 +23,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Python Script" />
         <option value="Jupyter Notebook" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
@@ -47,7 +51,7 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="ProjectErrors" />
+    <option name="selectedTabId" value="CurrentFile" />
     <option name="showPreview" value="true" />
   </component>
   <component name="ProjectColorInfo">{
@@ -74,6 +78,7 @@
     &quot;Python.macros_testing.executor&quot;: &quot;Run&quot;,
     &quot;Python.main.executor&quot;: &quot;Debug&quot;,
     &quot;Python.plot_signals_from_csv.executor&quot;: &quot;Run&quot;,
+    &quot;Python.presentation_main.executor&quot;: &quot;Run&quot;,
     &quot;Python.pyimagej_macros_testing.executor&quot;: &quot;Run&quot;,
     &quot;Python.pyimagej_testing.executor&quot;: &quot;Run&quot;,
     &quot;Python.roi_example.executor&quot;: &quot;Run&quot;,
@@ -139,6 +144,9 @@
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="false" />
@@ -205,7 +213,9 @@
       <workItem from="1712828329498" duration="13994000" />
       <workItem from="1712916212207" duration="9323000" />
       <workItem from="1713171757426" duration="10719000" />
-      <workItem from="1713186861283" duration="4527000" />
+      <workItem from="1713186861283" duration="4836000" />
+      <workItem from="1713516995584" duration="13979000" />
+      <workItem from="1713772493863" duration="3306000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <option name="closed" value="true" />
@@ -399,7 +409,23 @@
       <option name="project" value="LOCAL" />
       <updated>1712929466009</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="Made ROI distances work with negative signal values. It currently uses signal dist and spatial dist to compute roi dist">
+      <option name="closed" value="true" />
+      <created>1713192434446</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1713192434446</updated>
+    </task>
+    <task id="LOCAL-00026" summary="Created files used to make the presentation">
+      <option name="closed" value="true" />
+      <created>1713778308253</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1713778308253</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -436,7 +462,9 @@
     <MESSAGE value="Made grid plot use signals_df instead of signals_arr" />
     <MESSAGE value="Fixing merge error" />
     <MESSAGE value="Added smooth_signals.py" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added smooth_signals.py" />
+    <MESSAGE value="Made ROI distances work with negative signal values. It currently uses signal dist and spatial dist to compute roi dist" />
+    <MESSAGE value="Created files used to make the presentation" />
+    <option name="LAST_COMMIT_MESSAGE" value="Created files used to make the presentation" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

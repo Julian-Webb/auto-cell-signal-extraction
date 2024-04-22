@@ -33,10 +33,18 @@ D_276_AZD3965_Mathieu = {'dir': os.path.join(base_dir, 'data', '276_AZD3965_Math
                          'n_cells': 429,
                          }
 
+D_233_NoMG_A1 = {'dir': os.path.join(base_dir, 'data', '233_NoMG_A1'),
+                 'name': os.path.join('raw', '233_NoMG_A1_STACK.tif'),
+                 'std_threshold': 18,
+                 'rolling_window_size': 80,
+                 # 'n_cells': 95,
+                 'n_cells': 10,
+                 }
+
 # #########################################
 # 1: Path Names
 # Please specify the image name the directory where the image is stored
-dataset_info = D_276_AZD3965_Mathieu
+dataset_info = D_233_NoMG_A1
 directory = dataset_info['dir']
 image_name = dataset_info['name']
 image_path = os.path.join(directory, image_name)
@@ -46,9 +54,10 @@ image_path = os.path.join(directory, image_name)
 # ROI.WIDTH = 2048 // 4
 # ROI.HEIGHT = 1536 // 2
 
-ROI.WIDTH = ROI.HEIGHT = 32
+# ROI.WIDTH = ROI.HEIGHT = 256
+ROI.WIDTH = ROI.HEIGHT = 64
 
-# The size of the rolling window in frames. Used to calculate the rolling mean for smoothing the signal
+# The size of the rolling window in frames. Used to calculate the rolling mean for detrending the signal
 rolling_window_size: int = dataset_info['rolling_window_size']
 
 # Specify ROI signal summary statistic #
@@ -64,15 +73,15 @@ max_clusters: int = dataset_info['n_cells']
 
 # 2: Plot and File Options
 # Specify which plots and files to generate. This influences the time to execute.
-intense_options: bool = False
+intense_options: bool = True
 
 C_create_all_ROI_signals_file = intense_options  # *
 C_generate_ROI_signals_grid_plot = intense_options  # *
 C_generate_ROI_signals_single_plot = intense_options  # *
 
-D_create_smooth_signals_file = intense_options  # *
-D_generate_smooth_signals_grid_plot = intense_options  # *
-D_generate_smooth_signals_single_plot = intense_options  # *
+D_create_detrended_signals_file = intense_options  # *
+D_generate_detrended_signals_grid_plot = intense_options  # *
+D_generate_detrended_signals_single_plot = intense_options  # *
 
 E_generate_ROI_stds_plot = True
 
@@ -99,9 +108,9 @@ C_roi_signals_csv_path = os.path.join(results_dir, 'C_raw_ROI_signals.csv')
 C_roi_signals_grid_plot_path = os.path.join(figures_dir, 'C_raw_signals_grid_plot.png')
 C_roi_signals_single_plot_path = os.path.join(figures_dir, 'C_raw_signals_single_plot.png')
 
-D_smooth_signals_csv_path = os.path.join(results_dir, 'D_smooth_ROI_signals.csv')
-D_smooth_signals_single_plot_path = os.path.join(figures_dir, 'D_smooth_signals_single_plot.png')
-D_smooth_signals_grid_plot_path = os.path.join(figures_dir, 'D_smooth_signals_grid_plot.png')
+D_detrended_signals_csv_path = os.path.join(results_dir, 'D_detrended_ROI_signals.csv')
+D_detrended_signals_single_plot_path = os.path.join(figures_dir, 'D_detrended_signals_single_plot.png')
+D_detrended_signals_grid_plot_path = os.path.join(figures_dir, 'D_detrended_signals_grid_plot.png')
 
 E_roi_stds_plot_path = os.path.join(figures_dir, 'E_ROI_stds')
 E_filtered_roi_signals_csv_path = os.path.join(results_dir, 'E_filtered_ROI_signals.csv')
