@@ -4,16 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d810fa6a-a0f3-403b-be5f-b955561b9c66" name="Changes" comment="Created files used to make the presentation">
-      <change afterPath="$PROJECT_DIR$/notebooks/testing_distances.ipynb" afterDir="false" />
+    <list default="true" id="d810fa6a-a0f3-403b-be5f-b955561b9c66" name="Changes" comment="Renamed &quot;smooth&quot; to &quot;detrended&quot;">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notebooks/smooth_signal.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/notebooks/detrend_signal.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/D_smooth_signal/smooth_signals.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/D_detrend_signals/detrend_signals.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/H_representative_signals/visualization/plot_repr_signals.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/H_representative_signals/visualization/plot_repr_signals.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notebooks/testing_distances.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/notebooks/testing_distances.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/F_calculate_roi_distances/roi_distances.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/F_calculate_roi_distances/roi_distances.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/analysis_options.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/analysis_options.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/presentation_grid_plot.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/presentation_main.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,40 +61,40 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;Python tests.Doctests in roifile.executor&quot;: &quot;Debug&quot;,
-    &quot;Python.calc_ROIs.executor&quot;: &quot;Run&quot;,
-    &quot;Python.cluster_signals_video.executor&quot;: &quot;Run&quot;,
-    &quot;Python.generate_rois.executor&quot;: &quot;Run&quot;,
-    &quot;Python.generate_signals.executor&quot;: &quot;Run&quot;,
-    &quot;Python.glioblastoma.executor&quot;: &quot;Run&quot;,
-    &quot;Python.input_tif.executor&quot;: &quot;Run&quot;,
-    &quot;Python.macros_testing.executor&quot;: &quot;Run&quot;,
-    &quot;Python.main.executor&quot;: &quot;Debug&quot;,
-    &quot;Python.plot_signals_from_csv.executor&quot;: &quot;Run&quot;,
-    &quot;Python.presentation_main.executor&quot;: &quot;Run&quot;,
-    &quot;Python.pyimagej_macros_testing.executor&quot;: &quot;Run&quot;,
-    &quot;Python.pyimagej_testing.executor&quot;: &quot;Run&quot;,
-    &quot;Python.roi_example.executor&quot;: &quot;Run&quot;,
-    &quot;Python.roi_names.executor&quot;: &quot;Debug&quot;,
-    &quot;Python.roifile_demo.executor&quot;: &quot;Run&quot;,
-    &quot;Python.visualize_clusters.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;aDefault&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.deploy.options&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Python tests.Doctests in roifile.executor": "Debug",
+    "Python.calc_ROIs.executor": "Run",
+    "Python.cluster_signals_video.executor": "Run",
+    "Python.generate_rois.executor": "Run",
+    "Python.generate_signals.executor": "Run",
+    "Python.glioblastoma.executor": "Run",
+    "Python.input_tif.executor": "Run",
+    "Python.macros_testing.executor": "Run",
+    "Python.main.executor": "Debug",
+    "Python.plot_signals_from_csv.executor": "Run",
+    "Python.presentation_main.executor": "Run",
+    "Python.pyimagej_macros_testing.executor": "Run",
+    "Python.pyimagej_testing.executor": "Run",
+    "Python.roi_example.executor": "Run",
+    "Python.roi_names.executor": "Debug",
+    "Python.roifile_demo.executor": "Run",
+    "Python.visualize_clusters.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "main",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "run.code.analysis.last.selected.profile": "aDefault",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="PyConsoleOptionsProvider">
     <option name="myPythonConsoleState">
       <console-settings>
@@ -144,9 +140,6 @@
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="false" />
@@ -215,7 +208,9 @@
       <workItem from="1713171757426" duration="10719000" />
       <workItem from="1713186861283" duration="4836000" />
       <workItem from="1713516995584" duration="13979000" />
-      <workItem from="1713772493863" duration="3306000" />
+      <workItem from="1713772493863" duration="12731000" />
+      <workItem from="1713792457454" duration="6531000" />
+      <workItem from="1714037127595" duration="10861000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <option name="closed" value="true" />
@@ -425,7 +420,15 @@
       <option name="project" value="LOCAL" />
       <updated>1713778308253</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="Renamed &quot;smooth&quot; to &quot;detrended&quot;">
+      <option name="closed" value="true" />
+      <created>1713778814286</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1713778814286</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -464,7 +467,8 @@
     <MESSAGE value="Added smooth_signals.py" />
     <MESSAGE value="Made ROI distances work with negative signal values. It currently uses signal dist and spatial dist to compute roi dist" />
     <MESSAGE value="Created files used to make the presentation" />
-    <option name="LAST_COMMIT_MESSAGE" value="Created files used to make the presentation" />
+    <MESSAGE value="Renamed &quot;smooth&quot; to &quot;detrended&quot;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Renamed &quot;smooth&quot; to &quot;detrended&quot;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -473,6 +477,11 @@
           <url>notebook:///Users/julian/development/PycharmProjects/glioblastoma/notebooks/testing_visualize_clusters.ipynb</url>
           <line>88</line>
           <option name="timeStamp" value="12" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/main.py</url>
+          <line>134</line>
+          <option name="timeStamp" value="32" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
@@ -483,10 +492,16 @@
         </breakpoint>
       </default-breakpoints>
     </breakpoint-manager>
+    <watches-manager>
+      <configuration name="testing_distances">
+        <watch expression="within_bounds" language="Jupyter" />
+        <watch expression="not_nan" language="Jupyter" />
+      </configuration>
+    </watches-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/glioblastoma$visualize_clusters.coverage" NAME="visualize_clusters Coverage Results" MODIFIED="1710848120509" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/visualization" />
-    <SUITE FILE_PATH="coverage/glioblastoma$glioblastoma.coverage" NAME="glioblastoma Coverage Results" MODIFIED="1713187309929" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/glioblastoma$glioblastoma.coverage" NAME="glioblastoma Coverage Results" MODIFIED="1714050590605" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/glioblastoma$plot_signals_from_csv.coverage" NAME="plot_signals_from_csv Coverage Results" MODIFIED="1710261259862" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/visualization" />
     <SUITE FILE_PATH="coverage/glioblastoma$main.coverage" NAME="main Coverage Results" MODIFIED="1710846646008" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
     <SUITE FILE_PATH="coverage/glioblastoma$generate_signals.coverage" NAME="generate_signals Coverage Results" MODIFIED="1710320134399" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />

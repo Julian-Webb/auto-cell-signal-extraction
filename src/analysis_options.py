@@ -10,6 +10,7 @@ test_stack = {'dir': os.path.join(base_dir, 'data', 'high_res_test_stack'),
               'rolling_window_size': 4,
               'std_threshold': 20,
               'n_cells': 4,
+              'max_cell_size_pixels': 450,
               }
 
 D_233_MG_B1 = {'dir': os.path.join(base_dir, 'data', '233_MG_B1'),
@@ -17,6 +18,7 @@ D_233_MG_B1 = {'dir': os.path.join(base_dir, 'data', '233_MG_B1'),
                'rolling_window_size': 80,
                'std_threshold': 6,
                'n_cells': 9,
+               'max_cell_size_pixels': 450,
                }
 
 D_233_MG_B2 = {'dir': os.path.join(base_dir, 'data', '233_MG_B2'),
@@ -24,6 +26,7 @@ D_233_MG_B2 = {'dir': os.path.join(base_dir, 'data', '233_MG_B2'),
                'rolling_window_size': 80,
                'std_threshold': 6,
                'n_cells': 9,
+               'max_cell_size_pixels': 450,
                }
 
 D_276_AZD3965_Mathieu = {'dir': os.path.join(base_dir, 'data', '276_AZD3965_Mathieu'),
@@ -31,14 +34,15 @@ D_276_AZD3965_Mathieu = {'dir': os.path.join(base_dir, 'data', '276_AZD3965_Math
                          'std_threshold': 16,
                          'rolling_window_size': 100,
                          'n_cells': 429,
+                         'max_cell_size_pixels': 450,
                          }
 
 D_233_NoMG_A1 = {'dir': os.path.join(base_dir, 'data', '233_NoMG_A1'),
                  'name': os.path.join('raw', '233_NoMG_A1_STACK.tif'),
-                 'std_threshold': 18,
+                 'std_threshold': 14,
                  'rolling_window_size': 80,
-                 # 'n_cells': 95,
-                 'n_cells': 10,
+                 'n_cells': 95,
+                 'max_cell_size_pixels': 450,
                  }
 
 # #########################################
@@ -51,11 +55,11 @@ image_path = os.path.join(directory, image_name)
 
 # 0: Specify numerical analysis values
 # Specify the sizes of your ROIs in pixels. The value should be a whole number (no decimal point)
-# ROI.WIDTH = 2048 // 4
+# ROI.WIDTH = 2048 // 3
 # ROI.HEIGHT = 1536 // 2
 
 # ROI.WIDTH = ROI.HEIGHT = 256
-ROI.WIDTH = ROI.HEIGHT = 64
+ROI.WIDTH = ROI.HEIGHT = 32
 
 # The size of the rolling window in frames. Used to calculate the rolling mean for detrending the signal
 rolling_window_size: int = dataset_info['rolling_window_size']
@@ -68,12 +72,17 @@ roi_signal_summary_statistic: str = 'max'  # should be 'mean' or 'max'
 # Any ROIs with a std below this threshold will be filtered out.
 std_threshold: float = dataset_info['std_threshold']
 
+# Specify the largest diameter of any cell in the image.
+# This will be used to determine within which area signal comparisons between ROIs should be made.
+# NOTE: you might want to specify a size that is slightly larger (~10%) than the largest diameter to be sure.
+F_max_cell_size_pixels = dataset_info['max_cell_size_pixels']
+
 # Specify the maximum amount of clusters to be generated. This should be the number of the cells in the recording.
 max_clusters: int = dataset_info['n_cells']
 
 # 2: Plot and File Options
 # Specify which plots and files to generate. This influences the time to execute.
-intense_options: bool = True
+intense_options: bool = False
 
 C_create_all_ROI_signals_file = intense_options  # *
 C_generate_ROI_signals_grid_plot = intense_options  # *

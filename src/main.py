@@ -129,7 +129,7 @@ print(f'{time.time() - st:.1f}s')
 # We calculate the distance for each pair of ROIs
 print('### F: Computing ROI distance matrix...', end='')
 st = time.time()
-roi_distances = roi_distances(filtered_signals_df, filtered_rois)
+roi_distances = roi_distances(filtered_signals_df, ao.F_max_cell_size_pixels)
 print(f'{time.time() - st:.1f}s')
 
 print('Saving ROI distance matrix to csv...', end='')

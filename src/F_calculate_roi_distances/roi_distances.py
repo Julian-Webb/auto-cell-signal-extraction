@@ -1,58 +1,105 @@
+import math
 import numpy as np
 import pandas as pd
 from scipy.spatial import distance
-
 from src.utils.ROI import ROI
 
 
-def roi_distances(signals_df: pd.DataFrame, rois: np.array):
+def roi_distances(signals_df: pd.DataFrame, comp_range_px: int):
     """Takes in the signals of each ROI and calculates a distance measure between each pair or ROIs.
     It takes the spatial distance between the ROIs and the signal similarity into account.
 
     :param signals_df: A dataframe where each column represents the signal of a ROI
-    :param rois: An array containing all the ROI objects.
-
+    :param comp_range_px: The spatial ROI comparison range in pixels
     :return: A DataFrame with the computed distance between each pair of ROIs.
     """
 
-    # TODO improve the quality of the metric
+    # Determine which ROIs should be compared based on the adjacency
+    filtered_rois = signals_df.columns
+    comparisons = compute_comparisons(filtered_rois, comp_range_px)
 
-    # initialize a dataframe to store the ROI distance matrix.
-    n_rois = len(rois)
-    spatial_distances = pd.DataFrame(np.zeros((n_rois, n_rois)), columns=rois, index=rois)
-    signal_similarities = pd.DataFrame(np.zeros((n_rois, n_rois)), columns=rois, index=rois)
+    # Initialize a DataFrame to store the ROI distances
+    # we initialize all distance as maximal (1)
+    distances = pd.DataFrame(1.0, columns=filtered_rois, index=filtered_rois)
+    # make the diagonal 0
+    for roi in filtered_rois:
+        distances.loc[roi, roi] = 0
 
-    # Determine which ROIs should be compared.
-    # They should only be compared if they are within a certain distance of each other
-    # rois_: np.array = rois.copy()
+    # Loop through each ROI and fill the DataFrame with the distances to the other ROIs
+    for roi1, compare_to in comparisons.items():
+        for roi2 in compare_to:
+            # We bound the similarity to 0 because we care about negative similarity - these signals don't belong to the
+            # same cell anyway
+            similarity = max(0.0, signal_similarity(signals_df[roi1], signals_df[roi2]))
+            dist = 1 - similarity
+            distances.loc[roi1, roi2] = dist
+            distances.loc[roi2, roi1] = dist
 
-    # loop through each pair of ROIs and compute distance
-    for roi1 in rois:
-        for roi2 in rois:
-            # from 0 to inf, the higher, the higher the dist
-            spatial_distances.at[roi1, roi2] = roi_spatial_distance(roi1, roi2)
+    return distances
 
-            # from -1 to 1, the higher, the lower the dist
-            signal_similarities.at[roi1, roi2] = signal_similarity(signals_df[roi1], signals_df[roi2])
 
-    # we now cut off any similarities <0 and just make them 0 because these signals aren't considered to belong to the
-    # same cell anyway.
-    signal_similarities[signal_similarities < 0] = 0
-    signal_distances = 1 - signal_similarities
+def compute_comparisons(filtered_rois: np.array, comp_range_px: int):
+    """
+    This function computes which comparisons should be made between the ROIs, such that they are only compared within a
+    certain spatial distance and only in one order of comparisons.
 
-    roi_distances_ = spatial_distances * signal_distances
+    E.g. if the distance between ROI(0;0) and ROI(1;1) is computed in that order, then it should not be computed in the
+    order ROI(1;1) vs. ROI(0;0), because these are equivalent, and we want to save resources.
 
-    # ## Normalize the distances between 0 and 1 ###
-    # To do this, we normalize by the maximum absolute value. That gives us values between -1 and 1.
-    # Then we add 1 and divide by 2 to get values between 0 and 1.
-    max_dist = roi_distances_.abs().max(axis=None)
-    norm_distances = roi_distances_ / max_dist
+    :param filtered_rois: An array of the ROIs after removing the empty ROIs
+    :param comp_range_px: The spatial ROI comparison range in pixels
+    :return: A dict with a list of ROIs for each ROI. The list tells us which ROIs it needs to be compared with
+    """
+    # Convert the pixel distance into a distance of ROI indexes
+    # We do this by dividing the range in pixels by the ROI width/height and then rounding it up
+    x_range = math.ceil(comp_range_px / ROI.WIDTH)
+    y_range = math.ceil(comp_range_px / ROI.HEIGHT)
 
-    # make the diagonal 0 (sometimes there are tiny non-zero values...)
-    for roi in rois:
-        norm_distances.at[roi, roi] = 0
+    # A dict with an entry for each of the filtered ROIs and which other ROIs it should be compared with
+    comparisons = {}
 
-    return norm_distances
+    # construct a new empty matrix for the ROIs
+    rois_matrix = np.zeros((ROI.N_HORIZONTAL, ROI.N_VERTICAL), dtype=ROI)
+
+    # fill it with the filtered ROIs. Leave the rest blank
+    for roi in filtered_rois:
+        rois_matrix[roi.x_idx, roi.y_idx] = roi
+
+    # go through each of the filtered ROIs and fill the dictionary by checking which filtered ROIs are within range
+    for roi in filtered_rois:
+        # TODO this could be further optimized if we only looked to the right side with the bounds because we have
+        #  already compared the ROIs on the left side. However, this would require filtered_rois to be sorted.
+
+        # Calculate the boundaries of the ROI indexes
+        x_left = roi.x_idx - x_range
+        y_top = roi.y_idx - y_range
+        x_right = roi.x_idx + x_range
+        y_bottom = roi.y_idx + y_range
+
+        # They need to be bounded between 0 and the maximum index on that axis
+        x_left = max(0, x_left)
+        y_top = max(0, y_top)
+        x_right = min(x_right, ROI.N_HORIZONTAL - 1)
+        y_bottom = min(y_bottom, ROI.N_VERTICAL - 1)
+
+        # We remove this ROI from the matrix, so that it's not compared with itself, and so that the ROIs aren't
+        # compared in the reverse order as well (only in one order).
+        # E.g. if we compare ROI(0;0) to ROI(1;0), we don't want ROI(1;0) to also be compared to ROI(0;0) in that
+        # order because that would be an unnecessary comparison.
+        rois_matrix[roi.x_idx, roi.y_idx] = 0
+
+        # Select the ROIs within these boundaries
+        # We add 1 because the upper boundary is not included when indexing
+        within_bounds = rois_matrix[x_left: x_right + 1, y_top: y_bottom + 1]
+
+        # Now we select all the values that are not removed
+        rois_within_bounds = within_bounds[within_bounds != 0]
+
+        # we set this as the dict entry
+        if rois_within_bounds.size > 0:
+            comparisons[roi] = rois_within_bounds
+
+    return comparisons
 
 
 def roi_spatial_distance(roi1: ROI, roi2: ROI):
