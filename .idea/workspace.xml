@@ -4,12 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d810fa6a-a0f3-403b-be5f-b955561b9c66" name="Changes" comment="Renamed &quot;smooth&quot; to &quot;detrended&quot;">
+    <list default="true" id="d810fa6a-a0f3-403b-be5f-b955561b9c66" name="Changes" comment="Made the ROI distance only be computed within a certain area">
+      <change afterPath="$PROJECT_DIR$/notebooks/testing_cosine_similarity.ipynb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/other/ProcessPoolExecutor_testing.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/other/learning_multiprocessing.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/other/testing_multiprocessing.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notebooks/testing.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/notebooks/testing.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/notebooks/testing_distances.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/notebooks/testing_distances.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/F_calculate_roi_distances/roi_distances.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/F_calculate_roi_distances/roi_distances.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/analysis_options.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/analysis_options.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/timing.txt" beforeDir="false" afterPath="$PROJECT_DIR$/timing.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,8 +25,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Jupyter Notebook" />
         <option value="Python Script" />
+        <option value="Jupyter Notebook" />
       </list>
     </option>
   </component>
@@ -71,6 +77,8 @@
     "Python.generate_signals.executor": "Run",
     "Python.glioblastoma.executor": "Run",
     "Python.input_tif.executor": "Run",
+    "Python.learning_multiprocessing.executor": "Debug",
+    "Python.load_image_data.executor": "Run",
     "Python.macros_testing.executor": "Run",
     "Python.main.executor": "Debug",
     "Python.plot_signals_from_csv.executor": "Run",
@@ -80,6 +88,7 @@
     "Python.roi_example.executor": "Run",
     "Python.roi_names.executor": "Debug",
     "Python.roifile_demo.executor": "Run",
+    "Python.testing_multiprocessing.executor": "Run",
     "Python.visualize_clusters.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -95,13 +104,6 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="PyConsoleOptionsProvider">
-    <option name="myPythonConsoleState">
-      <console-settings>
-        <option name="useSoftWraps" value="true" />
-      </console-settings>
-    </option>
-  </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/C_generate_ROI_signals/with_imagej" />
@@ -111,7 +113,7 @@
       <recent name="$PROJECT_DIR$/src/F_representative_signals" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python.glioblastoma">
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
       <module name="glioblastoma" />
       <option name="ENV_FILES" value="" />
@@ -155,6 +157,55 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="learning_multiprocessing" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="glioblastoma" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/other" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/other/learning_multiprocessing.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="testing_multiprocessing" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="glioblastoma" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/other" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/other/testing_multiprocessing.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.testing_multiprocessing" />
+        <item itemvalue="Python.learning_multiprocessing" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -210,7 +261,10 @@
       <workItem from="1713516995584" duration="13979000" />
       <workItem from="1713772493863" duration="12731000" />
       <workItem from="1713792457454" duration="6531000" />
-      <workItem from="1714037127595" duration="10861000" />
+      <workItem from="1714037127595" duration="10932000" />
+      <workItem from="1714122709016" duration="8272000" />
+      <workItem from="1714136276310" duration="7779000" />
+      <workItem from="1714393112312" duration="4242000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <option name="closed" value="true" />
@@ -428,7 +482,15 @@
       <option name="project" value="LOCAL" />
       <updated>1713778814286</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="Made the ROI distance only be computed within a certain area">
+      <option name="closed" value="true" />
+      <created>1714051664642</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1714051664642</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -468,7 +530,8 @@
     <MESSAGE value="Made ROI distances work with negative signal values. It currently uses signal dist and spatial dist to compute roi dist" />
     <MESSAGE value="Created files used to make the presentation" />
     <MESSAGE value="Renamed &quot;smooth&quot; to &quot;detrended&quot;" />
-    <option name="LAST_COMMIT_MESSAGE" value="Renamed &quot;smooth&quot; to &quot;detrended&quot;" />
+    <MESSAGE value="Made the ROI distance only be computed within a certain area" />
+    <option name="LAST_COMMIT_MESSAGE" value="Made the ROI distance only be computed within a certain area" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -480,8 +543,18 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/main.py</url>
-          <line>134</line>
+          <line>137</line>
           <option name="timeStamp" value="32" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/other/testing_multiprocessing.py</url>
+          <line>74</line>
+          <option name="timeStamp" value="44" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/F_calculate_roi_distances/roi_distances.py</url>
+          <line>49</line>
+          <option name="timeStamp" value="46" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
@@ -500,14 +573,16 @@
     </watches-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/glioblastoma$visualize_clusters.coverage" NAME="visualize_clusters Coverage Results" MODIFIED="1710848120509" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/visualization" />
-    <SUITE FILE_PATH="coverage/glioblastoma$glioblastoma.coverage" NAME="glioblastoma Coverage Results" MODIFIED="1714050590605" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/glioblastoma$plot_signals_from_csv.coverage" NAME="plot_signals_from_csv Coverage Results" MODIFIED="1710261259862" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/visualization" />
+    <SUITE FILE_PATH="coverage/glioblastoma$glioblastoma.coverage" NAME="glioblastoma Coverage Results" MODIFIED="1714396110407" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/glioblastoma$main.coverage" NAME="main Coverage Results" MODIFIED="1710846646008" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
     <SUITE FILE_PATH="coverage/glioblastoma$generate_signals.coverage" NAME="generate_signals Coverage Results" MODIFIED="1710320134399" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
     <SUITE FILE_PATH="coverage/glioblastoma$macros_testing.coverage" NAME="macros_testing Coverage Results" MODIFIED="1710256858479" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/other/pyimagej_macros_testing" />
-    <SUITE FILE_PATH="coverage/glioblastoma$roi_names.coverage" NAME="roi_names Coverage Results" MODIFIED="1710499847491" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/utils" />
     <SUITE FILE_PATH="coverage/glioblastoma$generate_rois.coverage" NAME="generate_rois Coverage Results" MODIFIED="1710146541201" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+    <SUITE FILE_PATH="coverage/glioblastoma$visualize_clusters.coverage" NAME="visualize_clusters Coverage Results" MODIFIED="1710848120509" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/visualization" />
+    <SUITE FILE_PATH="coverage/glioblastoma$plot_signals_from_csv.coverage" NAME="plot_signals_from_csv Coverage Results" MODIFIED="1710261259862" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/visualization" />
+    <SUITE FILE_PATH="coverage/glioblastoma$testing_multiprocessing.coverage" NAME="testing_multiprocessing Coverage Results" MODIFIED="1714141876240" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/other" />
+    <SUITE FILE_PATH="coverage/glioblastoma$learning_multiprocessing.coverage" NAME="learning_multiprocessing Coverage Results" MODIFIED="1714135349178" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/other" />
+    <SUITE FILE_PATH="coverage/glioblastoma$roi_names.coverage" NAME="roi_names Coverage Results" MODIFIED="1710499847491" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/utils" />
     <SUITE FILE_PATH="coverage/glioblastoma$input_tif.coverage" NAME="input_tif Coverage Results" MODIFIED="1709817086186" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/1_data_input" />
     <SUITE FILE_PATH="coverage/glioblastoma$Doctests_in_roifile.coverage" NAME="Doctests in roifile Coverage Results" MODIFIED="1710146515498" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="/opt/homebrew/anaconda3/envs/glioblastoma/lib/python3.11/site-packages/roifile" />
   </component>

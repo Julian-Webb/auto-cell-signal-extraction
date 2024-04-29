@@ -45,3 +45,11 @@ test_stack
     128 pixels -> distance matrix takes 1s
      64 pixels -> 22s
      32 pixels ->
+
+##### Only comparing withing adjacency #####
+D_276_AZD3965_Mathieu
+timing of distance matrix
+    128 px ->   0.2 s
+     64 px ->   2.3 s
+     32 px ->  16.4 s
+     16 px -> 126.4 s

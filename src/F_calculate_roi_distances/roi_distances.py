@@ -1,4 +1,7 @@
+import concurrent.futures
 import math
+import multiprocessing
+
 import numpy as np
 import pandas as pd
 from scipy.spatial import distance
@@ -25,15 +28,51 @@ def roi_distances(signals_df: pd.DataFrame, comp_range_px: int):
     for roi in filtered_rois:
         distances.loc[roi, roi] = 0
 
+    # --- Concurrently calculate ROI distances ---
+    # create a dict which is shared between processes and stores the distances
+    manager = multiprocessing.Manager()
+    shared_dists = manager.dict()
+
+    # create processes
+    processes = []
+    for roi, compare_to in comparisons.items():
+        partial_signal_df = signals_df[[roi, *compare_to]]
+        p = multiprocessing.Process(target=distance_for_one_roi,
+                                    args=(roi, compare_to, shared_dists, partial_signal_df))
+        processes.append(p)
+        p.start()
+
+    # wait for all processes to finish
+    for p in processes:
+        p.join()
+
+    # enter the computed distances into the original DataFrame
+    for key, dist in shared_dists.items():
+        roi1, roi2 = key
+        distances.loc[roi1, roi2] = distances.loc[roi2, roi1] = dist  # enter it in both permutations
+
+    # with concurrent.futures.ProcessPoolExecutor() as executor:
+    #     tmp = 0  # TODO delete
+    #
+    #     # executor.map(lambda roi: distance_for_one_roi(roi, comparisons, distances, signals_df), comparisons.keys())
+    #
+    #     for roi in comparisons.keys():
+    #         if tmp == 0:
+    #             executor.submit(distance_for_one_roi, roi, comparisons, distances, signals_df)
+    #         tmp += 1
+    #
+    #     # wait for all processes to finish
+    #     executor.shutdown(wait=True) # TODO delete this (already handeled by context handler)
+
     # Loop through each ROI and fill the DataFrame with the distances to the other ROIs
-    for roi1, compare_to in comparisons.items():
-        for roi2 in compare_to:
-            # We bound the similarity to 0 because we care about negative similarity - these signals don't belong to the
-            # same cell anyway
-            similarity = max(0.0, signal_similarity(signals_df[roi1], signals_df[roi2]))
-            dist = 1 - similarity
-            distances.loc[roi1, roi2] = dist
-            distances.loc[roi2, roi1] = dist
+    # for roi1, compare_to in comparisons.items():
+    #     for roi2 in compare_to:
+    #         # We bound the similarity to 0 because we care about negative similarity - these signals don't belong to the
+    #         # same cell anyway
+    #         similarity = max(0.0, signal_similarity(signals_df[roi1], signals_df[roi2]))
+    #         dist = 1 - similarity
+    #         distances.loc[roi1, roi2] = dist
+    #         distances.loc[roi2, roi1] = dist
 
     return distances
 
@@ -45,6 +84,9 @@ def compute_comparisons(filtered_rois: np.array, comp_range_px: int):
 
     E.g. if the distance between ROI(0;0) and ROI(1;1) is computed in that order, then it should not be computed in the
     order ROI(1;1) vs. ROI(0;0), because these are equivalent, and we want to save resources.
+
+    *NOTE*: Not all the filtered ROIs will necessarily be contained in the output as keys. This is because ROIs are only
+    contained if they need to be compared to another ROI, and they are first in order.
 
     :param filtered_rois: An array of the ROIs after removing the empty ROIs
     :param comp_range_px: The spatial ROI comparison range in pixels
@@ -100,6 +142,20 @@ def compute_comparisons(filtered_rois: np.array, comp_range_px: int):
             comparisons[roi] = rois_within_bounds
 
     return comparisons
+
+
+def distance_for_one_roi(roi: ROI, compare_to: dict, shared_dists: dict, signals_df: pd.DataFrame):
+    """Computes the distances from one ROI to all the ROIs it should be compared to.
+
+    :param roi: The first ROI
+    :param compare_to: Which other ROIs the first roi should be compared to
+    :param shared_dists: A shared dictionary storing computed distances. It has tuples of ROIs as keys.
+    :param signals_df: Contains the signals of each ROI
+    """
+    for other_roi in compare_to:
+        similarity = max(0.0, signal_similarity(signals_df[roi], signals_df[other_roi]))
+        dist = 1 - similarity
+        shared_dists[(roi, other_roi)] = dist
 
 
 def roi_spatial_distance(roi1: ROI, roi2: ROI):

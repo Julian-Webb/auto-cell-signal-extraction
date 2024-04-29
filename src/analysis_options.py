@@ -48,7 +48,7 @@ D_233_NoMG_A1 = {'dir': os.path.join(base_dir, 'data', '233_NoMG_A1'),
 # #########################################
 # 1: Path Names
 # Please specify the image name the directory where the image is stored
-dataset_info = D_233_NoMG_A1
+dataset_info = test_stack
 directory = dataset_info['dir']
 image_name = dataset_info['name']
 image_path = os.path.join(directory, image_name)
@@ -59,7 +59,7 @@ image_path = os.path.join(directory, image_name)
 # ROI.HEIGHT = 1536 // 2
 
 # ROI.WIDTH = ROI.HEIGHT = 256
-ROI.WIDTH = ROI.HEIGHT = 32
+ROI.WIDTH = ROI.HEIGHT = 128
 
 # The size of the rolling window in frames. Used to calculate the rolling mean for detrending the signal
 rolling_window_size: int = dataset_info['rolling_window_size']
@@ -92,11 +92,14 @@ D_create_detrended_signals_file = intense_options  # *
 D_generate_detrended_signals_grid_plot = intense_options  # *
 D_generate_detrended_signals_single_plot = intense_options  # *
 
-E_generate_ROI_stds_plot = True
+E_create_filtered_ROI_signals_file = False
+E_generate_ROI_stds_plot = False
 
-G_generate_ROI_cluster_associations_plot = True
-G_generate_dendrogram = True
-H_generate_signals_per_cluster_plot = True
+F_create_ROI_distances_file = False
+
+G_generate_ROI_cluster_associations_plot = False
+G_generate_dendrogram = False
+H_generate_signals_per_cluster_plot = False
 H_generate_cluster_signals_video = intense_options  # *
 # * : high impact on performance. Set to False unless needed
 
