@@ -46,10 +46,15 @@ test_stack
      64 pixels -> 22s
      32 pixels ->
 
-##### Only comparing withing adjacency #####
+##### Only comparing within adjacency #####
 D_276_AZD3965_Mathieu
-timing of distance matrix
-    128 px ->   0.2 s
-     64 px ->   2.3 s
-     32 px ->  16.4 s
-     16 px -> 126.4 s
+    using my cosine similarity
+        timing of distance matrix
+            128 px ->   0.2 s
+             64 px ->   2.3 s
+             32 px ->  16.4 s
+             16 px -> 126.4 s
+
+    using scipy.spatial.distance.cosine
+             32 px ->  12.0 s
+             16 px ->  89.0 s
