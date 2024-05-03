@@ -7,6 +7,7 @@ from src.C_get_ROI_signals.get_roi_signals import get_roi_signals
 from src.D_detrend_signals.detrend_signals import detrend_signals
 from src.E_remove_empty_rois.remove_empty_rois import remove_empty_rois
 from src.E_remove_empty_rois.visualization.plot_roi_stds import plot_roi_stds
+from src.G_cluster_ROIs.visualization.clusters_on_image import clusters_on_image
 from src.G_cluster_ROIs.visualization.dendrogram import visualize_dendrogram
 from src.H_representative_signals.save_repr_signals import save_repr_signals
 from src.utils.ROI import ROI
@@ -74,7 +75,7 @@ if __name__ == '__main__':
     if ao.C_generate_ROI_signals_grid_plot:
         print('Generating ROI signals grid plot...', end='')
         st = time.time()
-        grid_plot(all_signals_df).savefig(ao.C_roi_signals_grid_plot_path, bbox_inches='tight')
+        grid_plot(all_signals_df).savefig(ao.C_roi_signals_grid_plot_path)
         print(f'{time.time() - st:.1f}s')
 
     if ao.C_generate_ROI_signals_single_plot:
@@ -102,7 +103,7 @@ if __name__ == '__main__':
     if ao.D_generate_detrended_signals_grid_plot:
         print('Generating detrended signals grid plot...', end='')
         st = time.time()
-        grid_plot(detrended_signals_df).savefig(ao.D_detrended_signals_grid_plot_path, bbox_inches='tight')
+        grid_plot(detrended_signals_df).savefig(ao.D_detrended_signals_grid_plot_path)
         print(f'{time.time() - st:.1f}s')
 
     if ao.D_generate_detrended_signals_single_plot:
@@ -115,7 +116,7 @@ if __name__ == '__main__':
     # ##### Step E: Remove empty ROIs ##################################################################################
     #
     # We want to remove ROIs that don't contain a cell
-    if ao.E_generate_ROI_stds_plot:
+    if ao.E_plot_ROI_stds:
         print('### E: Plotting ROI standard deviations...', end='')
         st = time.time()
         plot_roi_stds(signals_arr, all_rois, img_dims, ao.std_threshold).savefig(ao.E_roi_stds_plot_path)
@@ -163,14 +164,21 @@ if __name__ == '__main__':
 
     print(f'{time.time() - st:.1f}s')
 
-    if ao.G_generate_ROI_cluster_associations_plot:
+    if ao.G_plot_clusters_on_image:
+        print('Plotting clusters on image...', end='')
+        st = time.time()
+        clusters_on_image(roi_clusters_dict, n_clusters, ao.image_path).savefig(ao.G_clusters_on_image_path,
+                                                                                bbox_inches='tight')
+        print(f'{time.time() - st:.1f}s')
+
+    if ao.G_plot_ROI_cluster_associations:
         print('Generating ROI-cluster associations plot...', end='')
         st = time.time()
         visualize_roi_cluster_associations(roi_clusters_dict, n_clusters, img_dims, removed_rois).savefig(
             ao.G_roi_cluster_associations_path, bbox_inches='tight')
         print(f'{time.time() - st:.1f}s')
 
-    if ao.G_generate_dendrogram:
+    if ao.G_plot_dendrogram:
         print('Generating Dendrogram...', end='')
         st = time.time()
         visualize_dendrogram(clustering_steps, filtered_rois).savefig(ao.G_dendrogram_path)
@@ -186,7 +194,7 @@ if __name__ == '__main__':
     save_repr_signals(repr_signals, n_clusters)
     print(f'{time.time() - st:.1f}s')
 
-    if ao.H_generate_signals_per_cluster_plot:
+    if ao.H_plot_signals_per_cluster:
         print('Generating signals per cluster plot...', end='')
         plot_cluster_signals(repr_signals).savefig(ao.H_signal_per_cluster_plot_path)
         print(f'{time.time() - st:.1f}s')

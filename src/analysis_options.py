@@ -48,7 +48,7 @@ D_233_NoMG_A1 = {'dir': os.path.join(base_dir, 'data', '233_NoMG_A1'),
 # #########################################
 # 1: Path Names
 # Please specify the image name the directory where the image is stored
-dataset_info = test_stack
+dataset_info = D_276_AZD3965_Mathieu
 directory = dataset_info['dir']
 image_name = dataset_info['name']
 image_path = os.path.join(directory, image_name)
@@ -61,7 +61,7 @@ image_path = os.path.join(directory, image_name)
 # ROI.WIDTH = 4
 # ROI.HEIGHT = 4
 
-ROI.WIDTH = ROI.HEIGHT = 128
+ROI.WIDTH = ROI.HEIGHT = 16
 
 # The size of the rolling window in frames. Used to calculate the rolling mean for detrending the signal
 rolling_window_size: int = dataset_info['rolling_window_size']
@@ -84,28 +84,32 @@ max_clusters: int = dataset_info['n_cells']
 
 # 2: Plot and File Options
 # Specify which plots and files to generate. This influences the time to execute.
-intense_options: bool = True
+all_on: bool = False  # Turn all options on or off
+intense_options: bool = False
 
-B_save_imagej_rois = True  # *
-B_plot_rois_on_image = True
+B_save_imagej_rois: bool = all_on or False  # *
+B_plot_rois_on_image: bool = all_on or False
 
-C_create_all_ROI_signals_file = intense_options  # *
-C_generate_ROI_signals_grid_plot = intense_options  # *
-C_generate_ROI_signals_single_plot = intense_options  # *
+C_create_all_ROI_signals_file: bool = intense_options or all_on  # *
+C_generate_ROI_signals_grid_plot: bool = intense_options or all_on  # *
+C_generate_ROI_signals_single_plot: bool = intense_options or all_on  # *
 
-D_create_detrended_signals_file = intense_options  # *
-D_generate_detrended_signals_grid_plot = intense_options  # *
-D_generate_detrended_signals_single_plot = intense_options  # *
+D_create_detrended_signals_file: bool = intense_options or all_on  # *
+D_generate_detrended_signals_grid_plot: bool = intense_options or all_on  # *
+D_generate_detrended_signals_single_plot: bool = intense_options or all_on  # *
 
-E_create_filtered_ROI_signals_file = True
-E_generate_ROI_stds_plot = True
+E_create_filtered_ROI_signals_file: bool = all_on or False
+E_plot_stds_on_image: bool = all_on or True
+E_plot_ROI_stds: bool = all_on or False
 
-F_create_ROI_distances_file = True
+F_create_ROI_distances_file: bool = all_on or False
 
-G_generate_ROI_cluster_associations_plot = True
-G_generate_dendrogram = True
-H_generate_signals_per_cluster_plot = True
-H_generate_cluster_signals_video = intense_options  # *
+G_plot_clusters_on_image: bool = all_on or True
+G_plot_ROI_cluster_associations: bool = all_on or False
+G_plot_dendrogram: bool = all_on or False
+
+H_plot_signals_per_cluster: bool = all_on or False
+H_generate_cluster_signals_video: bool = intense_options  # *
 # * : high impact on performance. Set to False unless needed
 
 # ################################## FILE & PATH NAMES #################################################################
@@ -136,6 +140,7 @@ E_filtered_roi_signals_csv_path = os.path.join(results_dir, 'E_filtered_ROI_sign
 F_roi_distances_csv_path = os.path.join(results_dir, 'F_ROI_distance_matrix.csv')
 
 G_roi_cluster_associations_path = os.path.join(figures_dir, 'G_ROI-cluster_associations.png')
+G_clusters_on_image_path = os.path.join(figures_dir, 'G_clusters_on_image.png')
 G_dendrogram_path = os.path.join(figures_dir, 'G_dendrogram.png')
 
 H_signal_per_cluster_plot_path = os.path.join(figures_dir, 'H_signal_per_cluster.png')

@@ -4,7 +4,9 @@ from src.utils.coordinate_system import Dimensions
 
 from matplotlib import pyplot as plt
 import matplotlib.patches as patches
-import colorsys
+
+from src.utils.visualization.generate_distinct_colors import generate_distinct_colors
+from src.utils.visualization.roi_rectangle_and_text import roi_rectangle_and_text
 
 
 def visualize_roi_cluster_associations(roi_clusters_dict, n_clusters: int, img_dims: Dimensions,
@@ -22,26 +24,17 @@ def visualize_roi_cluster_associations(roi_clusters_dict, n_clusters: int, img_d
     # ### plot each ROI as a rectangle with the color of the cluster ###
     fig, ax = plt.subplots(figsize=(40, 30))
 
-    fontsize = ROI.WIDTH // 2
-
     # plot filtered ROIs (ROIs on a cell)
     for roi, cluster in roi_clusters_dict.items():
-        upper_left, _ = roi.coordinates()
-        x, y = upper_left.x, upper_left.y
-
-        rect = patches.Rectangle((x, y), ROI.WIDTH, ROI.HEIGHT,
-                                 linewidth=0.1, edgecolor='black', facecolor=colors[cluster])
-
-        ax.add_patch(rect)
-
-        ax.text(x + 0.5 * ROI.WIDTH, y + 0.5 * ROI.HEIGHT, str(cluster), ha='center', va='center', fontsize=fontsize)
+        roi_rectangle_and_text(roi, ax,
+                               {'linewidth': 0.1, 'edgecolor': 'black', 'facecolor': colors[cluster]},
+                               str(cluster), {'fontsize': ROI.WIDTH // 2})
 
     # plot empty ROIs
     for roi in removed_rois:
-        upper_left, _ = roi.coordinates()
-        rect = patches.Rectangle((upper_left.x, upper_left.y), ROI.WIDTH, ROI.HEIGHT,
-                                 linewidth=0.1, edgecolor='grey', facecolor='black')
-        ax.add_patch(rect)
+        roi_rectangle_and_text(roi, ax,
+                               {'linewidth': 0.1, 'edgecolor': 'grey', 'facecolor': 'black'}
+                               )
 
     # manipulate figure properties
     ax.set_aspect('equal')
@@ -61,22 +54,5 @@ def visualize_roi_cluster_associations(roi_clusters_dict, n_clusters: int, img_d
     for cluster in range(n_clusters):
         legend_images.append(patches.Patch(edgecolor='black', facecolor=colors[cluster]))
         legend_labels.append(f'cl. {cluster}')
-    # ax.legend(legend_images, legend_labels, bbox_to_anchor=(1, 1))
-
-    # if n_clusters <= 16:
-    # fig.tight_layout()
 
     return fig
-
-
-def generate_distinct_colors(n):
-    # Generate evenly spaced hues in the color spectrum
-    hues = [i / n for i in range(n)]
-
-    # Convert hues to RGB
-    colors = []
-    for hue in hues:
-        r, g, b = colorsys.hsv_to_rgb(hue, 0.8, 0.8)  # You can adjust saturation and value as needed
-        colors.append((r, g, b))
-
-    return colors

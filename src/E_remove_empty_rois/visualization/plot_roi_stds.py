@@ -1,10 +1,10 @@
 import numpy as np
-from matplotlib import patches, pyplot as plt
+from matplotlib import pyplot as plt
 from matplotlib.cm import ScalarMappable
 from matplotlib import colors
 
 from src.utils.coordinate_system import Dimensions
-from src.utils.ROI import ROI
+from src.utils.visualization.roi_rectangle_and_text import roi_rectangle_and_text
 
 
 def plot_roi_stds(signals_arr: np.array, rois: np.array, img_dims: Dimensions, std_threshold: float):
@@ -34,10 +34,7 @@ def plot_roi_stds(signals_arr: np.array, rois: np.array, img_dims: Dimensions, s
         facecolor = normalized_stds[roi.x_idx, roi.y_idx, :]
 
         # draw rectangle
-        upper_left, _ = roi.coordinates()
-        rect = patches.Rectangle((upper_left.x, upper_left.y), ROI.WIDTH, ROI.HEIGHT,
-                                 linewidth=0.1, edgecolor='black', facecolor=facecolor)
-        ax.add_patch(rect)
+        roi_rectangle_and_text(roi, ax, {'linewidth': 0.1, 'edgecolor': 'black', 'facecolor': facecolor})
 
     # manipulate figure properties
     ax.set_aspect('equal')
