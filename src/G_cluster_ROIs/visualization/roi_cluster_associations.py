@@ -20,18 +20,21 @@ def visualize_roi_cluster_associations(roi_clusters_dict, n_clusters: int, img_d
     colors = generate_distinct_colors(n_clusters)
 
     # ### plot each ROI as a rectangle with the color of the cluster ###
-    fig, ax = plt.subplots()
+    fig, ax = plt.subplots(figsize=(40, 30))
+
+    fontsize = ROI.WIDTH // 2
 
     # plot filtered ROIs (ROIs on a cell)
     for roi, cluster in roi_clusters_dict.items():
         upper_left, _ = roi.coordinates()
+        x, y = upper_left.x, upper_left.y
 
-        rect = patches.Rectangle((upper_left.x, upper_left.y), ROI.WIDTH, ROI.HEIGHT,
+        rect = patches.Rectangle((x, y), ROI.WIDTH, ROI.HEIGHT,
                                  linewidth=0.1, edgecolor='black', facecolor=colors[cluster])
 
         ax.add_patch(rect)
 
-        # ax.text(x + 0.5 * ROI.WIDTH, y + 0.5 * ROI.HEIGHT, str(cluster), ha='center', va='center')
+        ax.text(x + 0.5 * ROI.WIDTH, y + 0.5 * ROI.HEIGHT, str(cluster), ha='center', va='center', fontsize=fontsize)
 
     # plot empty ROIs
     for roi in removed_rois:
@@ -58,10 +61,10 @@ def visualize_roi_cluster_associations(roi_clusters_dict, n_clusters: int, img_d
     for cluster in range(n_clusters):
         legend_images.append(patches.Patch(edgecolor='black', facecolor=colors[cluster]))
         legend_labels.append(f'cl. {cluster}')
-    ax.legend(legend_images, legend_labels, bbox_to_anchor=(1, 1))
+    # ax.legend(legend_images, legend_labels, bbox_to_anchor=(1, 1))
 
-    if n_clusters <= 16:
-        fig.tight_layout()
+    # if n_clusters <= 16:
+    # fig.tight_layout()
 
     return fig
 
