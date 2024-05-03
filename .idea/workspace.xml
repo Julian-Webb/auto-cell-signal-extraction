@@ -5,17 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d810fa6a-a0f3-403b-be5f-b955561b9c66" name="Changes" comment="Tried to make it work with multiprocessing but it doesn't so far">
-      <change afterPath="$PROJECT_DIR$/notebooks/testing_matplotlib.ipynb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/B_generate_rois/visualization/rois_on_image.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/E_remove_empty_rois/visualization/stds_on_image.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/G_cluster_ROIs/visualization/clusters_on_image.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utils/visualization/generate_distinct_colors.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utils/visualization/roi_rectangle_and_text.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notebooks/testing_cosine_similarity.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/notebooks/testing_cosine_similarity.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/F_calculate_roi_distances/roi_distances.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/F_calculate_roi_distances/roi_distances.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/G_cluster_ROIs/visualize_dendrogram.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/G_cluster_ROIs/visualization/dendrogram.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/G_cluster_ROIs/visualize_roi_cluster_associations.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/G_cluster_ROIs/visualization/roi_cluster_associations.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/H_representative_signals/visualization/plot_repr_signals.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/H_representative_signals/visualization/plot_repr_signals.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/E_remove_empty_rois/visualization/plot_roi_stds.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/E_remove_empty_rois/visualization/plot_roi_stds.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/G_cluster_ROIs/visualization/roi_cluster_associations.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/G_cluster_ROIs/visualization/roi_cluster_associations.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/analysis_options.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/analysis_options.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/timing.txt" beforeDir="false" afterPath="$PROJECT_DIR$/timing.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,7 +31,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="library_for_cos" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -95,7 +93,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "library__for__cos",
+    "git-widget-placeholder": "main",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -504,7 +502,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/main.py</url>
-          <line>62</line>
+          <line>63</line>
           <option name="timeStamp" value="40" />
         </line-breakpoint>
       </breakpoints>
