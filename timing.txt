@@ -58,3 +58,34 @@ D_276_AZD3965_Mathieu
     using scipy.spatial.distance.cosine
              32 px ->  12.0 s
              16 px ->  89.0 s
+
+
+##### using scipy.spatial.distance.pdist #####
+high_res_test_stack
+    timing of distance matrix
+          8 px ->  3.2 s
+          4 px -> it fails to get the ROI signals
+
+    total time
+         16 px ->  2.2 s
+          8 px -> 16.6 s
+
+D_276_AZD3965_Mathieu
+    timing of distance matrix
+         32 px ->  4.2 s
+         16 px -> 28.3 s (~25s for distance vector)
+          8 px -> doesn't compute distance vector after >120s (scipy)
+          8 px -> 1.9 s (sklearn)
+
+    total time
+         32 px ->
+         16 px -> 31.8 s
+          8 px ->  s
+
+##### using sklearn pairwise_distances #####
+D_276_AZD3965_Mathieu
+    16 px ->  3.8 s (distance matrix)
+    16 px -> 28.5 s (total)
+     8 px -> 24.1 s (distance matrix)
+     8 px -> 97.6 s (total)
+

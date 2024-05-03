@@ -55,10 +55,12 @@ image_path = os.path.join(directory, image_name)
 
 # 0: Specify numerical analysis values
 # Specify the sizes of your ROIs in pixels. The value should be a whole number (no decimal point)
-# ROI.WIDTH = 2048 // 3
-# ROI.HEIGHT = 1536 // 2
+# ROI.WIDTH = 2048 // 4
+# ROI.HEIGHT = 1536 // 3
 
-# ROI.WIDTH = ROI.HEIGHT = 256
+# ROI.WIDTH = 4
+# ROI.HEIGHT = 4
+
 ROI.WIDTH = ROI.HEIGHT = 128
 
 # The size of the rolling window in frames. Used to calculate the rolling mean for detrending the signal
@@ -82,7 +84,10 @@ max_clusters: int = dataset_info['n_cells']
 
 # 2: Plot and File Options
 # Specify which plots and files to generate. This influences the time to execute.
-intense_options: bool = False
+intense_options: bool = True
+
+B_save_imagej_rois = True  # *
+B_plot_rois_on_image = True
 
 C_create_all_ROI_signals_file = intense_options  # *
 C_generate_ROI_signals_grid_plot = intense_options  # *
@@ -92,14 +97,14 @@ D_create_detrended_signals_file = intense_options  # *
 D_generate_detrended_signals_grid_plot = intense_options  # *
 D_generate_detrended_signals_single_plot = intense_options  # *
 
-E_create_filtered_ROI_signals_file = False
-E_generate_ROI_stds_plot = False
+E_create_filtered_ROI_signals_file = True
+E_generate_ROI_stds_plot = True
 
-F_create_ROI_distances_file = False
+F_create_ROI_distances_file = True
 
-G_generate_ROI_cluster_associations_plot = False
-G_generate_dendrogram = False
-H_generate_signals_per_cluster_plot = False
+G_generate_ROI_cluster_associations_plot = True
+G_generate_dendrogram = True
+H_generate_signals_per_cluster_plot = True
 H_generate_cluster_signals_video = intense_options  # *
 # * : high impact on performance. Set to False unless needed
 
@@ -115,6 +120,7 @@ if not os.path.exists(results_dir):
     os.mkdir(results_dir)
 
 B_rois_zip_folder_name = os.path.join(results_dir, 'B_ROIs')  # the .zip will be appended automatically
+B_plot_rois_on_image_path = os.path.join(figures_dir, 'B_ROIs_on_image.png')
 
 C_roi_signals_csv_path = os.path.join(results_dir, 'C_raw_ROI_signals.csv')
 C_roi_signals_grid_plot_path = os.path.join(figures_dir, 'C_raw_signals_grid_plot.png')

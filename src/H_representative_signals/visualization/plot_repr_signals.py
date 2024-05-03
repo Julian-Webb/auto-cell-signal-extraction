@@ -2,19 +2,19 @@ import numpy as np
 from matplotlib import pyplot as plt
 
 
-def plot_repr_signals(repr_signals: np.array):
-    """Takes in an array """
+def plot_cluster_signals(cluster_signals: np.array):
+    """Plots the representative signals of each cluster."""
 
-    n_clusters = repr_signals.shape[0]
-    # fig = plt.figure(figsize=(15, 15))
+    n_clusters = cluster_signals.shape[0]
     fig = plt.figure()
 
     for i in range(n_clusters):
-        plt.plot(repr_signals[i, :], label=f'cluster {i}')
+        plt.plot(cluster_signals[i, :], label=f'cluster {i}')
 
     plt.legend()
     plt.xlabel('Frame')
     plt.ylabel('Signal Value')
 
-    plt.tight_layout()
+    if n_clusters <= 15:
+        plt.tight_layout()
     return fig
