@@ -4,16 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d810fa6a-a0f3-403b-be5f-b955561b9c66" name="Changes" comment="Tried to make it work with multiprocessing but it doesn't so far">
-      <change afterPath="$PROJECT_DIR$/src/E_remove_empty_rois/visualization/stds_on_image.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/G_cluster_ROIs/visualization/clusters_on_image.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/visualization/generate_distinct_colors.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/visualization/roi_rectangle_and_text.py" afterDir="false" />
+    <list default="true" id="d810fa6a-a0f3-403b-be5f-b955561b9c66" name="Changes" comment="Delete roi_names.py. The functionality is contained in the ROI class">
+      <change afterPath="$PROJECT_DIR$/src/utils/visualization/make_roi_axis_ticks.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/E_remove_empty_rois/visualization/plot_roi_stds.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/E_remove_empty_rois/visualization/plot_roi_stds.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/B_generate_rois/visualization/rois_on_image.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/B_generate_rois/visualization/rois_on_image.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/E_remove_empty_rois/visualization/plot_roi_stds.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/E_remove_empty_rois/visualization/roi_stds_on_image.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/E_remove_empty_rois/visualization/stds_on_image.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/G_cluster_ROIs/visualization/clusters_on_image.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/G_cluster_ROIs/visualization/clusters_on_image.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/G_cluster_ROIs/visualization/roi_cluster_associations.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/G_cluster_ROIs/visualization/roi_cluster_associations.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/analysis_options.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/analysis_options.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/ROI.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/ROI.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/roi_names.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -449,7 +451,23 @@
       <option name="project" value="LOCAL" />
       <updated>1714405066472</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="Created roi_rectangle_and_text.py and generate_distinct_colors.py as separate functions.">
+      <option name="closed" value="true" />
+      <created>1714740578384</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1714740578384</updated>
+    </task>
+    <task id="LOCAL-00030" summary="Delete roi_names.py. The functionality is contained in the ROI class">
+      <option name="closed" value="true" />
+      <created>1714740705610</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1714740705610</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -490,7 +508,9 @@
     <MESSAGE value="Created files used to make the presentation" />
     <MESSAGE value="Renamed &quot;smooth&quot; to &quot;detrended&quot;" />
     <MESSAGE value="Tried to make it work with multiprocessing but it doesn't so far" />
-    <option name="LAST_COMMIT_MESSAGE" value="Tried to make it work with multiprocessing but it doesn't so far" />
+    <MESSAGE value="Created roi_rectangle_and_text.py and generate_distinct_colors.py as separate functions." />
+    <MESSAGE value="Delete roi_names.py. The functionality is contained in the ROI class" />
+    <option name="LAST_COMMIT_MESSAGE" value="Delete roi_names.py. The functionality is contained in the ROI class" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -499,11 +519,6 @@
           <url>notebook:///Users/julian/development/PycharmProjects/glioblastoma/notebooks/testing_visualize_clusters.ipynb</url>
           <line>88</line>
           <option name="timeStamp" value="12" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/main.py</url>
-          <line>63</line>
-          <option name="timeStamp" value="40" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
@@ -522,7 +537,7 @@
     </watches-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/glioblastoma$glioblastoma.coverage" NAME="glioblastoma Coverage Results" MODIFIED="1714663559482" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/glioblastoma$glioblastoma.coverage" NAME="glioblastoma Coverage Results" MODIFIED="1714747964044" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/glioblastoma$main.coverage" NAME="main Coverage Results" MODIFIED="1710846646008" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
     <SUITE FILE_PATH="coverage/glioblastoma$generate_signals.coverage" NAME="generate_signals Coverage Results" MODIFIED="1710320134399" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
     <SUITE FILE_PATH="coverage/glioblastoma$macros_testing.coverage" NAME="macros_testing Coverage Results" MODIFIED="1710256858479" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/other/pyimagej_macros_testing" />

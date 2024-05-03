@@ -6,7 +6,7 @@ from src.B_generate_rois.visualization.rois_on_image import rois_on_image
 from src.C_get_ROI_signals.get_roi_signals import get_roi_signals
 from src.D_detrend_signals.detrend_signals import detrend_signals
 from src.E_remove_empty_rois.remove_empty_rois import remove_empty_rois
-from src.E_remove_empty_rois.visualization.plot_roi_stds import plot_roi_stds
+from src.E_remove_empty_rois.visualization.roi_stds_on_image import plot_roi_stds_on_image
 from src.G_cluster_ROIs.visualization.clusters_on_image import clusters_on_image
 from src.G_cluster_ROIs.visualization.dendrogram import visualize_dendrogram
 from src.H_representative_signals.save_repr_signals import save_repr_signals
@@ -26,15 +26,11 @@ from src.utils.SignalSummaryStatistics import SignalSummaryStatistics
 if __name__ == '__main__':
     initial_time = time.time()
 
-    # ##### Step A: Load the image data ################################################################################
-    #
+    # %% Step A: Load the image data
     print('### A: Loading image data...')
     n_frames_raw, img_dims, pixel_dtype = load_image_data(ao.image_path)
 
-    #
-    #
-    # ##### Step B: Compute the regions of interest (ROIs) #############################################################
-    #
+    # %% Step B: Compute the regions of interest (ROIs)
     print('### B: Generating ROIs...', end='')
     st = time.time()  # start time
     all_rois = generate_rois_from_size(img_dims)
@@ -57,10 +53,7 @@ if __name__ == '__main__':
         rois_on_image(ao.image_path, img_dims).savefig(ao.B_plot_rois_on_image_path, bbox_inches='tight')
         print(f'{time.time() - st:.1f}s')
 
-    #
-    #
-    # ##### Step C: Get the signals based on the ROIs ##################################################################
-    #
+    # %% Step C: Get the signals based on the ROIs
     print('### C: Getting ROI signals...', end='')
     st = time.time()
     signals_arr, all_signals_df = get_roi_signals(ao.image_path, n_frames_raw, all_rois, SignalSummaryStatistics.MAX)
@@ -84,10 +77,7 @@ if __name__ == '__main__':
         single_plot(all_signals_df).savefig(ao.C_roi_signals_single_plot_path)
         print(f'{time.time() - st:.1f}s')
 
-    #
-    #
-    # ##### Step D: Detrend the ROI signals ############################################################################
-    #
+    # %% Step D: Detrend the ROI signals
     print('### D: Detrending ROI signals...', end='')
     st = time.time()
     detrended_signals_df, n_frames_detrended = detrend_signals(all_signals_df, ao.rolling_window_size)
@@ -111,21 +101,20 @@ if __name__ == '__main__':
         print('Generating detrended signals single plot...', end='')
         single_plot(detrended_signals_df).savefig(ao.D_detrended_signals_single_plot_path)
         print(f'{time.time() - st:.1f}s')
-    #
-    #
-    # ##### Step E: Remove empty ROIs ##################################################################################
-    #
-    # We want to remove ROIs that don't contain a cell
-    if ao.E_plot_ROI_stds:
-        print('### E: Plotting ROI standard deviations...', end='')
-        st = time.time()
-        plot_roi_stds(signals_arr, all_rois, img_dims, ao.std_threshold).savefig(ao.E_roi_stds_plot_path)
-        print(f'{time.time() - st:.1f}s')
 
+    # %% Step E: Remove empty ROIs
+    # We want to remove ROIs that don't contain a cell
     print('### E: Removing empty ROIs...', end='')
     st = time.time()
     filtered_signals_df, filtered_rois, removed_rois = remove_empty_rois(detrended_signals_df.copy(), ao.std_threshold)
     print(f'{time.time() - st:.1f}s')
+
+    if ao.E_plot_ROI_stds_on_image:
+        print('### E: Plotting ROI standard deviations...', end='')
+        st = time.time()
+        plot_roi_stds_on_image(detrended_signals_df, img_dims, ao.std_threshold, ao.image_path,
+                               removed_rois=removed_rois).savefig(ao.E_roi_stds_plot_path, bbox_inches='tight')
+        print(f'{time.time() - st:.1f}s')
 
     print(f'\n{removed_rois.size} empty ROIs have been detected and filtered out. \
     Remaining ROIs: {ROI.N_HORIZONTAL * ROI.N_VERTICAL - removed_rois.size}\n')
@@ -136,10 +125,7 @@ if __name__ == '__main__':
         filtered_signals_df.to_csv(ao.E_filtered_roi_signals_csv_path)
         print(f'{time.time() - st:.1f}s')
 
-    #
-    #
-    # ##### Step F: Compute the distance measure between the ROIs ######################################################
-    #
+    # %% Step F: Compute the distance measure between the ROIs
     # We calculate the distance for each pair of ROIs
     print('### F: Computing ROI distance matrix...', end='')
     st = time.time()
@@ -152,10 +138,7 @@ if __name__ == '__main__':
         roi_distances.to_csv(ao.F_roi_distances_csv_path)
         print(f'{time.time() - st:.1f}s')
 
-    #
-    #
-    # ##### Step G: Create clusters based on similarity ################################################################
-    #
+    # %% Step G: Create clusters based on similarity
     print('### G: Creating clusters...', end='')
     st = time.time()
 
@@ -167,8 +150,8 @@ if __name__ == '__main__':
     if ao.G_plot_clusters_on_image:
         print('Plotting clusters on image...', end='')
         st = time.time()
-        clusters_on_image(roi_clusters_dict, n_clusters, ao.image_path).savefig(ao.G_clusters_on_image_path,
-                                                                                bbox_inches='tight')
+        clusters_on_image(roi_clusters_dict, n_clusters, ao.image_path, img_dims).savefig(ao.G_clusters_on_image_path,
+                                                                                          bbox_inches='tight')
         print(f'{time.time() - st:.1f}s')
 
     if ao.G_plot_ROI_cluster_associations:
@@ -184,10 +167,7 @@ if __name__ == '__main__':
         visualize_dendrogram(clustering_steps, filtered_rois).savefig(ao.G_dendrogram_path)
         print(f'{time.time() - st:.1f}s')
 
-    #
-    #
-    # ##### Step H: Create/Select a representative signal for each cluster/cell and save the result ####################
-    #
+    # %% Step H: Create/Select a representative signal for each cluster/cell and save the result
     print("### H: Computing representative signals...", end='')
     st = time.time()
     repr_signals = compute_representative_signals(clusters, filtered_signals_df, n_clusters, n_frames_detrended)
@@ -207,5 +187,5 @@ if __name__ == '__main__':
                               img_dims, pixel_dtype)
         print(f'{time.time() - st:.1f}s')
 
-    ####################################################################################################################
+    # %%
     print(f"Total elapsed time: {(time.time() - initial_time):.1f}s")

@@ -6,6 +6,7 @@ from matplotlib import pyplot as plt
 import matplotlib.patches as patches
 
 from src.utils.visualization.generate_distinct_colors import generate_distinct_colors
+from src.utils.visualization.make_roi_axis_ticks import make_roi_axis_ticks
 from src.utils.visualization.roi_rectangle_and_text import roi_rectangle_and_text
 
 
@@ -24,6 +25,8 @@ def visualize_roi_cluster_associations(roi_clusters_dict, n_clusters: int, img_d
     # ### plot each ROI as a rectangle with the color of the cluster ###
     fig, ax = plt.subplots(figsize=(40, 30))
 
+    make_roi_axis_ticks('both', ax, img_dims)
+
     # plot filtered ROIs (ROIs on a cell)
     for roi, cluster in roi_clusters_dict.items():
         roi_rectangle_and_text(roi, ax,
@@ -38,14 +41,9 @@ def visualize_roi_cluster_associations(roi_clusters_dict, n_clusters: int, img_d
 
     # manipulate figure properties
     ax.set_aspect('equal')
-
     ax.set_xlim(0, img_dims.width)
     ax.set_ylim(0, img_dims.height)
-
     plt.gca().invert_yaxis()
-
-    ax.set_xlabel('horizontal pixels')
-    ax.set_ylabel('vertical pixels')
 
     # create legend
     legend_images = [patches.Patch(edgecolor='grey', facecolor='black')]

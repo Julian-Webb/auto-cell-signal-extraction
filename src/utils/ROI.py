@@ -58,6 +58,12 @@ class ROI:
 
         return Point(x_ul, y_ul), Point(x_lr, y_lr)
 
+    def center(self) -> Point:
+        """Returns the center of the ROI as a Point object."""
+        x = self.x_idx * ROI.WIDTH + ROI.WIDTH // 2
+        y = self.y_idx * ROI.HEIGHT + ROI.HEIGHT // 2
+        return Point(x, y)
+
     # noinspection PyPep8Naming
     def as_ImagejRoi(self):
         p0, p1 = self.coordinates()
