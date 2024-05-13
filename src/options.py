@@ -42,7 +42,7 @@ D_233_NoMG_A1 = {'dir': os.path.join(base_dir, 'data', '233_NoMG_A1'),
                  'std_threshold': 14,
                  'rolling_window_size': 80,
                  'n_cells': 95,
-                 'max_cell_size_pixels': 450,
+                 'max_cell_size_pixels': 100,
                  }
 
 # #########################################
@@ -61,7 +61,7 @@ image_path = os.path.join(directory, image_name)
 # ROI.WIDTH = 4
 # ROI.HEIGHT = 4
 
-ROI.WIDTH = ROI.HEIGHT = 8
+ROI.WIDTH = ROI.HEIGHT = 16
 
 # The size of the rolling window in frames. Used to calculate the rolling mean for detrending the signal
 rolling_window_size: int = dataset_info['rolling_window_size']
