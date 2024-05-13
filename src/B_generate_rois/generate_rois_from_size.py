@@ -1,12 +1,12 @@
 import warnings
 from typing import Any
-
 import numpy as np
-
 from src.utils.coordinate_system import Dimensions
 from src.utils.ROI import ROI
+from src.utils.decorators import message_and_time
 
 
+@message_and_time('')
 def generate_rois_from_size(img_dims: Dimensions) -> np.ndarray[Any, np.dtype[ROI]]:
     """Generates the ROIs for an image with ROI width and height as input"""
 
@@ -36,4 +36,3 @@ def generate_rois_from_size(img_dims: Dimensions) -> np.ndarray[Any, np.dtype[RO
             rois[x, y] = ROI(x, y)
 
     return rois
-

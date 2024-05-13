@@ -8,8 +8,10 @@ import matplotlib.patches as patches
 from src.utils.visualization.generate_distinct_colors import generate_distinct_colors
 from src.utils.visualization.make_roi_axis_ticks import make_roi_axis_ticks
 from src.utils.visualization.roi_rectangle_and_text import roi_rectangle_and_text
+from src.utils.decorators import message_and_time
 
 
+@message_and_time('')
 def visualize_roi_cluster_associations(roi_clusters_dict, n_clusters: int, img_dims: Dimensions,
                                        removed_rois: np.array) -> plt.figure:
     """Generates a figure that shows which cluster each ROI belongs to.

@@ -3,8 +3,10 @@ import shutil
 import numpy as np
 import src.options as opt
 from src.utils.ROI import ROI
+from src.utils.decorators import message_and_time
 
 
+@message_and_time('')
 def save_imagej_rois(rois: np.array) -> None:
     """Save the generated ROIs as a zip with .roi files which ImageJ/Fiji can use."""
     # create a directory for ROIs

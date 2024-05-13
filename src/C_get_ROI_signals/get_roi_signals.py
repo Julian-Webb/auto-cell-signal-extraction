@@ -5,7 +5,10 @@ import tifffile as tf
 from src.utils.ROI import ROI
 from src.utils.SignalSummaryStatistics import SignalSummaryStatistics
 
+from src.utils.decorators import message_and_time
 
+
+@message_and_time('')
 def get_roi_signals(image_path: str, n_frames: int, rois: np.array,
                     summary_statistic: SignalSummaryStatistics) -> np.array:
     """Takes a multi-image tiff and extracts the signals of each ROI. For each frame, it takes the mean of the values

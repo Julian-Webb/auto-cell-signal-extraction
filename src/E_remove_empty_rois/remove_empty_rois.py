@@ -1,7 +1,9 @@
 import numpy as np
 import pandas as pd
+from src.utils.decorators import message_and_time
 
 
+@message_and_time('')
 def remove_empty_rois(signals_df: pd.DataFrame, std_threshold: float):
     """Takes a dataframe with the signals of each ROI and filters out the ROIs that don't contain a cell by checking the
      standard variation of that cell."""

@@ -48,7 +48,7 @@ D_233_NoMG_A1 = {'dir': os.path.join(base_dir, 'data', '233_NoMG_A1'),
 # #########################################
 # 1: Path Names
 # Please specify the image name the directory where the image is stored
-dataset_info = D_233_NoMG_A1
+dataset_info = test_stack
 directory = dataset_info['dir']
 image_name = dataset_info['name']
 image_path = os.path.join(directory, image_name)
@@ -61,7 +61,7 @@ image_path = os.path.join(directory, image_name)
 # ROI.WIDTH = 16
 # ROI.HEIGHT = 8
 
-ROI.WIDTH = ROI.HEIGHT = 16
+ROI.WIDTH = ROI.HEIGHT = 512
 
 # The size of the rolling window in frames. Used to calculate the rolling mean for detrending the signal
 rolling_window_size: int = dataset_info['rolling_window_size']
@@ -84,7 +84,7 @@ max_clusters: int = dataset_info['n_cells']
 
 # 2: Plot and File Options
 # Specify which plots and files to generate. This influences the time to execute.
-all_on: bool = False  # Turn all options on or off
+all_on: bool = True  # Turn all options on or off
 intense_options: bool = False
 
 B_save_imagej_rois: bool = all_on or False  # *
@@ -108,7 +108,7 @@ G_plot_dendrogram: bool = all_on or False
 
 H_plot_clusters_on_image: bool = all_on or True
 H_plot_signals_per_cluster: bool = all_on or False
-H_generate_cluster_signals_video: bool = intense_options  # *
+H_generate_cluster_signals_video: bool = all_on or intense_options  # *
 # * : high impact on performance. Set to False unless needed
 
 # ################################## FILE & PATH NAMES #################################################################

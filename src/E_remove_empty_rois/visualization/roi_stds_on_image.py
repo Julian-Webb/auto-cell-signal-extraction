@@ -9,8 +9,10 @@ from src.utils.ROI import ROI
 from src.utils.coordinate_system import Dimensions
 from src.utils.visualization.make_roi_axis_ticks import make_roi_axis_ticks
 from src.utils.visualization.roi_rectangle_and_text import roi_rectangle_and_text
+from src.utils.decorators import message_and_time
 
 
+@message_and_time('')
 def plot_roi_stds_on_image(signals_df: pd.DataFrame, img_dims: Dimensions,
                            std_threshold: float, image_path: str, frame_idx: int = 0,
                            filtered_rois: np.array = None,

@@ -7,8 +7,10 @@ from src.utils.coordinate_system import Dimensions
 from src.utils.visualization.generate_distinct_colors import generate_distinct_colors
 from src.utils.visualization.make_roi_axis_ticks import make_roi_axis_ticks
 from src.utils.visualization.roi_rectangle_and_text import roi_rectangle_and_text
+from src.utils.decorators import message_and_time
 
 
+@message_and_time('')
 def clusters_on_image(roi_clusters_dict: dict, representative_rois: np.array, n_clusters: int, image_path: str,
                       image_dims: Dimensions, colormap='grey', frame_idx: int = 0):
     # --- get the correct frame of the image ---

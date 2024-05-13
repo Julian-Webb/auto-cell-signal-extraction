@@ -1,8 +1,10 @@
 import tifffile as tf
 from src.A_load_image_data.get_n_frames import get_n_frames
 from src.utils.coordinate_system import Dimensions
+from src.utils.decorators import message_and_time
 
 
+@message_and_time('')
 def load_image_data(image_path):
     with tf.TiffFile(image_path) as image:
         n_frames = get_n_frames(image)
