@@ -1,7 +1,10 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 
+from src.utils.decorators import message_and_time
 
+
+@message_and_time('')
 def single_plot(signals_df: pd.DataFrame):
 
     # plotting

@@ -3,7 +3,10 @@ from src.utils.coordinate_system import Dimensions
 import numpy as np
 import tifffile as tf
 
+from src.utils.decorators import message_and_time
 
+
+@message_and_time('')
 def cluster_signals_video(video_path: str, roi_clusters_dict: dict, representative_signals: np.array,
                           n_frames: int, img_dims: Dimensions, pixel_dtype: np.dtype):
     """Creates a multi-image tiff which shows the signal for each cluster and the cluster's location."""

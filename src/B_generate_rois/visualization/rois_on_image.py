@@ -1,11 +1,12 @@
 from matplotlib import pyplot as plt
 from tifffile import TiffFile
-
 from src.utils.ROI import ROI
 from src.utils.coordinate_system import Dimensions
 from src.utils.visualization.make_roi_axis_ticks import make_roi_axis_ticks
+from src.utils.decorators import message_and_time
 
 
+@message_and_time('')
 def rois_on_image(image_path: str, image_dims: Dimensions, colormap='plasma', grid_line_color='yellow',
                   frame_idx=0) -> plt.figure:
     # --- get the correct frame of the image ---

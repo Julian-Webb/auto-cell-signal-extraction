@@ -22,5 +22,5 @@ def get_n_frames(image: tf.TiffFile):
     if n_frames == 1:
         raise ValueError("Only one frame has been found. There should be multiple frames")
 
-    print(f'{n_frames} frames have been detected.')
+    print(f'\n{n_frames} frames have been detected.')
     return n_frames

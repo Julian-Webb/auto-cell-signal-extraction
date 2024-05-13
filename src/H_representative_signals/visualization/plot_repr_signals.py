@@ -1,7 +1,10 @@
 import numpy as np
 from matplotlib import pyplot as plt
 
+from src.utils.decorators import message_and_time
 
+
+@message_and_time('')
 def plot_cluster_signals(cluster_signals: np.array):
     """Plots the representative signals of each cluster."""
 

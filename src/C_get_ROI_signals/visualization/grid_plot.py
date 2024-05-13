@@ -3,7 +3,10 @@ from matplotlib import pyplot as plt
 
 from src.utils.ROI import ROI
 
+from src.utils.decorators import message_and_time
 
+
+@message_and_time('')
 def grid_plot(signals_df: pd.DataFrame) -> plt.figure:
     fig, axs = plt.subplots(nrows=ROI.N_VERTICAL, ncols=ROI.N_HORIZONTAL, sharex=True, sharey=True)
 

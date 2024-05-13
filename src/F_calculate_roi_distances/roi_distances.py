@@ -4,12 +4,14 @@ from sklearn.metrics.pairwise import cosine_similarity
 import numpy as np
 import pandas as pd
 from src.utils.ROI import ROI
+from src.utils.decorators import message_and_time
 
 # The maximum distance that two signals can have. For cosine distance, it's 2.
 _MAX_DISTANCE: float = 2.0
 
 
-def roi_distances(signals_df: pd.DataFrame, comp_range_px: int):
+@message_and_time('')
+def calculate_roi_distances(signals_df: pd.DataFrame, comp_range_px: int):
     """Takes in the signals of each ROI and calculates a distance measure between each pair or ROIs.
     It takes the spatial distance between the ROIs and the signal similarity into account.
 

@@ -5,7 +5,10 @@ import numpy as np
 from scipy.spatial.distance import squareform
 from scipy.cluster.hierarchy import linkage, fcluster
 
+from src.utils.decorators import message_and_time
 
+
+@message_and_time('')
 def cluster_rois(roi_distances: pd.DataFrame, rois: np.array, max_clusters: int):
     """This function takes in a dataframe where each value is the similarity of a pair of ROIs.
     It then clusters the ROIs that are similar enough, based on the specified threshold.

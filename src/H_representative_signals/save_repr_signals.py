@@ -2,7 +2,10 @@ import numpy as np
 import pandas as pd
 import src.options as opt
 
+from src.utils.decorators import message_and_time
 
+
+@message_and_time('')
 def save_repr_signals(repr_signals: np.array, repr_rois, n_clusters: int) -> None:
     labels = [f'Cluster {i}' for i in range(n_clusters)]
 

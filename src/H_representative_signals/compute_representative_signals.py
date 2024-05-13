@@ -3,7 +3,10 @@ import pandas as pd
 
 from src.utils.ROI import ROI
 
+from src.utils.decorators import message_and_time
 
+
+@message_and_time('')
 def compute_representative_signals(clusters: dict, signals_df: pd.DataFrame, n_clusters: int,
                                    n_frames: int) -> (np.array, np.array):
     """

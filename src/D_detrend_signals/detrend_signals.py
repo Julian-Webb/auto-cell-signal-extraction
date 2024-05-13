@@ -1,6 +1,9 @@
 import pandas as pd
 
+from src.utils.decorators import message_and_time
 
+
+@message_and_time('')
 def detrend_signals(signals_df: pd.DataFrame, window_size: int) -> (pd.DataFrame, int):
     """Detrends the raw signals by subtracting a rolling mean from the original signals.
 
