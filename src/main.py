@@ -148,13 +148,6 @@ if __name__ == '__main__':
 
     print(f'{time.time() - st:.1f}s')
 
-    if opt.G_plot_clusters_on_image:
-        print('Plotting clusters on image...', end='')
-        st = time.time()
-        clusters_on_image(roi_clusters_dict, n_clusters, opt.image_path, img_dims).savefig(opt.G_clusters_on_image_path,
-                                                                                           bbox_inches='tight')
-        print(f'{time.time() - st:.1f}s')
-
     if opt.G_plot_ROI_cluster_associations:
         print('Generating ROI-cluster associations plot...', end='')
         st = time.time()
@@ -171,9 +164,17 @@ if __name__ == '__main__':
     # %% Step H: Create/Select a representative signal for each cluster/cell and save the result
     print("### H: Computing representative signals...", end='')
     st = time.time()
-    repr_signals = compute_representative_signals(clusters, filtered_signals_df, n_clusters, n_frames_detrended)
-    save_repr_signals(repr_signals, n_clusters)
+    repr_signals, repr_rois = compute_representative_signals(clusters, filtered_signals_df, n_clusters,
+                                                             n_frames_detrended)
+    save_repr_signals(repr_signals, repr_rois, n_clusters)
     print(f'{time.time() - st:.1f}s')
+
+    if opt.H_plot_clusters_on_image:
+        print('Plotting clusters on image...', end='')
+        st = time.time()
+        (clusters_on_image(roi_clusters_dict, repr_rois, n_clusters, opt.image_path, img_dims)
+         .savefig(opt.H_clusters_on_image_path, bbox_inches='tight'))
+        print(f'{time.time() - st:.1f}s')
 
     if opt.H_plot_signals_per_cluster:
         print('Generating signals per cluster plot...', end='')

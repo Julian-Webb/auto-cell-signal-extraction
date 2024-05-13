@@ -58,8 +58,8 @@ image_path = os.path.join(directory, image_name)
 # ROI.WIDTH = 2048 // 4
 # ROI.HEIGHT = 1536 // 3
 
-# ROI.WIDTH = 4
-# ROI.HEIGHT = 4
+# ROI.WIDTH = 16
+# ROI.HEIGHT = 8
 
 ROI.WIDTH = ROI.HEIGHT = 16
 
@@ -88,7 +88,7 @@ all_on: bool = False  # Turn all options on or off
 intense_options: bool = False
 
 B_save_imagej_rois: bool = all_on or False  # *
-B_plot_rois_on_image: bool = all_on or True
+B_plot_rois_on_image: bool = all_on or False
 
 C_create_all_ROI_signals_file: bool = intense_options or all_on  # *
 C_generate_ROI_signals_grid_plot: bool = intense_options or all_on  # *
@@ -99,14 +99,14 @@ D_generate_detrended_signals_grid_plot: bool = intense_options or all_on  # *
 D_generate_detrended_signals_single_plot: bool = intense_options or all_on  # *
 
 E_create_filtered_ROI_signals_file: bool = all_on or False
-E_plot_ROI_stds_on_image: bool = all_on or True
+E_plot_ROI_stds_on_image: bool = all_on or False
 
 F_create_ROI_distances_file: bool = all_on or False
 
-G_plot_clusters_on_image: bool = all_on or True
-G_plot_ROI_cluster_associations: bool = all_on or True
+G_plot_ROI_cluster_associations: bool = all_on or False
 G_plot_dendrogram: bool = all_on or False
 
+H_plot_clusters_on_image: bool = all_on or True
 H_plot_signals_per_cluster: bool = all_on or False
 H_generate_cluster_signals_video: bool = intense_options  # *
 # * : high impact on performance. Set to False unless needed
@@ -139,9 +139,9 @@ E_filtered_roi_signals_csv_path = os.path.join(results_dir, 'E_filtered_ROI_sign
 F_roi_distances_csv_path = os.path.join(results_dir, 'F_ROI_distance_matrix.csv')
 
 G_roi_cluster_associations_path = os.path.join(figures_dir, 'G_ROI-cluster_associations.png')
-G_clusters_on_image_path = os.path.join(figures_dir, 'G_clusters_on_image.png')
 G_dendrogram_path = os.path.join(figures_dir, 'G_dendrogram.png')
 
+H_clusters_on_image_path = os.path.join(figures_dir, 'H_clusters_on_image.png')
 H_signal_per_cluster_plot_path = os.path.join(figures_dir, 'H_signal_per_cluster.png')
 H_signal_per_cluster_csv_path = os.path.join(results_dir, 'H_signal_per_cluster.csv')
 H_cluster_signals_video_path = os.path.join(figures_dir, 'H_cluster_signals_video.tif')
