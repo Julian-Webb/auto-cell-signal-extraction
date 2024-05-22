@@ -50,8 +50,8 @@ def compute_comparisons(filtered_rois: np.array, comp_range_px: int):
     """
     # Convert the pixel distance into a distance of ROI indexes
     # We do this by dividing the range in pixels by the ROI width/height and then rounding it up
-    x_range = math.ceil(comp_range_px / ROI.WIDTH)
-    y_range = math.ceil(comp_range_px / ROI.HEIGHT)
+    x_range = math.ceil(comp_range_px / ROI.WIDTH_PIXELS)
+    y_range = math.ceil(comp_range_px / ROI.HEIGHT_PIXELS)
 
     # A dict with an entry for each of the filtered ROIs and which other ROIs it should be compared with
     comparisons = {}

@@ -66,11 +66,11 @@ def plot_roi_stds_on_image(signals_df: pd.DataFrame, img_dims: Dimensions,
         roi_rectangle_and_text(roi, ax, {'linewidth': 0.1, 'edgecolor': 'black', 'facecolor': facecolor, 'alpha': 0.5})
 
     # --- Draw dots over filtered ROIs that were kept ---
-    marker_size = ROI.WIDTH * ROI.HEIGHT // 50
+    marker_size = ROI.WIDTH_PIXELS * ROI.HEIGHT_PIXELS // 50
     if filtered_rois is not None:
         filtered_coords = np.zeros(shape=(2, filtered_rois.size))  # coordinates of the filtered ROIs
         for i, roi in enumerate(filtered_rois):
-            center = roi.center()
+            center = roi.center_pixels()
             filtered_coords[:, i] = center.x, center.y
         # For some reason, this makes white space at the right and bottom axis
         ax.scatter(filtered_coords[0], filtered_coords[1], marker='o', color='green', s=marker_size, alpha=0.5)
@@ -79,7 +79,7 @@ def plot_roi_stds_on_image(signals_df: pd.DataFrame, img_dims: Dimensions,
     if removed_rois is not None:
         removed_coords = np.zeros(shape=(2, removed_rois.size))  # coordinates of the removed ROIs
         for i, roi in enumerate(removed_rois):
-            center = roi.center()
+            center = roi.center_pixels()
             removed_coords[:, i] = center.x, center.y
         ax.scatter(removed_coords[0], removed_coords[1], marker='o', color='black', s=marker_size, alpha=0.5)
 

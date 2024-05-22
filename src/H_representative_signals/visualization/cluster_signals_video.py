@@ -38,7 +38,7 @@ def compute_video_array(roi_clusters_dict: dict, representative_signals: np.arra
         signal_values = representative_signals[cluster, :]
 
         # determine ROI boundaries (the upper boundary is exclusive)
-        ul, br = roi.coordinates()  # get upper left and bottom right points
+        ul, br = roi.corners_pixels()  # get upper left and bottom right points
 
         x_left = ul.x
         y_top = ul.y

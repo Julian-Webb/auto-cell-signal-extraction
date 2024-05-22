@@ -4,8 +4,31 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d810fa6a-a0f3-403b-be5f-b955561b9c66" name="Changes" comment="Made clusters_on_image.py highlight the ROIs whose signals represent a cluster">
+    <list default="true" id="d810fa6a-a0f3-403b-be5f-b955561b9c66" name="Changes" comment="Created the decorator message_and_time to time functions.">
+      <change afterPath="$PROJECT_DIR$/notebooks/KMeans/image_size_adjustment_1D.ipynb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/notebooks/KMeans/k_means.ipynb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/notebooks/KMeans/k_means_weighted.ipynb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/notebooks/KMeans/n_frames_adjustment_1D.ipynb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/notebooks/KMeans/signal_amplitude_adjustment_1D.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notebooks/detrend_signal.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/notebooks/detrend_signal.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notebooks/testing.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/notebooks/testing.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notebooks/testing_distances.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/notebooks/testing_distances.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/B_generate_rois/generate_rois_from_size.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/B_generate_rois/generate_rois_from_size.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/B_generate_rois/visualization/rois_on_image.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/B_generate_rois/visualization/rois_on_image.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/C_get_ROI_signals/get_roi_signals.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/C_get_ROI_signals/get_roi_signals.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/E_remove_empty_rois/visualization/roi_stds_on_image.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/E_remove_empty_rois/visualization/roi_stds_on_image.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/F_calculate_roi_distances/roi_distances.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/F_calculate_roi_distances/roi_distances.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/G_cluster_ROIs/cluster_rois.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/G_cluster_ROIs/cluster_rois.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/G_cluster_ROIs/visualization/clusters_on_image.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/G_cluster_ROIs/visualization/clusters_on_image.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/G_cluster_ROIs/visualization/roi_cluster_associations.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/G_cluster_ROIs/visualization/roi_cluster_associations.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/H_representative_signals/visualization/cluster_signals_video.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/H_representative_signals/visualization/cluster_signals_video.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/options.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/options.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/ROI.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/ROI.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/coordinate_system.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/coordinate_system.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/visualization/make_roi_axis_ticks.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/visualization/make_roi_axis_ticks.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/visualization/roi_rectangle_and_text.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/visualization/roi_rectangle_and_text.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,7 +71,7 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="ProjectErrors" />
+    <option name="selectedTabId" value="CurrentFile" />
     <option name="showPreview" value="true" />
   </component>
   <component name="ProjectColorInfo">{
@@ -62,40 +85,41 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "Python tests.Doctests in roifile.executor": "Debug",
-    "Python.calc_ROIs.executor": "Run",
-    "Python.cluster_signals_video.executor": "Run",
-    "Python.generate_rois.executor": "Run",
-    "Python.generate_signals.executor": "Run",
-    "Python.glioblastoma.executor": "Run",
-    "Python.input_tif.executor": "Run",
-    "Python.macros_testing.executor": "Run",
-    "Python.main.executor": "Debug",
-    "Python.plot_signals_from_csv.executor": "Run",
-    "Python.presentation_main.executor": "Run",
-    "Python.pyimagej_macros_testing.executor": "Run",
-    "Python.pyimagej_testing.executor": "Run",
-    "Python.roi_example.executor": "Run",
-    "Python.roi_names.executor": "Debug",
-    "Python.roifile_demo.executor": "Run",
-    "Python.visualize_clusters.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "main",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "run.code.analysis.last.selected.profile": "aDefault",
-    "settings.editor.selected.configurable": "debugger.dataViews",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Python tests.Doctests in roifile.executor&quot;: &quot;Debug&quot;,
+    &quot;Python.calc_ROIs.executor&quot;: &quot;Run&quot;,
+    &quot;Python.cluster_signals_video.executor&quot;: &quot;Run&quot;,
+    &quot;Python.generate_rois.executor&quot;: &quot;Run&quot;,
+    &quot;Python.generate_signals.executor&quot;: &quot;Run&quot;,
+    &quot;Python.glioblastoma.executor&quot;: &quot;Run&quot;,
+    &quot;Python.input_tif.executor&quot;: &quot;Run&quot;,
+    &quot;Python.macros_testing.executor&quot;: &quot;Run&quot;,
+    &quot;Python.main.executor&quot;: &quot;Debug&quot;,
+    &quot;Python.plot_signals_from_csv.executor&quot;: &quot;Run&quot;,
+    &quot;Python.presentation_main.executor&quot;: &quot;Run&quot;,
+    &quot;Python.pyimagej_macros_testing.executor&quot;: &quot;Run&quot;,
+    &quot;Python.pyimagej_testing.executor&quot;: &quot;Run&quot;,
+    &quot;Python.roi_example.executor&quot;: &quot;Run&quot;,
+    &quot;Python.roi_names.executor&quot;: &quot;Debug&quot;,
+    &quot;Python.roifile_demo.executor&quot;: &quot;Run&quot;,
+    &quot;Python.visualize_clusters.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;with__k__means&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/julian/development/PycharmProjects/glioblastoma/notebooks&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;aDefault&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.IDE.editor.colors.Color Scheme Font&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="PyConsoleOptionsProvider">
     <option name="myPythonConsoleState">
       <console-settings>
@@ -104,12 +128,15 @@
     </option>
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/notebooks" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/notebooks/KMeans" />
       <recent name="$PROJECT_DIR$/src/G_cluster_ROIs/visualization" />
       <recent name="$PROJECT_DIR$/src/C_generate_ROI_signals/with_imagej" />
       <recent name="$PROJECT_DIR$/src/A_load_image_data" />
       <recent name="$PROJECT_DIR$/src/C_generate_ROI_signals/visualization" />
-      <recent name="$PROJECT_DIR$/src/F_representative_signals/visualization" />
     </key>
   </component>
   <component name="RunManager">
@@ -220,6 +247,12 @@
       <workItem from="1715092236209" duration="1325000" />
       <workItem from="1715117156525" duration="639000" />
       <workItem from="1715586350483" duration="11969000" />
+      <workItem from="1715634526524" duration="222000" />
+      <workItem from="1715847386593" duration="103000" />
+      <workItem from="1715847500676" duration="26000" />
+      <workItem from="1715847534933" duration="77000" />
+      <workItem from="1715847622590" duration="16723000" />
+      <workItem from="1715934036473" duration="20965000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <option name="closed" value="true" />
@@ -485,7 +518,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715595206581</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="Created the decorator message_and_time to time functions.">
+      <option name="closed" value="true" />
+      <created>1715604372115</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1715604372115</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -503,7 +544,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added functions to plot and create a numpy array from the csv" />
     <MESSAGE value="corrected save path of the generated plot" />
     <MESSAGE value="Created estimate_cell_equality.py" />
     <MESSAGE value="Added visualize_roi_cluster_associations.py" />
@@ -528,7 +568,8 @@
     <MESSAGE value="Added function to make the axis tickes reflect the ROI indexes and superimposed the image on the ROI STDs and clusters!" />
     <MESSAGE value="Renamed analysis_options.py to options.py. Enabled plotting dots for ROIs which were kept with roi_stds_on_image.py" />
     <MESSAGE value="Made clusters_on_image.py highlight the ROIs whose signals represent a cluster" />
-    <option name="LAST_COMMIT_MESSAGE" value="Made clusters_on_image.py highlight the ROIs whose signals represent a cluster" />
+    <MESSAGE value="Created the decorator message_and_time to time functions." />
+    <option name="LAST_COMMIT_MESSAGE" value="Created the decorator message_and_time to time functions." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -555,7 +596,7 @@
     </watches-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/glioblastoma$glioblastoma.coverage" NAME="glioblastoma Coverage Results" MODIFIED="1715591982001" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/glioblastoma$glioblastoma.coverage" NAME="glioblastoma Coverage Results" MODIFIED="1715853512750" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/glioblastoma$main.coverage" NAME="main Coverage Results" MODIFIED="1710846646008" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
     <SUITE FILE_PATH="coverage/glioblastoma$generate_signals.coverage" NAME="generate_signals Coverage Results" MODIFIED="1710320134399" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
     <SUITE FILE_PATH="coverage/glioblastoma$macros_testing.coverage" NAME="macros_testing Coverage Results" MODIFIED="1710256858479" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/other/pyimagej_macros_testing" />

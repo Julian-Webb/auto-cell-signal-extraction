@@ -27,14 +27,14 @@ def roi_rectangle_and_text(roi: ROI, axes: plt.Axes, rectangle_kwargs: dict = No
                             'facecolor': 'transparent',
                             'alpha': 1}
 
-    upper_left, _ = roi.coordinates()  # upper left corner of the ROI
+    upper_left, _ = roi.corners_pixels()  # upper left corner of the ROI
     rect = patches.Rectangle((upper_left.x, upper_left.y),
-                             ROI.WIDTH, ROI.HEIGHT,
+                             ROI.WIDTH_PIXELS, ROI.HEIGHT_PIXELS,
                              **rectangle_kwargs)
     axes.add_patch(rect)
 
     if cluster_label is not None:
-        center = roi.center()
+        center = roi.center_pixels()
         axes.text(center.x, center.y,
                   cluster_label,
                   ha='center', va='center',

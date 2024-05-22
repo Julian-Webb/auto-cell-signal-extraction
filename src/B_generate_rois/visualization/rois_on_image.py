@@ -22,7 +22,7 @@ def rois_on_image(image_path: str, image_dims: Dimensions, colormap='plasma', gr
     # --- plot ROIs on top of image ---
     ax = make_roi_axis_ticks('both', ax, image_dims)
 
-    minor_line_width = 1 if (ROI.WIDTH > 32 or ROI.HEIGHT > 32) else 0.5
+    minor_line_width = 1 if (ROI.WIDTH_PIXELS > 32 or ROI.HEIGHT_PIXELS > 32) else 0.5
     ax.grid(visible=True, which='major', linewidth=1, color=grid_line_color, linestyle=':')
     ax.grid(visible=True, which='minor', linewidth=minor_line_width, color=grid_line_color, linestyle=':')
 

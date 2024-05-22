@@ -36,7 +36,7 @@ def get_roi_signals(image_path: str, n_frames: int, rois: np.array,
     # loop through each roi
     for roi in rois.flatten():
         # get the index ranges for setting the signals
-        ul, lr = roi.coordinates()  # get the upper left and lower right corners
+        ul, lr = roi.corners_pixels()  # get the upper left and lower right corners
         x_left = ul.x
         y_top = ul.y
         x_right = lr.x + 1  # we add 1 because indexing is exclusive

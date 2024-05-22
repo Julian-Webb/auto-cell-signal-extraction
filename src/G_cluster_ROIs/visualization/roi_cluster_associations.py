@@ -33,7 +33,7 @@ def visualize_roi_cluster_associations(roi_clusters_dict, n_clusters: int, img_d
     for roi, cluster in roi_clusters_dict.items():
         roi_rectangle_and_text(roi, ax,
                                {'linewidth': 0.1, 'edgecolor': 'black', 'facecolor': colors[cluster]},
-                               str(cluster), {'fontsize': ROI.WIDTH // 2})
+                               str(cluster), {'fontsize': ROI.WIDTH_PIXELS // 2})
 
     # plot empty ROIs
     for roi in removed_rois:

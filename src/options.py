@@ -11,6 +11,7 @@ test_stack = {'dir': os.path.join(base_dir, 'data', 'high_res_test_stack'),
               'std_threshold': 20,
               'n_cells': 4,
               'max_cell_size_pixels': 450,
+              'pixels_per_cm': 16.0,
               }
 
 D_233_MG_B1 = {'dir': os.path.join(base_dir, 'data', '233_MG_B1'),
@@ -19,6 +20,7 @@ D_233_MG_B1 = {'dir': os.path.join(base_dir, 'data', '233_MG_B1'),
                'std_threshold': 6,
                'n_cells': 9,
                'max_cell_size_pixels': 450,
+               'pixels_per_cm': 16.0,
                }
 
 D_233_MG_B2 = {'dir': os.path.join(base_dir, 'data', '233_MG_B2'),
@@ -27,6 +29,7 @@ D_233_MG_B2 = {'dir': os.path.join(base_dir, 'data', '233_MG_B2'),
                'std_threshold': 6,
                'n_cells': 9,
                'max_cell_size_pixels': 450,
+               'pixels_per_cm': 16.0,
                }
 
 D_276_AZD3965_Mathieu = {'dir': os.path.join(base_dir, 'data', '276_AZD3965_Mathieu'),
@@ -35,20 +38,22 @@ D_276_AZD3965_Mathieu = {'dir': os.path.join(base_dir, 'data', '276_AZD3965_Math
                          'rolling_window_size': 100,
                          'n_cells': 429,
                          'max_cell_size_pixels': 450,
+                         'pixels_per_cm': 16.0,
                          }
 
 D_233_NoMG_A1 = {'dir': os.path.join(base_dir, 'data', '233_NoMG_A1'),
                  'name': os.path.join('raw', '233_NoMG_A1_STACK.tif'),
-                 'std_threshold': 14,
+                 'std_threshold': 15,
                  'rolling_window_size': 80,
                  'n_cells': 95,
                  'max_cell_size_pixels': 100,
+                 'pixels_per_cm': 16.0,
                  }
 
 # #########################################
 # 1: Path Names
 # Please specify the image name the directory where the image is stored
-dataset_info = test_stack
+dataset_info = D_233_NoMG_A1
 directory = dataset_info['dir']
 image_name = dataset_info['name']
 image_path = os.path.join(directory, image_name)
@@ -61,7 +66,10 @@ image_path = os.path.join(directory, image_name)
 # ROI.WIDTH = 16
 # ROI.HEIGHT = 8
 
-ROI.WIDTH = ROI.HEIGHT = 512
+ROI.WIDTH_PIXELS = ROI.HEIGHT_PIXELS = 16
+
+# The number of pixels per cm in the calcium image
+ROI.PIXELS_PER_CM = dataset_info['pixels_per_cm']
 
 # The size of the rolling window in frames. Used to calculate the rolling mean for detrending the signal
 rolling_window_size: int = dataset_info['rolling_window_size']
@@ -84,11 +92,11 @@ max_clusters: int = dataset_info['n_cells']
 
 # 2: Plot and File Options
 # Specify which plots and files to generate. This influences the time to execute.
-all_on: bool = True  # Turn all options on or off
+all_on: bool = False  # Turn all options on or off
 intense_options: bool = False
 
 B_save_imagej_rois: bool = all_on or False  # *
-B_plot_rois_on_image: bool = all_on or False
+B_plot_rois_on_image: bool = all_on or True
 
 C_create_all_ROI_signals_file: bool = intense_options or all_on  # *
 C_generate_ROI_signals_grid_plot: bool = intense_options or all_on  # *
@@ -99,7 +107,7 @@ D_generate_detrended_signals_grid_plot: bool = intense_options or all_on  # *
 D_generate_detrended_signals_single_plot: bool = intense_options or all_on  # *
 
 E_create_filtered_ROI_signals_file: bool = all_on or False
-E_plot_ROI_stds_on_image: bool = all_on or False
+E_plot_ROI_stds_on_image: bool = all_on or True
 
 F_create_ROI_distances_file: bool = all_on or False
 

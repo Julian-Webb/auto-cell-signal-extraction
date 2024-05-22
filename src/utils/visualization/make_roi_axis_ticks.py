@@ -17,10 +17,10 @@ def make_roi_axis_ticks(dim: str, axis: plt.axis, image_dims: Dimensions, nth_ma
 
     if dim == 'x':
         image_size = image_dims.width
-        roi_size = ROI.WIDTH
+        roi_size = ROI.WIDTH_PIXELS
     elif dim == 'y':
         image_size = image_dims.height
-        roi_size = ROI.HEIGHT
+        roi_size = ROI.HEIGHT_PIXELS
     elif dim == 'both':
         axis = make_roi_axis_ticks('x', axis, image_dims, nth_major_tick)
         axis = make_roi_axis_ticks('y', axis, image_dims, nth_major_tick)
