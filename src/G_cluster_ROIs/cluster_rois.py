@@ -127,7 +127,7 @@ def k_means_spatial_weighted(signals_df: pd.DataFrame, n_clusters: int, n_frames
     rois = signals_df.columns
     # create DataFrame for spatial locations
     roi_centers = pd.DataFrame(
-        {roi: [roi.center_cm().x, roi.center_cm().y] for roi in rois},
+        {roi: [roi.center_mm().x, roi.center_mm().y] for roi in rois},
     )
 
     # adjust spatial indexes for n_frames and scale by spatial weight

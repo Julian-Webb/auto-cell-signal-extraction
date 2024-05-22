@@ -11,7 +11,7 @@ test_stack = {'dir': os.path.join(base_dir, 'data', 'high_res_test_stack'),
               'std_threshold': 20,
               'n_cells': 4,
               'max_cell_size_pixels': 450,
-              'pixels_per_cm': 16.0,
+              'pixels_per_mm': 795.46,
               }
 
 D_233_MG_B1 = {'dir': os.path.join(base_dir, 'data', '233_MG_B1'),
@@ -20,7 +20,7 @@ D_233_MG_B1 = {'dir': os.path.join(base_dir, 'data', '233_MG_B1'),
                'std_threshold': 6,
                'n_cells': 9,
                'max_cell_size_pixels': 450,
-               'pixels_per_cm': 16.0,
+               'pixels_per_mm': 795.46,
                }
 
 D_233_MG_B2 = {'dir': os.path.join(base_dir, 'data', '233_MG_B2'),
@@ -29,7 +29,7 @@ D_233_MG_B2 = {'dir': os.path.join(base_dir, 'data', '233_MG_B2'),
                'std_threshold': 6,
                'n_cells': 9,
                'max_cell_size_pixels': 450,
-               'pixels_per_cm': 16.0,
+               'pixels_per_mm': 795.46,
                }
 
 D_276_AZD3965_Mathieu = {'dir': os.path.join(base_dir, 'data', '276_AZD3965_Mathieu'),
@@ -38,7 +38,7 @@ D_276_AZD3965_Mathieu = {'dir': os.path.join(base_dir, 'data', '276_AZD3965_Math
                          'rolling_window_size': 100,
                          'n_cells': 429,
                          'max_cell_size_pixels': 450,
-                         'pixels_per_cm': 16.0,
+                         'pixels_per_mm': 795.46,
                          }
 
 D_233_NoMG_A1 = {'dir': os.path.join(base_dir, 'data', '233_NoMG_A1'),
@@ -47,7 +47,7 @@ D_233_NoMG_A1 = {'dir': os.path.join(base_dir, 'data', '233_NoMG_A1'),
                  'rolling_window_size': 80,
                  'n_cells': 95,
                  'max_cell_size_pixels': 100,
-                 'pixels_per_cm': 16.0,
+                 'pixels_per_mm': 795.46,
                  }
 
 # #########################################
@@ -68,8 +68,8 @@ image_path = os.path.join(directory, image_name)
 
 ROI.WIDTH_PIXELS = ROI.HEIGHT_PIXELS = 16
 
-# The number of pixels per cm in the calcium image
-ROI.PIXELS_PER_CM = dataset_info['pixels_per_cm']
+# The number of pixels per millimeter in the calcium image
+ROI.PIXELS_PER_MM = dataset_info['pixels_per_mm']
 
 # The size of the rolling window in frames. Used to calculate the rolling mean for detrending the signal
 rolling_window_size: int = dataset_info['rolling_window_size']

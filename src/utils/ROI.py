@@ -12,19 +12,19 @@ class ROI:
     N_VERTICAL: int = None  # the number of ROIs along the y-axis
 
     # TODO this should probably go somewhere else but when I put it in options, it caused a circular import
-    PIXELS_PER_CM: float = None  # the number of pixels per cm in the calcium image
+    PIXELS_PER_MM: float = None  # the number of pixels per millimeter in the calcium image
 
     @classmethod
     @property
-    def width_cm(cls) -> float:
-        """The width in cm"""
-        return cls.WIDTH_PIXELS / cls.PIXELS_PER_CM
+    def width_mm(cls) -> float:
+        """The width in millimeters"""
+        return cls.WIDTH_PIXELS / cls.PIXELS_PER_MM
 
     @classmethod
     @property
-    def height_cm(cls) -> float:
-        """The height in cm"""
-        return cls.HEIGHT_PIXELS / cls.PIXELS_PER_CM
+    def height_mm(cls) -> float:
+        """The height in millimeters"""
+        return cls.HEIGHT_PIXELS / cls.PIXELS_PER_MM
 
     def __init__(self, x_idx, y_idx):
         self.x_idx = x_idx  # the x index on the grid of ROIs
@@ -77,24 +77,24 @@ class ROI:
         y = self.y_idx * ROI.HEIGHT_PIXELS + ROI.HEIGHT_PIXELS / 2 - 0.5
         return Point(x, y)
 
-    def corners_cm(self) -> Point:
-        """Returns the upper left and lower right corners (in cm) of the ROI as Point objects."""
+    def corners_mm(self) -> Point:
+        """Returns the upper left and lower right corners (in millimeters) of the ROI as Point objects."""
         # upper left corner:
-        x_ul = self.x_idx * ROI.width_cm
-        y_ul = self.y_idx * ROI.height_cm
+        x_ul = self.x_idx * ROI.width_mm
+        y_ul = self.y_idx * ROI.height_mm
         # lower right corner:
-        x_lr = x_ul + ROI.width_cm
-        y_lr = y_ul + ROI.height_cm
+        x_lr = x_ul + ROI.width_mm
+        y_lr = y_ul + ROI.height_mm
         return Point(x_ul, y_ul), Point(x_lr, y_lr)
 
-    def center_cm(self) -> Point:
-        """Returns the center of the ROI in cm."""
+    def center_mm(self) -> Point:
+        """Returns the center of the ROI in millimeters."""
         x_idx_center = self.x_idx + 0.5
         y_idx_center = self.y_idx + 0.5
 
         return Point(
-            x_idx_center * ROI.width_cm,
-            y_idx_center * ROI.height_cm
+            x_idx_center * ROI.width_mm,
+            y_idx_center * ROI.height_mm
         )
 
     # noinspection PyPep8Naming
