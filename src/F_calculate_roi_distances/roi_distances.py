@@ -1,5 +1,6 @@
 import math
-from sklearn.metrics.pairwise import cosine_similarity
+
+import sklearn
 
 import numpy as np
 import pandas as pd
@@ -8,7 +9,6 @@ from src.utils.decorators import message_and_time
 
 # The maximum distance that two signals can have. For cosine distance, it's 2.
 _MAX_DISTANCE: float = 2.0
-
 
 @message_and_time('')
 def calculate_roi_distances(signals_df: pd.DataFrame, comp_range_px: int):
@@ -24,7 +24,7 @@ def calculate_roi_distances(signals_df: pd.DataFrame, comp_range_px: int):
     distances = pd.DataFrame(_MAX_DISTANCE, columns=filtered_rois, index=filtered_rois, dtype='float64')
 
     # Calculate cosine distances
-    cos_distances = 1 - cosine_similarity(signals_df.T)
+    cos_distances = sklearn.metrics.pairwise.cosine_distances(signals_df.T)
     np.fill_diagonal(cos_distances, 0)  # We do this because sklearn is not completely precise.
     cos_distances = pd.DataFrame(cos_distances, columns=filtered_rois, index=filtered_rois)
 

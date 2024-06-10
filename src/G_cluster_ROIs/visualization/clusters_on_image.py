@@ -18,7 +18,7 @@ def clusters_on_image(roi_clusters_dict: dict, representative_rois: np.array, n_
         image = tif.pages[frame_idx].asarray()
 
     # --- show the image ---
-    fig, ax = plt.subplots(figsize=(40, 30))
+    fig, ax = plt.subplots(figsize=(image_dims.width // 50, image_dims.height // 50))
 
     make_roi_axis_ticks('both', ax, image_dims)
 

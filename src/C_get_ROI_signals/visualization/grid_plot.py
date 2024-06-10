@@ -8,12 +8,14 @@ from src.utils.decorators import message_and_time
 
 @message_and_time('')
 def grid_plot(signals_df: pd.DataFrame) -> plt.figure:
-    fig, axs = plt.subplots(nrows=ROI.N_VERTICAL, ncols=ROI.N_HORIZONTAL, sharex=True, sharey=True)
+    fig, axs = plt.subplots(nrows=ROI.N_VERTICAL, ncols=ROI.N_HORIZONTAL,
+                            figsize=(10, 5),
+                            sharex=True, sharey=True)
 
     for roi in signals_df.columns:
         ax = axs[roi.y_idx, roi.x_idx]
 
-        ax.plot(signals_df[roi])
+        ax.plot(signals_df[roi], linewidth=0.2)
 
         # Remove ticks and labels from x and y axes
         ax.set_xticks([])

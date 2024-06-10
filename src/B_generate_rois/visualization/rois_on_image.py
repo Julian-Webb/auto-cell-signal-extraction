@@ -7,7 +7,7 @@ from src.utils.decorators import message_and_time
 
 
 @message_and_time('')
-def rois_on_image(image_path: str, image_dims: Dimensions, colormap='plasma', grid_line_color='yellow',
+def rois_on_image(image_path: str, image_dims: Dimensions, colormap='gray', grid_line_color='yellow',
                   frame_idx=0) -> plt.figure:
     # --- get the correct frame of the image ---
     with TiffFile(image_path) as tif:

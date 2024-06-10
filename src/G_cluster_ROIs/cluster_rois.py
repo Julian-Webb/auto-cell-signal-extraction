@@ -131,8 +131,8 @@ def k_means_spatial_weighted(signals_df: pd.DataFrame, n_clusters: int, n_frames
     )
 
     # adjust spatial indexes for n_frames and scale by spatial weight
-    # (see n_frames_adjustment_1D.ipynb for explanation)
-    roi_centers *= np.sqrt(n_frames) * spatial_weight
+    # (see n_frames_adjustment_1D.ipynb / report for explanation)
+    roi_centers *= np.sqrt((n_frames * spatial_weight) / 2)
     roi_centers.index = ['x_location_value', 'y_location_value']
 
     # Normalizing the signals

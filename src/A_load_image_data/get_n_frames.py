@@ -13,8 +13,9 @@ def get_n_frames(image: tf.TiffFile):
     n_frames = None
     try:
         n_frames = image.imagej_metadata['images']
-    except KeyError:
-        warnings.warn("imagej_metadata['images'] couldn't be accesses to find the number of frames")
+    except (KeyError, TypeError):
+        # warnings.warn("imagej_metadata['images'] couldn't be accesses to find the number of frames")
+        pass
 
     if n_frames is None:
         n_frames = len(image.pages)

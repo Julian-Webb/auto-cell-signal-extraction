@@ -20,8 +20,7 @@ from src.G_cluster_ROIs.cluster_rois import agglomerative_clustering, k_means, k
 from src.G_cluster_ROIs.visualization.roi_cluster_associations import visualize_roi_cluster_associations
 from src.H_representative_signals.compute_representative_signals import compute_representative_signals
 from src.H_representative_signals.visualization.cluster_signals_video import cluster_signals_video
-from src.H_representative_signals.visualization.plot_repr_signals import plot_cluster_signals
-from src.utils.SignalSummaryStatistics import SignalSummaryStatistics
+from src.H_representative_signals.visualization.plot_cluster_signals import plot_cluster_signals
 
 
 def main():
@@ -48,7 +47,8 @@ def main():
 
     # %%
     print('\n--- C: Get ROI signals ---')
-    signals_arr, all_signals_df = get_roi_signals(opt.image_path, n_frames_raw, all_rois, SignalSummaryStatistics.MAX)
+    signals_arr, all_signals_df = get_roi_signals(opt.image_path, n_frames_raw, all_rois,
+                                                  opt.roi_signal_summary_statistic)
 
     if opt.C_create_all_ROI_signals_file:
         print('All ROI signals to csv...', end='')
@@ -57,7 +57,7 @@ def main():
         print(f'{time.time() - st:.1f}s')
 
     if opt.C_generate_ROI_signals_grid_plot:
-        grid_plot(all_signals_df).savefig(opt.C_roi_signals_grid_plot_path)
+        grid_plot(all_signals_df).savefig(opt.C_roi_signals_grid_plot_path, bbox_inches='tight')
 
     if opt.C_generate_ROI_signals_single_plot:
         single_plot(all_signals_df).savefig(opt.C_roi_signals_single_plot_path)
@@ -72,7 +72,7 @@ def main():
         detrended_signals_df.to_csv(opt.D_detrended_signals_csv_path)
 
     if opt.D_generate_detrended_signals_grid_plot:
-        grid_plot(detrended_signals_df).savefig(opt.D_detrended_signals_grid_plot_path)
+        grid_plot(detrended_signals_df).savefig(opt.D_detrended_signals_grid_plot_path, bbox_inches='tight')
 
     if opt.D_generate_detrended_signals_single_plot:
         single_plot(detrended_signals_df).savefig(opt.D_detrended_signals_single_plot_path)
@@ -97,34 +97,42 @@ def main():
         filtered_signals_df.to_csv(opt.E_filtered_roi_signals_csv_path)
         print(f'{time.time() - st:.1f}s')
 
-    # %% Agglomerative Clustering
-    # We calculate the distance for each pair of ROIs
-    # print('\n--- F: Computing ROI distance matrix ---')
-    # roi_distances = calculate_roi_distances(filtered_signals_df, opt.F_max_cell_size_pixels)
-    #
-    # if opt.F_create_ROI_distances_file:
-    #     print('Saving ROI distance matrix to csv...', end='')
-    #     st = time.time()
-    #     roi_distances.to_csv(opt.F_roi_distances_csv_path)
-    #     print(f'{time.time() - st:.1f}s')
-
     # %%
-    # print('\n--- G: Creating clusters ---')
-    # clusters, n_clusters, roi_cluster_dict, clustering_steps = do_agglomerative_clustering(roi_distances, filtered_rois,
-    #                                                                                         opt.max_clusters)
-    #
-    # if opt.G_plot_ROI_cluster_associations:
-    #     visualize_roi_cluster_associations(roi_cluster_dict, n_clusters, img_dims, removed_rois).savefig(
-    #         opt.G_roi_cluster_associations_path, bbox_inches='tight')
-    #
-    # if opt.G_plot_dendrogram:
-    #     visualize_dendrogram(clustering_steps, filtered_rois).savefig(opt.G_dendrogram_path)
+    if opt.clustering_method == 'agglomerative':
+        # We calculate the distance for each pair of ROIs
+        print('\n--- F: Computing ROI distance matrix ---')
+        roi_distances = calculate_roi_distances(filtered_signals_df, opt.F_spatial_comparison_range_pixels)
 
-    # %% KMeans Clustering
-    print('\n--- G: Creating clusters ---')
-    # clusters, n_clusters, roi_cluster_dict = do_k_means_spatial(filtered_signals_df, opt.max_clusters)
-    clusters, n_clusters, roi_cluster_dict = k_means_spatial_weighted(filtered_signals_df, opt.max_clusters,
-                                                                      n_frames_detrended, spatial_weight=0.5)
+        if opt.F_create_ROI_distances_file:
+            print('Saving ROI distance matrix to csv...', end='')
+            st = time.time()
+            roi_distances.to_csv(opt.F_roi_distances_csv_path)
+            print(f'{time.time() - st:.1f}s')
+
+        print('\n--- G: Agglomerative Clustering ---')
+        clusters, n_clusters, roi_cluster_dict, clustering_steps = \
+            agglomerative_clustering(roi_distances, filtered_rois, opt.max_clusters)
+
+        if opt.G_plot_dendrogram:
+            visualize_dendrogram(clustering_steps, filtered_rois).savefig(opt.G_dendrogram_path, bbox_inches='tight')
+
+    elif opt.clustering_method == 'kmeans':
+        print('\n--- G: K-Means clustering ---')
+        # clusters, n_clusters, roi_cluster_dict = k_means(filtered_signals_df, opt.k_clusters)
+        # clusters, n_clusters, roi_cluster_dict = do_k_means_spatial(filtered_signals_df, opt.k_clusters)
+        clusters, n_clusters, roi_cluster_dict = \
+            k_means_spatial_weighted(filtered_signals_df, opt.k_clusters, n_frames_detrended, opt.spatial_weight)
+    else:
+        raise ValueError(
+            f"clustering_method should be either 'kmeans' or 'agglomerative' but is {opt.clustering_method}")
+
+    if opt.G_plot_clusters_on_image:
+        clusters_on_image(roi_cluster_dict, [], n_clusters, opt.image_path,
+                          img_dims).savefig(opt.G_clusters_on_image_path, bbox_inches='tight')
+
+    if opt.G_plot_ROI_cluster_associations:
+        visualize_roi_cluster_associations(roi_cluster_dict, n_clusters, img_dims, removed_rois).savefig(
+            opt.G_roi_cluster_associations_path, bbox_inches='tight')
 
     # %%
     print("\n--- H: Computing representative signals for each cluster ---")
@@ -132,7 +140,7 @@ def main():
                                                              n_frames_detrended)
     save_repr_signals(repr_signals, repr_rois, n_clusters)
 
-    if opt.H_plot_clusters_on_image:
+    if opt.H_plot_clusters_and_representative_rois_on_image:
         clusters_on_image(roi_cluster_dict, repr_rois, n_clusters, opt.image_path,
                           img_dims).savefig(opt.H_clusters_on_image_path, bbox_inches='tight')
 

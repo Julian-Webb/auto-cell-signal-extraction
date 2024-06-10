@@ -1,28 +1,25 @@
 import numpy as np
 import pandas as pd
 import tifffile as tf
-
 from src.utils.ROI import ROI
-from src.utils.SignalSummaryStatistics import SignalSummaryStatistics
-
 from src.utils.decorators import message_and_time
 
 
 @message_and_time('')
 def get_roi_signals(image_path: str, n_frames: int, rois: np.array,
-                    summary_statistic: SignalSummaryStatistics) -> np.array:
+                    summary_statistic: str) -> np.array:
     """Takes a multi-image tiff and extracts the signals of each ROI. For each frame, it takes the mean of the values
     in the ROI.
     Returns dataframe with the signals for each ROI, as well as an array which holds the same data.
     The array indexes correspond to [roi.x_idx, roi.y_idx, frame]
     """
 
-    if summary_statistic == SignalSummaryStatistics.MEAN:
+    if summary_statistic == 'mean':
         get_signal_func = _mean_signal
-    elif summary_statistic == SignalSummaryStatistics.MAX:
+    elif summary_statistic == 'max':
         get_signal_func = _max_signal
     else:
-        raise ValueError(f'summary_statistic should be either MEAN or MAX but is {summary_statistic}')
+        raise ValueError(f"summary_statistic should be either 'mean' or 'max' but is {summary_statistic}")
 
     # imread returns the image with the following shape: (n_frames, vertical dim, horizontal dim)
     img = tf.imread(image_path)
@@ -30,15 +27,13 @@ def get_roi_signals(image_path: str, n_frames: int, rois: np.array,
     # we make a signals array and a signals dataframe which store the same data but in a different format
     signals_arr = np.zeros(shape=(ROI.N_HORIZONTAL, ROI.N_VERTICAL, n_frames))
 
-    indexes = [i for i in range(n_frames)]
-    signals_df = pd.DataFrame(columns=rois.flatten(), index=indexes)
+    signals_df = pd.DataFrame(columns=rois.flatten(), index=np.arange(n_frames))
 
     # loop through each roi
     for roi in rois.flatten():
         # get the index ranges for setting the signals
         ul, lr = roi.corners_pixels()  # get the upper left and lower right corners
-        x_left = ul.x
-        y_top = ul.y
+        x_left, y_top = ul
         x_right = lr.x + 1  # we add 1 because indexing is exclusive
         y_bottom = lr.y + 1
 
