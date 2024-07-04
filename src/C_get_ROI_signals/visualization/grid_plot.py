@@ -7,7 +7,16 @@ from src.utils.decorators import message_and_time
 
 
 @message_and_time('')
-def grid_plot(signals_df: pd.DataFrame) -> plt.figure:
+def grid_plot(signals_df: pd.DataFrame, plot_kwargs=None) -> plt.figure:
+    """
+    Plots the signals of each ROI in a grid.
+    :param signals_df: A pandas.DataFrame containing the signals of each ROI.
+    :param plot_kwargs: Optional arguments to pass to the plot
+    :return:
+    """
+    if plot_kwargs is None:
+        plot_kwargs = {}
+
     fig, axs = plt.subplots(nrows=ROI.N_VERTICAL, ncols=ROI.N_HORIZONTAL,
                             figsize=(10, 5),
                             sharex=True, sharey=True)
@@ -15,7 +24,7 @@ def grid_plot(signals_df: pd.DataFrame) -> plt.figure:
     for roi in signals_df.columns:
         ax = axs[roi.y_idx, roi.x_idx]
 
-        ax.plot(signals_df[roi], linewidth=0.2)
+        ax.plot(signals_df[roi], linewidth=0.2, **plot_kwargs)
 
         # Remove ticks and labels from x and y axes
         ax.set_xticks([])

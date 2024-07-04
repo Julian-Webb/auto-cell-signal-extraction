@@ -4,23 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d810fa6a-a0f3-403b-be5f-b955561b9c66" name="Changes" comment="Replaced SignalSummaryStatistics.py with just a string">
-      <change afterPath="$PROJECT_DIR$/notebooks/report.ipynb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/other/report.py" afterDir="false" />
+    <list default="true" id="d810fa6a-a0f3-403b-be5f-b955561b9c66" name="Changes" comment="small adjustments for the report">
+      <change afterPath="$PROJECT_DIR$/notebooks/final_presentation.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notebooks/KMeans/k_means_weighted.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/notebooks/KMeans/k_means_weighted.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/A_load_image_data/get_n_frames.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/A_load_image_data/get_n_frames.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/B_generate_rois/visualization/rois_on_image.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/B_generate_rois/visualization/rois_on_image.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/C_get_ROI_signals/get_roi_signals.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/C_get_ROI_signals/get_roi_signals.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notebooks/report.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/notebooks/report.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/C_get_ROI_signals/visualization/grid_plot.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/C_get_ROI_signals/visualization/grid_plot.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/F_calculate_roi_distances/roi_distances.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/F_calculate_roi_distances/roi_distances.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/G_cluster_ROIs/cluster_rois.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/G_cluster_ROIs/cluster_rois.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/G_cluster_ROIs/visualization/clusters_on_image.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/G_cluster_ROIs/visualization/clusters_on_image.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/H_representative_signals/visualization/plot_repr_signals.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/H_representative_signals/visualization/plot_cluster_signals.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/options.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/options.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/other/create_cutout.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/other/create_cutout.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/SignalSummaryStatistics.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -161,9 +152,6 @@
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/other" />
       <option name="IS_MODULE_SDK" value="true" />
@@ -184,9 +172,6 @@
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="false" />
@@ -211,8 +196,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-PY-241.17011.127" />
-        <option value="bundled-python-sdk-48aec45f0201-7e9c3bbb6e34-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-241.17011.127" />
+        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-PY-241.18034.82" />
+        <option value="bundled-python-sdk-975db3bf15a3-2767605e8bc2-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-241.18034.82" />
       </set>
     </attachedChunks>
   </component>
@@ -291,6 +276,11 @@
       <workItem from="1717674058065" duration="2675000" />
       <workItem from="1717681286210" duration="4418000" />
       <workItem from="1718052148386" duration="695000" />
+      <workItem from="1718055964785" duration="686000" />
+      <workItem from="1719837922885" duration="104000" />
+      <workItem from="1719838060740" duration="3572000" />
+      <workItem from="1719921291219" duration="6289000" />
+      <workItem from="1720010734052" duration="12061000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <option name="closed" value="true" />
@@ -580,7 +570,15 @@
       <option name="project" value="LOCAL" />
       <updated>1716466703845</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="small adjustments for the report">
+      <option name="closed" value="true" />
+      <created>1718056046229</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1718056046229</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -598,7 +596,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added visualize_roi_cluster_associations.py" />
     <MESSAGE value="Added cluster_signals_video.py and the class Dimensions" />
     <MESSAGE value="Added analysis_options.py to store the options which need to be specified" />
     <MESSAGE value="Reorganized file and folder Structure with A, B, C, etc." />
@@ -623,7 +620,8 @@
     <MESSAGE value="Created the decorator message_and_time to time functions." />
     <MESSAGE value="Changed pixels per centimeter to pixels per millimeter" />
     <MESSAGE value="Added script create_cutout.py to create a cutout of a .tif" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added script create_cutout.py to create a cutout of a .tif" />
+    <MESSAGE value="small adjustments for the report" />
+    <option name="LAST_COMMIT_MESSAGE" value="small adjustments for the report" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -634,14 +632,9 @@
           <option name="timeStamp" value="12" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/main.py</url>
-          <line>150</line>
-          <option name="timeStamp" value="13" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/H_representative_signals/visualization/plot_cluster_signals.py</url>
-          <line>10</line>
-          <option name="timeStamp" value="14" />
+          <url>file://$PROJECT_DIR$/src/G_cluster_ROIs/cluster_rois.py</url>
+          <line>63</line>
+          <option name="timeStamp" value="16" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
@@ -660,9 +653,9 @@
     </watches-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/glioblastoma$glioblastoma.coverage" NAME="glioblastoma Coverage Results" MODIFIED="1717414274678" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/glioblastoma$main.coverage" NAME="main Coverage Results" MODIFIED="1710846646008" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+    <SUITE FILE_PATH="coverage/glioblastoma$glioblastoma.coverage" NAME="glioblastoma Coverage Results" MODIFIED="1719927418022" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/glioblastoma$create_cutout.coverage" NAME="create_cutout Coverage Results" MODIFIED="1716465629351" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/other" />
+    <SUITE FILE_PATH="coverage/glioblastoma$main.coverage" NAME="main Coverage Results" MODIFIED="1710846646008" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
     <SUITE FILE_PATH="coverage/glioblastoma$generate_signals.coverage" NAME="generate_signals Coverage Results" MODIFIED="1710320134399" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
     <SUITE FILE_PATH="coverage/glioblastoma$macros_testing.coverage" NAME="macros_testing Coverage Results" MODIFIED="1710256858479" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/other/pyimagej_macros_testing" />
     <SUITE FILE_PATH="coverage/glioblastoma$generate_rois.coverage" NAME="generate_rois Coverage Results" MODIFIED="1710146541201" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />

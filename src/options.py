@@ -68,10 +68,19 @@ tiny_cutout = {'dir': os.path.join(base_dir, 'data', 'tiny_cutout'),
                'pixels_per_mm': 795.46,
                }
 
+single_cell = {'dir': os.path.join(base_dir, 'data', 'single_cell'),
+               'name': os.path.join('raw', 'single_cell.tif'),
+               'std_threshold': 15,
+               'rolling_window_size': 60,
+               'n_cells': 1,
+               'max_cell_size_pixels': 30,
+               'pixels_per_mm': 795.46,
+               }
+
 # #########################################
 # 1: Path Names
 # Please specify the image name the directory where the image is stored
-dataset_info = D_233_NoMG_A1
+dataset_info = single_cell
 directory = dataset_info['dir']
 image_name = dataset_info['name']
 image_path = os.path.join(directory, image_name)
@@ -84,7 +93,7 @@ image_path = os.path.join(directory, image_name)
 # ROI.WIDTH = 16
 # ROI.HEIGHT = 8
 
-ROI.WIDTH_PIXELS = ROI.HEIGHT_PIXELS = 16
+ROI.WIDTH_PIXELS = ROI.HEIGHT_PIXELS = 32
 
 # The number of pixels per millimeter in the calcium image
 ROI.PIXELS_PER_MM = dataset_info['pixels_per_mm']
@@ -107,10 +116,10 @@ std_threshold: float = dataset_info['std_threshold']
 F_spatial_comparison_range_pixels = dataset_info['max_cell_size_pixels']
 
 # G: Specify clustering method
-clustering_method: str = 'kmeans'
-assert clustering_method in ['kmeans', 'agglomerative']
+clustering_method: str = 'spatial_weighted_kmeans'
+assert clustering_method in ['basic_kmeans', 'spatial_weighted_kmeans', 'agglomerative']
 
-if clustering_method == 'kmeans':
+if clustering_method in ['basic_kmeans', 'spatial_weighted_kmeans']:
     # How much the spatial location vs. the signal of the ROIs should be taken into account when clustering.
     # If >1, location will be weighted more heavily. If <1, signals will be weighted more heavily.
     spatial_weight: float = 2.5

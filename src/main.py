@@ -72,7 +72,8 @@ def main():
         detrended_signals_df.to_csv(opt.D_detrended_signals_csv_path)
 
     if opt.D_generate_detrended_signals_grid_plot:
-        grid_plot(detrended_signals_df).savefig(opt.D_detrended_signals_grid_plot_path, bbox_inches='tight')
+        grid_plot(detrended_signals_df, {'color': 'green'}).savefig(opt.D_detrended_signals_grid_plot_path,
+                                                                    bbox_inches='tight')
 
     if opt.D_generate_detrended_signals_single_plot:
         single_plot(detrended_signals_df).savefig(opt.D_detrended_signals_single_plot_path)
@@ -116,15 +117,16 @@ def main():
         if opt.G_plot_dendrogram:
             visualize_dendrogram(clustering_steps, filtered_rois).savefig(opt.G_dendrogram_path, bbox_inches='tight')
 
-    elif opt.clustering_method == 'kmeans':
+    elif opt.clustering_method == 'basic_kmeans':
         print('\n--- G: K-Means clustering ---')
-        # clusters, n_clusters, roi_cluster_dict = k_means(filtered_signals_df, opt.k_clusters)
+        clusters, n_clusters, roi_cluster_dict = k_means(filtered_signals_df, opt.k_clusters)
+    elif opt.clustering_method == 'spatial_weighted_kmeans':
+        print('\n--- G: K-Means clustering ---')
         # clusters, n_clusters, roi_cluster_dict = do_k_means_spatial(filtered_signals_df, opt.k_clusters)
         clusters, n_clusters, roi_cluster_dict = \
             k_means_spatial_weighted(filtered_signals_df, opt.k_clusters, n_frames_detrended, opt.spatial_weight)
     else:
-        raise ValueError(
-            f"clustering_method should be either 'kmeans' or 'agglomerative' but is {opt.clustering_method}")
+        raise ValueError(f"clustering_method is {opt.clustering_method}")
 
     if opt.G_plot_clusters_on_image:
         clusters_on_image(roi_cluster_dict, [], n_clusters, opt.image_path,
