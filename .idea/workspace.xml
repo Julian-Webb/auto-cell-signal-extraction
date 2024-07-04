@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d810fa6a-a0f3-403b-be5f-b955561b9c66" name="Changes" comment="created images for final presentation">
-      <change afterPath="$PROJECT_DIR$/Automated Signal Extraction using Signal Changed.pdf" afterDir="false" />
+    <list default="true" id="d810fa6a-a0f3-403b-be5f-b955561b9c66" name="Changes" comment="Cleaned up code and removed outdated files">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/options.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/options.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,7 +49,7 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
+    <option name="selectedTabId" value="ProjectErrors" />
     <option name="showPreview" value="true" />
   </component>
   <component name="ProjectColorInfo">{
@@ -109,6 +108,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/notebooks" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -276,7 +276,7 @@
       <workItem from="1719837922885" duration="104000" />
       <workItem from="1719838060740" duration="3572000" />
       <workItem from="1719921291219" duration="6289000" />
-      <workItem from="1720010734052" duration="14145000" />
+      <workItem from="1720010734052" duration="15768000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <option name="closed" value="true" />
@@ -582,7 +582,23 @@
       <option name="project" value="LOCAL" />
       <updated>1720092822457</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="Added readme and report">
+      <option name="closed" value="true" />
+      <created>1720095009382</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1720095009382</updated>
+    </task>
+    <task id="LOCAL-00040" summary="Cleaned up code and removed outdated files">
+      <option name="closed" value="true" />
+      <created>1720095871460</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1720095871460</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -600,8 +616,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added analysis_options.py to store the options which need to be specified" />
-    <MESSAGE value="Reorganized file and folder Structure with A, B, C, etc." />
     <MESSAGE value="Added ROI class to work with ROIs more safely" />
     <MESSAGE value="Cleaned up code, added letters to folder structure, so the order is clear." />
     <MESSAGE value="Finished adjusted the code according to the ROI class. Changed the code to use scipy for clustering and added a dendrogram plot" />
@@ -625,7 +639,9 @@
     <MESSAGE value="Added script create_cutout.py to create a cutout of a .tif" />
     <MESSAGE value="small adjustments for the report" />
     <MESSAGE value="created images for final presentation" />
-    <option name="LAST_COMMIT_MESSAGE" value="created images for final presentation" />
+    <MESSAGE value="Added readme and report" />
+    <MESSAGE value="Cleaned up code and removed outdated files" />
+    <option name="LAST_COMMIT_MESSAGE" value="Cleaned up code and removed outdated files" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -637,7 +653,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/G_cluster_ROIs/cluster_rois.py</url>
-          <line>63</line>
+          <line>62</line>
           <option name="timeStamp" value="16" />
         </line-breakpoint>
       </breakpoints>

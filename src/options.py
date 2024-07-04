@@ -2,7 +2,8 @@
 import os
 from src.utils.ROI import ROI
 
-# ############# For testing ###############
+# %% ---------------------------------------- Dataset Options ----------------------------------------------------------
+# TODO specify base directory here
 base_dir = '/Users/julian/development/PycharmProjects/glioblastoma'
 
 test_stack = {'dir': os.path.join(base_dir, 'data', 'high_res_test_stack'),
@@ -77,23 +78,17 @@ single_cell = {'dir': os.path.join(base_dir, 'data', 'single_cell'),
                'pixels_per_mm': 795.46,
                }
 
-# #########################################
+# %% ---------------------------------------- Analysis Options ---------------------------------------------------------
 # 1: Path Names
 # Please specify the image name the directory where the image is stored
-dataset_info = single_cell
+dataset_info = test_stack
 directory = dataset_info['dir']
 image_name = dataset_info['name']
 image_path = os.path.join(directory, image_name)
 
 # 0: Specify numerical analysis values
 # Specify the sizes of your ROIs in pixels. The value should be a whole number (no decimal point)
-# ROI.WIDTH = 2048 // 4
-# ROI.HEIGHT = 1536 // 3
-
-# ROI.WIDTH = 16
-# ROI.HEIGHT = 8
-
-ROI.WIDTH_PIXELS = ROI.HEIGHT_PIXELS = 32
+ROI.WIDTH_PIXELS = ROI.HEIGHT_PIXELS = 128
 
 # The number of pixels per millimeter in the calcium image
 ROI.PIXELS_PER_MM = dataset_info['pixels_per_mm']
@@ -156,9 +151,10 @@ G_plot_dendrogram: bool = all_on or True
 H_plot_clusters_and_representative_rois_on_image: bool = all_on or most_useful or True
 H_plot_signals_per_cluster: bool = all_on or False
 H_generate_cluster_signals_video: bool = all_on or intense_options  # *
+
 # * : high impact on performance. Set to False unless needed
 
-# ################################## FILE & PATH NAMES #################################################################
+# %% ------------------------------------ File & Path Names ------------------------------------------------------------
 # make figures directory
 figures_dir = os.path.join(directory, 'figures')
 if not os.path.exists(figures_dir):
