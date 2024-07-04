@@ -4,7 +4,7 @@ from src.utils.ROI import ROI
 
 # %% ---------------------------------------- Dataset Options ----------------------------------------------------------
 # TODO specify base directory here
-base_dir = '/Users/julian/development/PycharmProjects/glioblastoma'
+base_dir = '/Users/julian/development/PycharmProjects/auto_signal_extraction'
 
 test_stack = {'dir': os.path.join(base_dir, 'data', 'high_res_test_stack'),
               'name': os.path.join('raw', 'high_res_test_stack.tif'),

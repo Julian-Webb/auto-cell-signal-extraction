@@ -6,7 +6,7 @@ import os
 from tifffile import TiffFile, imwrite
 
 if __name__ == '__main__':
-    base_dir = "/Users/julian/development/PycharmProjects/glioblastoma"
+    base_dir = "/"
     file_path = join(base_dir, "data/233_NoMG_A1_cutout/raw/233_NoMG_A1_STACK_cutout.tif")
     save_dir = join(base_dir, "data/single_cell/raw/")
     save_path = join(save_dir, 'single_cell.tif')
