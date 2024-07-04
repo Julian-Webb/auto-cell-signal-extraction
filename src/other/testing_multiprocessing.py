@@ -4,7 +4,6 @@ import time
 import numpy as np
 import pandas as pd
 import multiprocessing
-from concurrent.futures import ProcessPoolExecutor
 
 
 def distance_for_one_roi(roi: str, compare_to: np.array, shared_dists):

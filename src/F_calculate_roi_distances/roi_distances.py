@@ -10,6 +10,7 @@ from src.utils.decorators import message_and_time
 # The maximum distance that two signals can have. For cosine distance, it's 2.
 _MAX_DISTANCE: float = 2.0
 
+
 @message_and_time('')
 def calculate_roi_distances(signals_df: pd.DataFrame, comp_range_px: int):
     """Takes in the signals of each ROI and calculates a distance measure between each pair or ROIs.

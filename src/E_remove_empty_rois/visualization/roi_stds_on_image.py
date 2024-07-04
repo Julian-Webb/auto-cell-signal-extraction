@@ -50,10 +50,12 @@ def plot_roi_stds_on_image(signals_df: pd.DataFrame, img_dims: Dimensions,
     max_std = stds.max()
     if std_threshold < min_std:
         raise ValueError(
-            f'The std_threshold ({std_threshold}) for removing ROIs is smaller than the minimum standard deviation of the ROI signals ({min_std}).')
+            f'The std_threshold ({std_threshold}) for removing ROIs is smaller than the minimum standard deviation of \
+            the ROI signals ({min_std}).')
     if std_threshold > max_std:
         raise ValueError(
-            f'The std_threshold ({std_threshold}) for removing ROIs is larger than the maximum standard deviation of the ROI signals ({min_std}).')
+            f'The std_threshold ({std_threshold}) for removing ROIs is larger than the maximum standard deviation of \
+            the ROI signals ({min_std}).')
     norm = colors.TwoSlopeNorm(vmin=min_std, vcenter=std_threshold, vmax=max_std)
     scalar_mappable = ScalarMappable(norm, cmap)
 

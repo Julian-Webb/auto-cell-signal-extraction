@@ -37,7 +37,8 @@ def clusters_on_image(roi_clusters_dict: dict, representative_rois: np.array, n_
                                    {'linewidth': 0.3, 'edgecolor': inverse_color, 'facecolor': colors[cluster],
                                     'alpha': 0.5},
                                    str(cluster),
-                                   {'fontsize': ROI.WIDTH_PIXELS // 2, 'weight': 'bold', 'alpha': 0.8, 'color': inverse_color})
+                                   {'fontsize': ROI.WIDTH_PIXELS // 2, 'weight': 'bold', 'alpha': 0.8,
+                                    'color': inverse_color})
         else:
             roi_rectangle_and_text(roi, ax,
                                    {'linewidth': 0.1, 'edgecolor': 'black', 'facecolor': colors[cluster],

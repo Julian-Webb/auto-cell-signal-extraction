@@ -15,8 +15,7 @@ from src.B_generate_rois.save_imagej_rois import save_imagej_rois
 from src.C_get_ROI_signals.visualization.single_plot import single_plot
 from src.C_get_ROI_signals.visualization.grid_plot import grid_plot
 from src.F_calculate_roi_distances.roi_distances import calculate_roi_distances
-from src.G_cluster_ROIs.cluster_rois import agglomerative_clustering, k_means, k_means_spatial_naive, \
-    k_means_spatial_weighted
+from src.G_cluster_ROIs.cluster_rois import agglomerative_clustering, k_means, k_means_spatial_weighted
 from src.G_cluster_ROIs.visualization.roi_cluster_associations import visualize_roi_cluster_associations
 from src.H_representative_signals.compute_representative_signals import compute_representative_signals
 from src.H_representative_signals.visualization.cluster_signals_video import cluster_signals_video
@@ -36,7 +35,8 @@ def main():
     print(f'\n{opt.image_name.split("/")[-1]} (image name)')
     print(f'ROI width, height: {ROI.WIDTH_PIXELS} x {ROI.HEIGHT_PIXELS} px')
     print(
-        f"A grid of {ROI.N_HORIZONTAL} x {ROI.N_VERTICAL} (horizontal x vertical) ROIs has been created. That makes {ROI.N_HORIZONTAL * ROI.N_VERTICAL} ROIs.\n")
+        f"A grid of {ROI.N_HORIZONTAL} x {ROI.N_VERTICAL} (horizontal x vertical) ROIs has been created. \
+        That makes {ROI.N_HORIZONTAL * ROI.N_VERTICAL} ROIs.\n")
 
     if opt.B_save_imagej_rois:
         # this operation takes very long/crashes for very large number of ROIs (>3 Mio. ROIs)
